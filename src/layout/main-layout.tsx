@@ -4,7 +4,11 @@ import React, {ReactNode} from "react";
 import {ProgressProvider} from "@bprogress/next/app";
 import '@/lib/i18n'
 
-const MainLayout = ({children}: { children: ReactNode }) => {
+interface Props {
+    children: ReactNode
+}
+
+const MainLayout: React.FC<Props> = ({children}) => {
     return <>
         <ProgressProvider
             height="3px"

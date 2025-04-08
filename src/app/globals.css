@@ -22,3 +22,24 @@ body {
     color: var(--foreground);
     font-family: Arial, Helvetica, sans-serif;
 }
+
+.hovered-btn {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    letter-spacing: 2px;
+    -moz-transition: all 0.6s ease-out 0.0s;
+    -ms-transition: all 0.6s ease-out 0.0s;
+    -o-transition: all 0.6s ease-out 0.0s;
+    -webkit-transition: all 0.6s ease-out 0.0s;
+    transition: all 0.6s ease-out 0.0s;
+}
+
+.hovered-btn:after, .hovered-btn:before {
+    -moz-transition: all 0.4s ease-out 0.0s;
+    -ms-transition: all 0.4s ease-out 0.0s;
+    -o-transition: all 0.4s ease-out 0.0s;
+    -webkit-transition: all 0.4s ease-out 0.0s;
+    transition: all 0.4s ease-out 0.0s;
+}

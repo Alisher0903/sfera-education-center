@@ -33,7 +33,7 @@ const Networks = ({language, changeLanguage}: { language: string, changeLanguage
                 />
                 <div
                     className={cn(
-                        "absolute top-10 right-0 w-48 bg-white shadow-lg rounded-lg overflow-hidden transition-all duration-300 ease-in-out",
+                        "absolute top-10 right-0 w-32 bg-white shadow-lg rounded-lg overflow-hidden transition-all duration-300 ease-in-out",
                         isLangOpen ? "opacity-100 max-h-60" : "opacity-0 max-h-0"
                     )}
                 >

@@ -10,6 +10,7 @@ import i18n from "i18next";
 import {setItem} from "@/lib/storage";
 import {savedLanguage} from "@/lib/i18n";
 import Networks from "@/components/header/networks";
+import {cn} from "@/lib/utils";
 
 const Header: React.FC = () => {
     const pathname = usePathname();
@@ -20,7 +21,7 @@ const Header: React.FC = () => {
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     useEffect(() => {
-        const handleScroll = () => setIsScrolled(window.scrollY > 70);
+        const handleScroll = () => setIsScrolled(window.scrollY > 50);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -42,7 +43,7 @@ const Header: React.FC = () => {
     return (
         <header
             className={
-                `sticky transition-all duration-300 z-50
+                `fixed transition-all duration-300 z-50
                 ${isScrolled
                     ? 'bg-gradient-to-t from-white to-green-50 lg:bg-white/80 lg:backdrop-blur-md shadow-sm top-0 lg:top-2 lg:rounded-2xl lg:right-2 lg:left-2 lg:px-3 lg:w-[99%] lg:mx-auto'
                     : 'w-full bg-gradient-to-t from-white to-green-50 top-0 left-0'
@@ -50,10 +51,10 @@ const Header: React.FC = () => {
             }
         >
             <div className="mx-auto p-5 lg:px-10 flex items-center justify-between">
-                <div className={'flex items-center space-x-16'}>
+                {/*<div className={'flex items-center space-x-16'}>*/}
                     {/* Logo */}
                     <Link href="/" className={'z-[51]'} onClick={() => setIsMenuOpen(false)}>
-                        <Image src="/sfera-logo.png" alt="SFERA Academy" width={120} height={40}/>
+                        <Image src="/sfera-logo.png" alt="SFERA Academy" className={cn("scale-[115%]")} width={130} height={40}/>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -69,7 +70,7 @@ const Header: React.FC = () => {
                             </Link>
                         ))}
                     </nav>
-                </div>
+                {/*</div>*/}
 
                 {/* Contact and Social Icons */}
                 <div className={'hidden lg:flex'}>
