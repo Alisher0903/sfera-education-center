@@ -1,6 +1,6 @@
 "use client"
 
-import React, {ReactNode} from "react";
+import {ReactNode} from "react";
 import {ProgressProvider} from "@bprogress/next/app";
 import '@/lib/i18n'
 
@@ -8,7 +8,7 @@ interface Props {
     children: ReactNode
 }
 
-const MainLayout: React.FC<Props> = ({children}) => {
+const MainLayout = ({children}: Readonly<Props>) => {
     return <>
         <ProgressProvider
             height="3px"

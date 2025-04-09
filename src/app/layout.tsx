@@ -12,7 +12,6 @@ import SmoothScrolling from "@/components/scroll/smooth-scrolling";
 
 // layouts
 import MainLayout from "@/layout/main-layout";
-import SeoLayout from "@/layout/seo-layout";
 import ReactQueryLayout from "@/layout/query-layout";
 
 // scroll to top btn
@@ -23,19 +22,17 @@ export const metadata: Metadata = {
     description: "Sfera academy app",
 };
 
-export default function RootLayout({children,}: Readonly<{ children: React.ReactNode; }>) {
+export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
     return (
         <html lang="en">
         <body className="antialiased">
         <SmoothScrolling>
             <ReactQueryLayout>
-                <SeoLayout>
-                    <MainLayout>
-                        <Header/>
-                        {children}
-                        <ScrollToTop/>
-                    </MainLayout>
-                </SeoLayout>
+                <MainLayout>
+                    <Header/>
+                    {children}
+                    <ScrollToTop/>
+                </MainLayout>
             </ReactQueryLayout>
         </SmoothScrolling>
         </body>
