@@ -21,7 +21,7 @@ const Accordion = (
     const [isOpen, setIsOpen] = useState(defaultOpen);
 
     return (
-        <div className={`w-full ${className}`}>
+        <div className={cn("w-full", className)}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
@@ -31,15 +31,14 @@ const Accordion = (
             >
                 <span className="font-medium">{title}</span>
                 <ChevronDown
-                    className={`w-5 h-5 transition-transform duration-300 ${
-                        isOpen ? "rotate-180" : ""
-                    }`}
+                    className={cn("w-5 h-5 transition-transform duration-300", isOpen ? "rotate-0" : "-rotate-90")}
                 />
             </button>
             <div
-                className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                className={cn(
+                    "overflow-hidden transition-all duration-300 ease-in-out",
                     isOpen ? "max-h-[500px]" : "max-h-0"
-                }`}
+                )}
             >
                 <div className="p-4 bg-white border border-gray-200 rounded-b-lg">
                     {children}
