@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { CourseCardProps } from "@/types/cards"
 
-export default function CourseCard({ id, title, description, imageUrl, detailsUrl, text,
+export default function CourseCard({ title, description, imageUrl, detailsUrl, text,
 }: CourseCardProps) {
   const [isHovered, setIsHovered] = useState(false)
 

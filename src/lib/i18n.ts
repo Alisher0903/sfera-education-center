@@ -24,4 +24,4 @@ i18n
             order: ['localStorage', 'cookie', 'navigator'],
             caches: ['localStorage', 'cookie'],
         },
-    });
+    }).then(() => "");
