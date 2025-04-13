@@ -32,3 +32,59 @@ export const headerStyles = {
     network: 'text-gray-800 transition-all duration-300 ease-in-out hover:text-green-600'
 }
 
+export const courses = [
+    {
+        courseTitle: "Node.js Backend",
+        startDate: "20.04.2025",
+        duration: "5 oy",
+        price: "700 000 so'm",
+        instructorName: "Javohir Qo'ziboyev",
+        instructorImage: "/home/team.png",
+        image:"/home/course.png"
+    },
+    {
+        courseTitle: "Node.js Backend",
+        startDate: "20.04.2025",
+        duration: "5 oy",
+        price: "700 000 so'm",
+        instructorName: "Javohir Qo'ziboyev",
+        instructorImage: "/home/team.png",
+        image:"/home/course.png"
+    },
+    {
+        courseTitle: "Node.js Backend",
+        startDate: "20.04.2025",
+        duration: "5 oy",
+        price: "700 000 so'm",
+        instructorName: "Javohir Qo'ziboyev",
+        instructorImage: "/home/team.png",
+        image:"/home/course.png"
+    },
+    {
+        courseTitle: "Node.js Backend",
+        startDate: "20.04.2025",
+        duration: "5 oy",
+        price: "700 000 so'm",
+        instructorName: "Javohir Qo'ziboyev",
+        instructorImage: "/home/team.png",
+        image:"/home/course.png"
+    },
+    {
+        courseTitle: "Node.js Backend",
+        startDate: "20.04.2025",
+        duration: "5 oy",
+        price: "700 000 so'm",
+        instructorName: "Javohir Qo'ziboyev",
+        instructorImage: "/home/team.png",
+        image:"/home/course.png"
+    },
+    {
+        courseTitle: "Node.js Backend",
+        startDate: "20.04.2025",
+        duration: "5 oy",
+        price: "700 000 so'm",
+        instructorName: "Javohir Qo'ziboyev",
+        instructorImage: "/home/team.png",
+        image:"/home/course.png"
+    },
+]

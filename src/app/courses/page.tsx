@@ -1,65 +1,8 @@
 import BackendCard from "@/components/cards/courses";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
+import {courses} from "@/lib/constants";
 
-
-const courses = [
-    {
-        courseTitle: "Node.js Backend",
-        startDate: "20.04.2025",
-        duration: "5 oy",
-        price: "700 000 so'm",
-        instructorName: "Javohir Qo'ziboyev",
-        instructorImage: "/home/team.png",
-        image:"/home/course.png"
-    },
-    {
-        courseTitle: "Node.js Backend",
-        startDate: "20.04.2025",
-        duration: "5 oy",
-        price: "700 000 so'm",
-        instructorName: "Javohir Qo'ziboyev",
-        instructorImage: "/home/team.png",
-        image:"/home/course.png"
-    },
-    {
-        courseTitle: "Node.js Backend",
-        startDate: "20.04.2025",
-        duration: "5 oy",
-        price: "700 000 so'm",
-        instructorName: "Javohir Qo'ziboyev",
-        instructorImage: "/home/team.png",
-        image:"/home/course.png"
-    },
-    {
-        courseTitle: "Node.js Backend",
-        startDate: "20.04.2025",
-        duration: "5 oy",
-        price: "700 000 so'm",
-        instructorName: "Javohir Qo'ziboyev",
-        instructorImage: "/home/team.png",
-        image:"/home/course.png"
-    },
-    {
-        courseTitle: "Node.js Backend",
-        startDate: "20.04.2025",
-        duration: "5 oy",
-        price: "700 000 so'm",
-        instructorName: "Javohir Qo'ziboyev",
-        instructorImage: "/home/team.png",
-        image:"/home/course.png"
-    },
-    {
-        courseTitle: "Node.js Backend",
-        startDate: "20.04.2025",
-        duration: "5 oy",
-        price: "700 000 so'm",
-        instructorName: "Javohir Qo'ziboyev",
-        instructorImage: "/home/team.png",
-        image:"/home/course.png"
-    },
-]
-
-const Courses = () => {
+const Courses = async () => {
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto py-20 ">
