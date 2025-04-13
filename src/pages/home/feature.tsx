@@ -27,6 +27,7 @@ const features = [
         description: "Darslar innovatsion yondashuv asosida o‘tilib, bilimlar mustahkamlanadi.",
         highlight: "Nazariy va amaliy bilimlar uyg‘unligi",
         iconSrc: "/home/feature3.png",
+        variant: "green"
     },
 ]
 const Feature = () => {
