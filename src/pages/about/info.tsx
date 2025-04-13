@@ -5,7 +5,7 @@ import SectionTitle from "@/components/SectionTitle/SectionTitle"
 const Register = () => {
     return (
         <main className="container mx-auto p-4 py-10">
-            <div className="py-10"><SectionTitle title="Ro‘yxatdan o‘tish"/></div>
+            <div className="py-10"><SectionTitle title="RO'YHATDAN O'TISH"/></div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <InfoCard />
                 <RegistrationForm />

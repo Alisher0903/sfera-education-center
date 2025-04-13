@@ -56,7 +56,7 @@ const ForWhomSection = () => {
                 </div>
               </div>
               <div>
-                <p style={{ color: "#D1FAE5" }}>
+                <p style={{ color: colors.white }}>
                   Dasturlashda boshlang‘ich tushunchaga ega bo‘lganlar bu kurs
                   orqali o‘z bilimlarini mustahkamlab, yangi texnologiyalar bilan
                   ishlashni chuqurroq o‘rganishlari mumkin.
