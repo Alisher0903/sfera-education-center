@@ -1,5 +1,5 @@
 export interface CourseCardProps {
-    id: string
+    id: number
     title: string
     description: string
     imageUrl: string
@@ -12,7 +12,7 @@ export interface CourseCardProps {
     description: string
     highlight: string
     iconSrc: string
-    variant: string
+    variant: any
   }
   
 
@@ -35,4 +35,11 @@ export interface CourseCardProps {
       twitter?: string
       telegram?: string
     }
+  }
+
+  export interface InfoCardProps {
+    image: string;
+    title: string;
+    description?: string;
+    imageAlt?: string;
   }

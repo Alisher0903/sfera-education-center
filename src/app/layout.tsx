@@ -1,5 +1,5 @@
 import React from "react";
-import type {Metadata} from "next";
+import type { Metadata } from "next";
 
 // globals css
 import "./globals.css";
@@ -16,26 +16,28 @@ import ReactQueryLayout from "@/layout/query-layout";
 
 // scroll to top btn
 import ScrollToTop from "@/components/scroll/scroll-to-top";
+import Footer from "@/components/footer/footer";
 
 export const metadata: Metadata = {
     title: "Sfera Academy",
     description: "Sfera academy app",
 };
 
-export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
     return (
         <html lang="en">
-        <body className="antialiased">
-        <SmoothScrolling>
-            <ReactQueryLayout>
-                <MainLayout>
-                    <Header/>
-                    {children}
-                    <ScrollToTop/>
-                </MainLayout>
-            </ReactQueryLayout>
-        </SmoothScrolling>
-        </body>
+            <body className="antialiased">
+                <SmoothScrolling>
+                    <ReactQueryLayout>
+                        <MainLayout>
+                            <Header />
+                            {children}
+                            <ScrollToTop />
+                            <Footer />
+                        </MainLayout>
+                    </ReactQueryLayout>
+                </SmoothScrolling>
+            </body>
         </html>
     );
 }

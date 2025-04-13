@@ -1,21 +1,40 @@
 import Image from "next/image"
-import {FeatureCardProps} from "@/types/cards"
+import { FeatureCardProps } from "@/types/cards"
+import colors from "@/lib/colors"
 
-export default function FeatureCard({ title, description, highlight, iconSrc, variant }: FeatureCardProps) {
+export default function FeatureCard({
+  title,
+  description,
+  highlight,
+  iconSrc,
+  variant = "green"
+}: FeatureCardProps) {
+  const isGreen = variant === "green"
+
   return (
     <div
       className={`rounded-lg p-6 h-full flex flex-col justify-between ${
-        variant === "green" ? "bg-[#1CA855] text-white" : "bg-white border-2 border-[#1CA855]"
+        isGreen ? "text-white" : "bg-white border-2"
       }`}
+      style={{
+        backgroundColor: isGreen ? colors.green : colors.white,
+        borderColor: isGreen ? undefined : colors.green,
+      }}
     >
       <div>
-        <h3 className={`text-xl font-bold mb-2 ${variant === "green" ? "text-[#FFBB3C]" : "text-[#62C8FF]"}`}>
+        <h3
+          className={`text-xl font-bold mb-2`}
+          style={{ color: isGreen ? colors.yellow : colors.blue }}
+        >
           {title}
         </h3>
-        <p className="mb-8">{description}</p>
+        <p className="mb-8 text-sm" style={{color: isGreen ? colors.white : colors.black}}>{description}</p>
       </div>
       <div className="flex justify-between items-center">
-        <p className={`text-sm font-medium ${variant === "green" ? "text-white" : "text-[#1CA855]"}`}>
+        <p
+          className={`text-sm font-medium`}
+          style={{ color: isGreen ? colors.white : colors.green }}
+        >
           {highlight}
         </p>
         <div className="w-10 h-10 relative">
