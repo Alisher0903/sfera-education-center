@@ -1,3 +1,10 @@
+"use client"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { Navigation, Pagination } from "swiper/modules"
+import "swiper/css"
+import "swiper/css/navigation"
+import "swiper/css/pagination"
+
 import CourseCard from "@/components/cards/courseCard"
 import SectionTitle from "@/components/SectionTitle/SectionTitle"
 import { CourseCardProps } from "@/types/cards"
@@ -10,7 +17,7 @@ const courses: CourseCardProps[] = [
             "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, dizayn va o'zaro ta'sir qilish uchun HTML, CSS va JavaScript-dan foydalanish bilan bog'liq.",
         imageUrl: "/home/1.png",
         detailsUrl: "/home/course.png",
-        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, "
+        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, ",
     },
     {
         id: 2,
@@ -19,7 +26,7 @@ const courses: CourseCardProps[] = [
             "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, dizayn va o'zaro ta'sir qilish uchun HTML, CSS va JavaScript-dan foydalanish bilan bog'liq.",
         imageUrl: "/home/1.png",
         detailsUrl: "/home/course.png",
-        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, "
+        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, ",
     },
     {
         id: 3,
@@ -28,7 +35,7 @@ const courses: CourseCardProps[] = [
             "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, dizayn va o'zaro ta'sir qilish uchun HTML, CSS va JavaScript-dan foydalanish bilan bog'liq.",
         imageUrl: "/home/1.png",
         detailsUrl: "/courses/front-end",
-        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, "
+        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, ",
     },
     {
         id: 4,
@@ -37,9 +44,26 @@ const courses: CourseCardProps[] = [
             "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, dizayn va o'zaro ta'sir qilish uchun HTML, CSS va JavaScript-dan foydalanish bilan bog'liq.",
         imageUrl: "/home/1.png",
         detailsUrl: "/home/course.png",
-        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, "
+        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, ",
     },
-
+    {
+        id: 5,
+        title: "Front-End",
+        description:
+            "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, dizayn va o'zaro ta'sir qilish uchun HTML, CSS va JavaScript-dan foydalanish bilan bog'liq.",
+        imageUrl: "/home/1.png",
+        detailsUrl: "/home/course.png",
+        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, ",
+    },
+    {
+        id: 6,
+        title: "Front-End",
+        description:
+            "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, dizayn va o'zaro ta'sir qilish uchun HTML, CSS va JavaScript-dan foydalanish bilan bog'liq.",
+        imageUrl: "/home/1.png",
+        detailsUrl: "/home/course.png",
+        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, ",
+    },
 ]
 
 const Courses = () => {
@@ -49,22 +73,45 @@ const Courses = () => {
                 <div className="mb-10">
                     <SectionTitle title="KURSLARIMIZ" />
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 place-items-center">
+
+                <Swiper
+                    className="relative"
+                    modules={[Navigation, Pagination]}
+                    spaceBetween={20}
+                    navigation
+                    breakpoints={{
+                        640: { slidesPerView: 1 },
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                        1280: { slidesPerView: 4 },
+                    }}
+                >
                     {courses.map((course) => (
-                        <CourseCard
-                            key={course.id}
-                            id={course.id}
-                            title={course.title}
-                            description={course.description}
-                            imageUrl={course.imageUrl}
-                            detailsUrl={course.detailsUrl}
-                            text={course.text}
-                        />
+                        <SwiperSlide key={course.id} className="">
+                            <CourseCard {...course} />
+                        </SwiperSlide>
                     ))}
-                </div>
+                </Swiper>
+
+                <style jsx global>{`
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: white; /* tugma rangi */
+    background-color: #1CA855; /* Tailwinddagi bg-blue-500 */
+    padding: 10px;
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 40px;
+    height: 40px;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 16px;
+  }
+`}</style>
             </div>
         </section>
-
     )
 }
 

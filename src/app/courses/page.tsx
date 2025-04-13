@@ -13,8 +13,6 @@ const Courses = async () => {
                     ))}
                 </div>
             </div>
-            {/* <Hero />
-            <Info /> */}
         </section>
     );
 };
