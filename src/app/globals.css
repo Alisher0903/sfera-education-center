@@ -17,6 +17,10 @@
     }
 }
 
+html {
+    scroll-behavior: auto; /* bu yerda auto bo'lishi kerak, chunki lenis o'zi boshqaradi */
+}
+
 body {
     background: var(--background);
     color: var(--foreground);

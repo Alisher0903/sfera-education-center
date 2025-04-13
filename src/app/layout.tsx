@@ -8,7 +8,7 @@ import "./globals.css";
 import Header from "@/components/header/header";
 
 // silliq scroll
-import SmoothScrolling from "@/components/scroll/smooth-scrolling";
+import SmoothScrollProvider from "@/components/scroll/smooth-scrolling";
 
 // layouts
 import MainLayout from "@/layout/main-layout";
@@ -27,7 +27,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     return (
         <html lang="en">
             <body className="antialiased">
-                <SmoothScrolling>
+                <SmoothScrollProvider>
                     <ReactQueryLayout>
                         <MainLayout>
                             <Header />
@@ -36,7 +36,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                             <Footer />
                         </MainLayout>
                     </ReactQueryLayout>
-                </SmoothScrolling>
+                </SmoothScrollProvider>
             </body>
         </html>
     );
