@@ -8,7 +8,7 @@ export const useNavLinks = () => {
         {id: 'home', name: lang('home'), link: '/'},
         {id: 'portfolio', name: lang('portfolio'), link: '/portfolio'},
         {id: 'courses', name: lang('courses'), link: '/courses'},
-        {id: 'about', name: lang('about'), link: '/visits'},
+        {id: 'about', name: lang('visits'), link: '/visits'},
     ]
     return {navItems}
 }

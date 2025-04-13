@@ -8,7 +8,22 @@ export const infoCards = [
         description: "Frontend dasturchining asosiy vazifasi —foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. Bu esa nafaqat texnik ",
     },
     {
-        image: "/home/info.png",
+        image: "/home/info2.png",
+        title: "Biz yuqori ta’lim sifatiga intilamiz",
+        description: "Frontend dasturchining asosiy vazifasi —foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. Bu esa nafaqat texnik ",
+    },
+    {
+        image: "/home/info1.png",
+        title: "Biz yuqori ta’lim sifatiga intilamiz",
+        description: "Frontend dasturchining asosiy vazifasi —foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. Bu esa nafaqat texnik ",
+    },
+    {
+        image: "/home/info3.png",
+        title: "Biz yuqori ta’lim sifatiga intilamiz",
+        description: "Frontend dasturchining asosiy vazifasi —foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. Bu esa nafaqat texnik ",
+    },
+    {
+        image: "/home/info2.png",
         title: "Biz yuqori ta’lim sifatiga intilamiz",
         description: "Frontend dasturchining asosiy vazifasi —foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. Bu esa nafaqat texnik ",
     },
@@ -18,27 +33,12 @@ export const infoCards = [
         description: "Frontend dasturchining asosiy vazifasi —foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. Bu esa nafaqat texnik ",
     },
     {
-        image: "/home/info.png",
+        image: "/home/info3.png",
         title: "Biz yuqori ta’lim sifatiga intilamiz",
         description: "Frontend dasturchining asosiy vazifasi —foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. Bu esa nafaqat texnik ",
     },
     {
-        image: "/home/info.png",
-        title: "Biz yuqori ta’lim sifatiga intilamiz",
-        description: "Frontend dasturchining asosiy vazifasi —foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. Bu esa nafaqat texnik ",
-    },
-    {
-        image: "/home/info.png",
-        title: "Biz yuqori ta’lim sifatiga intilamiz",
-        description: "Frontend dasturchining asosiy vazifasi —foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. Bu esa nafaqat texnik ",
-    },
-    {
-        image: "/home/info.png",
-        title: "Biz yuqori ta’lim sifatiga intilamiz",
-        description: "Frontend dasturchining asosiy vazifasi —foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. Bu esa nafaqat texnik ",
-    },
-    {
-        image: "/home/info.png",
+        image: "/home/info1.png",
         title: "Biz yuqori ta’lim sifatiga intilamiz",
         description: "Frontend dasturchining asosiy vazifasi —foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. Bu esa nafaqat texnik ",
     },
