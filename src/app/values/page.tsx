@@ -1,7 +1,9 @@
+import Values from "@/pages/values/values"
+
 const Visits =()=>{
     return(
         <div>
-            Visits
+           <Values/>
         </div>
     )
 }
