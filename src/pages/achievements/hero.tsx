@@ -14,7 +14,7 @@ export default function Hero() {
               Qadriyatlari
             </h3>
             <p className="text-gray-600 max-w-md mx-auto md:mx-0 text-sm leading-relaxed text-center">
-              SFERA AKADEMIYASI HAR BIR O'QUVCHINING SALOHIYATINI OCHISH, ZAMONAVIY BILIM VA KO'NIKMALAR BILAN
+              SFERA AKADEMIYASI HAR BIR O&apos;QUVCHINING SALOHIYATINI OCHISH, ZAMONAVIY BILIM VA KO&apos;NIKMALAR BILAN
               QUROLLANTIRSHGA INTILADI.
             </p>
           </div>

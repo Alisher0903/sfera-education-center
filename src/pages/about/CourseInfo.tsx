@@ -21,7 +21,7 @@ export default function CourseInfoSection() {
           </div>
 
           <div className="px-4 py-2">
-            <h3 className="text-sm font-medium">Ta'lim formati:</h3>
+            <h3 className="text-sm font-medium">Ta&apos;lim formati:</h3>
             <p className="text-2xl font-bold">{courseInfo.format}</p>
           </div>
 

@@ -1,7 +1,6 @@
 "use client";
 
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
-import { UserIcon, BriefcaseIcon } from "lucide-react";
 import Image from "next/image";
 import colors from "@/lib/colors"; // ranglar faylini import qilamiz
 

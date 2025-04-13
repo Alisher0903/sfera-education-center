@@ -1,5 +1,3 @@
-import Accordion from "@/components/accordion/accordion";
-import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import CourseInfoSection from "@/pages/about/CourseInfo";
 import Hero from "@/pages/courses/courses";
 import Info from "@/pages/courses/info";

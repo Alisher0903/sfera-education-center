@@ -15,7 +15,7 @@ export function RegistrationForm() {
     >
       <div className="flex items-center gap-3 mb-8">
         <FileText className="h-6 w-6" style={{ color: colors.white }} />
-        <h2 className="text-2xl font-medium">Ro'yxatdan o'tish</h2>
+        <h2 className="text-2xl font-medium">Ro&apos;yxatdan o&apos;tish</h2>
       </div>
 
       <form className="space-y-6">

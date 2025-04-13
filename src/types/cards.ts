@@ -12,7 +12,7 @@ export interface CourseCardProps {
     description: string
     highlight: string
     iconSrc: string
-    variant: any
+    variant: string
   }
   
 
