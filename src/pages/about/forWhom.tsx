@@ -4,7 +4,7 @@ import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import Image from "next/image";
 import colors from "@/lib/colors"; // ranglar faylini import qilamiz
 
-const ForWhomSection = (): JSX.Element => {
+const ForWhomSection = () => {
   return (
     <section className="w-full">
       <div className="my-10">
