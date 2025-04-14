@@ -1,12 +1,12 @@
 import React from 'react';
-
+import colors from "@/lib/colors"
 interface SectionTitleProps {
     title: string;
 }
 
 const SectionTitle: React.FC<SectionTitleProps> = ({title}) => {
     return (
-        <h2 className="text-[#1CA855] flex justify-center text-3xl text-center">
+        <h2 className=" flex justify-center text-3xl text-center" style={{color:colors.green}}>
             {title}
         </h2>
     );
