@@ -3,8 +3,8 @@ import SectionTitle from "@/components/SectionTitle/SectionTitle";
 
 const FAQSection = () => {
   return (
-    <div  className="py-10">
-      <div className="mb-10">
+    <div  className="w-full px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto py-10">
         <SectionTitle title="ENG KOP BERILADIGAN SAVOLLAR" />
       </div>
       <div className="container mx-auto flex flex-col gap-3">

@@ -1,5 +1,5 @@
 import CourseInfoSection from "@/pages/about/CourseInfo";
-import Hero from "@/pages/courses/courses";
+import Hero from "@/pages/about/hero";
 import Info from "@/pages/courses/info";
 import ForWhomSection from "@/pages/about/forWhom";
 import Register from "@/pages/about/info";

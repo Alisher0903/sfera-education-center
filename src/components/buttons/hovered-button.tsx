@@ -1,11 +1,12 @@
 import Link from "next/link";
 import {cn} from "@/lib/utils";
 
-const HoveredButton = ({link = '', name, onClick, className}: {
+const HoveredButton = ({link = '', name, onClick, className, style}: {
     link?: string,
     name: string,
     onClick?: () => void,
-    className?: string
+    className?: string,
+    style?: React.CSSProperties;
 }) => {
     return (
         <Link
@@ -15,6 +16,7 @@ const HoveredButton = ({link = '', name, onClick, className}: {
             )}
             href={link}
             onClick={onClick}
+            style={style}
         >
             {name}
         </Link>
