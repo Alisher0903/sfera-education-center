@@ -62,3 +62,13 @@ export interface VisitsCardProps {
   visitData: VisitData;
   isLeft?: boolean;
 }
+
+export interface BackendCardProps {
+  courseTitle: string
+  startDate: string
+  duration: string
+  price: string
+  instructorName: string
+  instructorImage: string
+  image: string
+}

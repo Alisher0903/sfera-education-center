@@ -30,7 +30,7 @@ export default function StudentTestimonialCard({
       </div>
 
       <div className="p-6 md:w-3/5 flex flex-col justify-center">
-        <h3 className="text-2xl font-bold mb-1" style={{ color: "#111827" }}>
+        <h3 className="text-2xl font-bold mb-1" style={{ color:colors.green }}>
           {name}
         </h3>
         <p className="mb-4">

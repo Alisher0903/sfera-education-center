@@ -38,7 +38,7 @@ export default function OurMotto() {
     return (
         <section className="w-full  flex flex-col items-center justify-center">
             <div className="container flex flex-col items-center">
-                <div className="rounded-lg md:p-12 text-center text-white w-full" style={{backgroundColor: colors.green, color:colors.white}}>
+                <div className="rounded-lg md:p-12 text-center  w-full" style={{backgroundColor: colors.green, color:colors.white}}>
                     <Swiper
                         modules={[Pagination, Autoplay]}
                         pagination={{

@@ -24,7 +24,7 @@ export default function Values() {
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto py-20">
-            <div className="my-10">
+                <div className="my-10">
                     <SectionTitle title="YUTUQLARIMIZ" />
                 </div>
                 {achievements.map((achievement) => (
@@ -38,7 +38,7 @@ export default function Values() {
                                     }`}
                             >
                                 <div className="lg:w-1/2">
-                                    <h2 className="text-3xl font-bold mb-4 text-center" style={{color:colors.green}}>
+                                    <h2 className="text-3xl font-bold mb-4 text-center" style={{ color: colors.green }}>
                                         {achievement.title}
                                     </h2>
                                     <p className="text-lg  leading-relaxed mb-8 text-center px-20" >

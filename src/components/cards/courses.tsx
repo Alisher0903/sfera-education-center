@@ -4,6 +4,7 @@ import Image from "next/image"
 import React from "react"
 import { cn } from "@/lib/utils"
 import colors from "@/lib/colors"
+import { BackendCardProps } from "@/types/cards"
 
 const Avatar = React.forwardRef<
   HTMLDivElement,
@@ -36,15 +37,6 @@ const AvatarFallback = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTM
 )
 AvatarFallback.displayName = "AvatarFallback"
 
-interface BackendCardProps {
-  courseTitle: string
-  startDate: string
-  duration: string
-  price: string
-  instructorName: string
-  instructorImage: string
-  image: string
-}
 
 export default function BackendCard({
   courseTitle,

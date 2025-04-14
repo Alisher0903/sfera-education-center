@@ -92,7 +92,7 @@ export default function PhotoCarousel() {
             <div className=" mt-30">
                 <SectionTitle title="APLER OYINING ENG YAXSHI O'QUVCHILARI" />
             </div>
-            <div className="max-w-7xl mx-auto ">
+            <div className="max-w-7xl mx-auto pb-10">
                 {/* Carousel container */}
                 <div ref={carouselRef} className="overflow-hidden">
                     {/* Slides */}
@@ -110,7 +110,7 @@ export default function PhotoCarousel() {
                             >
                                 <div className="flex flex-col items-center my-20">
                                     <div
-                                        className={`relative w-full h-[250px] transition-all duration-300 ${hoveredIndex === index ? "scale-110 z-10" : ""
+                                        className={`relative w-[500px] h-[400px] transition-all duration-300 ${hoveredIndex === index ? "scale-110 z-10" : ""
                                             }`}
                                     >
                                         <div className="w-full h-full overflow-hidden rounded-2xl ">
@@ -125,8 +125,9 @@ export default function PhotoCarousel() {
 
 
                                     <p
+                                        className="pt-5 text-xl"
                                         style={{
-                                            color: hoveredIndex === index ? colors.green : colors.grayText,
+                                            color: hoveredIndex === index ? colors.green: colors.grayText,
                                             marginTop: "0.5rem", // mt-2 ga teng
                                             textAlign: "center",
                                             transition: "color 0.3s",
