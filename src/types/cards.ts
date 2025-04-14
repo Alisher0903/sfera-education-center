@@ -49,3 +49,16 @@ export interface CourseCardProps {
     title: string
     image: string
 }
+export interface VisitData {
+  id: number;
+  title: string;
+  date: string;
+  description: string;
+  image: string;
+}
+
+
+export interface VisitsCardProps {
+  visitData: VisitData;
+  isLeft?: boolean;
+}
