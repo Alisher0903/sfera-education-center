@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link"
 import SectionTitle from "../SectionTitle/SectionTitle"
 import Image from "next/image"
@@ -5,6 +6,9 @@ import { cn } from "@/lib/utils"
 import SocialIconLink from "../SocialIconLink/SocialIconLink"
 import { FaInstagram, FaFacebook, FaTwitter, FaTelegram } from 'react-icons/fa'
 import colors from "@/lib/colors"
+import { useState } from "react"
+import { RegistrationModal } from "@/auth/register"
+
 
 const iconMap = {
   instagram: FaInstagram,
@@ -20,6 +24,7 @@ const socialLinks = {
 }
 
 export default function Footer() {
+  const [modalOpen, setModalOpen] = useState(false)
   return (
     <div className="bg-[#EAEAEA] w-full px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto py-10">
@@ -51,7 +56,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl pb-5">Yordam</h3>
             <div className="flex flex-col gap-2">
-              <p className={`text-[${colors.grayText}] text-base hover:text-[${colors.green}]`}>Ro’yxatdan o’tish</p>
+              <p className={`text-[${colors.grayText}] text-base hover:text-[${colors.green}]`} onClick={() => setModalOpen(true)}>Ro’yxatdan o’tish</p>
               <p className={`text-[${colors.grayText}] text-base hover:text-[${colors.green}]`}>Tel: 78 113 60-62</p>
             </div>
           </div>
@@ -90,6 +95,7 @@ export default function Footer() {
         </div>
 
       </div>
+      <RegistrationModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   )
 }
