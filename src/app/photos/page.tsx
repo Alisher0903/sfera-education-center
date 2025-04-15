@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight } from "lucide-react"
 import SectionTitle from "@/components/SectionTitle/SectionTitle"
 import colors from "@/lib/colors"
 
@@ -70,13 +69,13 @@ export default function PhotoCarousel() {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides)
     }
 
-    const prevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides)
-    }
-
-    const goToSlide = (index: number) => {
-        setCurrentIndex(index)
-    }
+    // const prevSlide = () => {
+    //     setCurrentIndex((prevIndex) => (prevIndex - 1 + totalSlides) % totalSlides)
+    // }
+    //
+    // const goToSlide = (index: number) => {
+    //     setCurrentIndex(index)
+    // }
 
     // Auto-advance slides every 5 seconds
     useEffect(() => {

@@ -1,7 +1,7 @@
 "use client"
 
-import { ChevronDown, FileText, X } from "lucide-react"
-import { useState } from "react"
+import { FileText, X } from "lucide-react"
+// import { useState } from "react"
 import colors from "@/lib/colors"
 
 interface RegistrationModalProps {
@@ -10,8 +10,8 @@ interface RegistrationModalProps {
 }
 
 export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
-    const [isCountryOpen, setIsCountryOpen] = useState(false)
-    const [isCourseOpen, setIsCourseOpen] = useState(false)
+    // const [isCountryOpen, setIsCountryOpen] = useState(false)
+    // const [isCourseOpen, setIsCourseOpen] = useState(false)
 
     if (!isOpen) return null
 
