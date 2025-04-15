@@ -3,7 +3,7 @@ import BackendCard from "@/components/cards/courses";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import {courses} from "@/lib/constants";
 
-const Courses = async () => {
+const Courses = () => {
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto py-20 ">
