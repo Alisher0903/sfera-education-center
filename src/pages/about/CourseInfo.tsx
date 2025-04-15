@@ -1,6 +1,6 @@
 import colors from '@/lib/colors' 
 
-export default function CourseInfoSection() {
+export default function CourseInfoSection({ course }: { course: any }) {
   const courseInfo = {
     totalLessons: 72,
     format: "Onlayn",
@@ -17,22 +17,22 @@ export default function CourseInfoSection() {
         >
           <div className="px-4 py-2">
             <h3 className="text-sm font-medium">Barcha darslar miqdori:</h3>
-            <p className="text-2xl font-bold">{courseInfo.totalLessons} dars</p>
+            <p className="text-2xl font-bold">{course.lesson_count} dars</p>
           </div>
 
           <div className="px-4 py-2">
             <h3 className="text-sm font-medium">Ta&apos;lim formati:</h3>
-            <p className="text-2xl font-bold">{courseInfo.format}</p>
+            <p className="text-2xl font-bold">{course.format}</p>
           </div>
 
           <div className="px-4 py-2">
             <h3 className="text-sm font-medium">Kurs davomiyligi:</h3>
-            <p className="text-2xl font-bold">{courseInfo.duration}</p>
+            <p className="text-2xl font-bold">{course.course_duration}</p>
           </div>
 
           <div className="px-4 py-2">
             <h3 className="text-sm font-medium">Dars davomiyligi:</h3>
-            <p className="text-2xl font-bold">{courseInfo.lessonDuration}</p>
+            <p className="text-2xl font-bold">{course.lesson_duration}</p>
           </div>
         </div>
       </div>

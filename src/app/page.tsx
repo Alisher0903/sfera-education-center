@@ -1,3 +1,4 @@
+
 import Hero from "@/pages/home/hero";
 import Feature from "@/pages/home/feature";
 import Team from "@/pages/home/Team";
@@ -13,7 +14,7 @@ const Home = () => {
             <Courses/>
             <Feature/>
             <Team/>
-            <Students/>
+            {/* <Students/> */}
             <About/>
             <Info/>
         </>

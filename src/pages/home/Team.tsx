@@ -54,7 +54,7 @@ const Teams = [
         },
     },
     {
-        name: "Bob Johnson",
+        name: "Johnson",
         position: "Fullstack Developer",
         imageSrc: "/home/team.png",
         socialLinks: {
@@ -65,7 +65,7 @@ const Teams = [
         },
     },
     {
-        name: "Bob Johnson",
+        name: "Bob",
         position: "Fullstack Developer",
         imageSrc: "/home/team.png",
         socialLinks: {

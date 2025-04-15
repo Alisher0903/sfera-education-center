@@ -4,12 +4,15 @@ import Image from "next/image"
 import Link from "next/link"
 import { CourseCardProps } from "@/types/cards"
 import colors from "@/lib/colors" 
+import { URL } from "@/helpers/api"
 export default function CourseCard({
-  title,
-  description,
-  imageUrl,
-  detailsUrl,
-  text,
+  id,
+  name,
+  photo,
+  subtitle,
+  about
+  
+,
 }: CourseCardProps) {
   const [isHovered, setIsHovered] = useState(false)
 
@@ -22,8 +25,8 @@ export default function CourseCard({
     >
       <div className="absolute inset-0 transition-all duration-300">
         <Image
-          src={imageUrl}
-          alt={title}
+          src={`${URL}${photo}`}
+          alt={name}
           fill
           className={`object-cover transition-all duration-300 ${isHovered ? "brightness-50" : ""}`}
           priority
@@ -36,13 +39,20 @@ export default function CourseCard({
               className="text-2xl font-bold mb-2"
               style={{ color: colors.green }}
             >
-              {title}
+              {name}
             </h3>
             <p className="text-sm pb-10" style={{ color: colors.white }}>
-              {text}
+              {subtitle}
             </p>
             <Link
-              href={detailsUrl}
+              href={{
+                pathname: "/course",
+                query: {
+                  id,
+                  name: name, 
+                },
+               
+              }}
               className="inline-block px-6 py-1 bg-transparent border rounded-xl"
               style={{ color: colors.white, borderColor: colors.white }}
             >
@@ -51,7 +61,7 @@ export default function CourseCard({
           </div>
           <div className="p-6 text-center" style={{ backgroundColor: colors.green }}>
             <p className="text-base" style={{ color: colors.white }}>
-              {description}
+              {about}
             </p>
           </div>
         </div>
@@ -63,7 +73,7 @@ export default function CourseCard({
               className="text-base font-raleway"
               style={{ color: colors.grayText }}
             >
-              {description}
+              {about}
             </p>
           </div>
         </div>

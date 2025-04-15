@@ -3,9 +3,7 @@ import HoveredButton from "@/components/buttons/hovered-button";
 import { cn } from "@/lib/utils";
 import colors from "@/lib/colors"
 
-
-const Hero = () => {
-    
+const Hero = ({ course }: { course: any }) => {
     return (
         <div>
             <section className={'relative'}>
@@ -19,13 +17,13 @@ const Hero = () => {
                 />
                 <div className={'absolute top-1/2 -translate-y-1/2 flex w-full'}>
                     <div className={'mx-auto space-x-4 text-center'}>
-                        <h1 className={cn("uppercase  text-6xl font-bold tracking-wide mb-5")} style={{color:colors.white}}>kelajak kasblar markazi</h1>
-                        <p className={cn("uppercase text-2xl font-semibold mb-5")} style={{color:colors.white}}>sfera academy bilan osonroq organing</p>
+                        <h1 className={cn("uppercase  text-6xl font-bold tracking-wide mb-5")} style={{ color: colors.white }}>{course.name}</h1>
+                        <p className={cn("uppercase text-2xl font-semibold mb-5")} style={{ color: colors.white }}>{course.subtitle}</p>
                         <HoveredButton
                             className={'py-4   hover:border-white hover:bg-transparent'}
                             name={'BEPUL BIRINCHI DARS'}
-                            style={{backgroundColor:colors.green, color:colors.white , borderColor:colors.green}}
-                           
+                            style={{ backgroundColor: colors.green, color: colors.white, borderColor: colors.green }}
+
                         />
                         <HoveredButton
                             className={'py-4 bg-slate-950 text-white border-white hover:bg-white hover:text-black'}
@@ -35,7 +33,7 @@ const Hero = () => {
                     </div>
                 </div>
             </section>
-           
+
         </div>
     );
 };

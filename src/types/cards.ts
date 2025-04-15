@@ -1,10 +1,11 @@
 export interface CourseCardProps {
     id: number
-    title: string
+    name: string
     description: string
-    imageUrl: string
+    photo: string
     detailsUrl: string
-    text: string
+    subtitle: string
+    about:string
   }
 
  export interface FeatureCardProps {
@@ -46,8 +47,8 @@ export interface CourseCardProps {
   export  interface TeamMember {
     id: number
     name: string
-    title: string
-    image: string
+    level: string
+    photo: string
 }
 export interface VisitData {
   id: number;

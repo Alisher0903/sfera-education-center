@@ -1,72 +1,28 @@
+
 "use client"
-import { Swiper, SwiperSlide } from "swiper/react"
-import { Navigation, Pagination } from "swiper/modules"
-import "swiper/css"
-import "swiper/css/navigation"
-import "swiper/css/pagination"
+import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-import CourseCard from "@/components/cards/courseCard"
-import SectionTitle from "@/components/SectionTitle/SectionTitle"
-import { CourseCardProps } from "@/types/cards"
+import CourseCard from "@/components/cards/courseCard";
+import SectionTitle from "@/components/SectionTitle/SectionTitle";
+import { CourseCardProps } from "@/types/cards";
+import { ReadCourses } from "@/helpers/api";
+import { fetcher } from "@/utils/fetcher";
 
-const courses: CourseCardProps[] = [
-    {
-        id: 1,
-        title: "Front-End",
-        description:
-            "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, dizayn va o'zaro ta'sir qilish uchun HTML, CSS va JavaScript-dan foydalanish bilan bog'liq.",
-        imageUrl: "/home/1.png",
-        detailsUrl: "/home/course.png",
-        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, ",
-    },
-    {
-        id: 2,
-        title: "Front-End",
-        description:
-            "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, dizayn va o'zaro ta'sir qilish uchun HTML, CSS va JavaScript-dan foydalanish bilan bog'liq.",
-        imageUrl: "/home/1.png",
-        detailsUrl: "/home/course.png",
-        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, ",
-    },
-    {
-        id: 3,
-        title: "Front-End",
-        description:
-            "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, dizayn va o'zaro ta'sir qilish uchun HTML, CSS va JavaScript-dan foydalanish bilan bog'liq.",
-        imageUrl: "/home/1.png",
-        detailsUrl: "/courses/front-end",
-        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, ",
-    },
-    {
-        id: 4,
-        title: "Front-End",
-        description:
-            "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, dizayn va o'zaro ta'sir qilish uchun HTML, CSS va JavaScript-dan foydalanish bilan bog'liq.",
-        imageUrl: "/home/1.png",
-        detailsUrl: "/home/course.png",
-        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, ",
-    },
-    {
-        id: 5,
-        title: "Front-End",
-        description:
-            "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, dizayn va o'zaro ta'sir qilish uchun HTML, CSS va JavaScript-dan foydalanish bilan bog'liq.",
-        imageUrl: "/home/1.png",
-        detailsUrl: "/home/course.png",
-        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, ",
-    },
-    {
-        id: 6,
-        title: "Front-End",
-        description:
-            "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, dizayn va o'zaro ta'sir qilish uchun HTML, CSS va JavaScript-dan foydalanish bilan bog'liq.",
-        imageUrl: "/home/1.png",
-        detailsUrl: "/home/course.png",
-        text: "Veb-saytlar va ilovalarning foydalanuvchiga qaragan qismi, ",
-    },
-]
+export default async  function Courses() {
+  // const data = await fetcher<any[]>(`${ReadCourses}?skip=0&limit=100`);
+  // console.log(data, "jhedf");
+  // const data = await fetch(`${ReadCourses}?skip=0&limit=100`)
+  // const posts = await data.json()
+   
 
-const Courses = () => {
+ 
+
+    
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto py-10">
@@ -86,11 +42,11 @@ const Courses = () => {
                         1280: { slidesPerView: 4 },
                     }}
                 >
-                    {courses.map((course) => (
-                        <SwiperSlide key={course.id} className="">
+                    {/* {data.map((course:CourseCardProps) => (
+                        <SwiperSlide key={course.id} >
                             <CourseCard {...course} />
                         </SwiperSlide>
-                    ))}
+                    ))} */}
                 </Swiper>
 
                 <style jsx global>{`
@@ -102,7 +58,7 @@ const Courses = () => {
     border-radius: 9999px; /* rounded-full */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     width: 40px;
-    height: 40px;
+    height: F40px;
   }
 
   .swiper-button-next::after,
@@ -114,5 +70,3 @@ const Courses = () => {
         </section>
     )
 }
-
-export default Courses
