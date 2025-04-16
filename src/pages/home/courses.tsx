@@ -8,9 +8,7 @@ import "swiper/css/pagination";
 
 import CourseCard from "@/components/cards/courseCard";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
-import { CoursesProps, IProps } from "@/types/cards";
-
-
+import {CoursesProps, IProps} from "@/types/cards";
 
 export default function Courses({courseData}: CoursesProps) {
     return (
@@ -48,7 +46,7 @@ export default function Courses({courseData}: CoursesProps) {
                         border-radius: 9999px;
                         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                         width: 40px;
-                        height: F40px;
+                        height: 40px;
                     }
 
                     .swiper-button-next::after,
