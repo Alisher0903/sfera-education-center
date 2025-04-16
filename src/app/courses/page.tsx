@@ -1,6 +1,8 @@
 import BackendCard from "@/components/cards/courses";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import { NewCourses } from "@/helpers/api";
+import type {Metadata} from "next";
+import {defaultMetadata} from "@/lib/seo";
 
 async function getNewStudents() {
     const res = await fetch(`${NewCourses}`, {
@@ -10,10 +12,13 @@ async function getNewStudents() {
     return res.json();
 }
 
+export const metadata: Metadata = {
+    ...defaultMetadata,
+    title: "Sfera Academy | Kurslar",
+};
+
 const Courses = async () => {
     const newStudentData = await getNewStudents();
-    console.log(newStudentData);
-
 
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8">
@@ -22,6 +27,7 @@ const Courses = async () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {newStudentData.map((course: any) => (
                         <BackendCard
+                            key={course.id}
                             courseTitle={course.course.name}
                             start_date={course.start_date}
                             duration={course.course.duration}

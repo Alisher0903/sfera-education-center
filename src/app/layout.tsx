@@ -17,10 +17,10 @@ import ReactQueryLayout from "@/layout/query-layout";
 // scroll to top btn
 import ScrollToTop from "@/components/scroll/scroll-to-top";
 import Footer from "@/components/footer/footer";
+import {defaultMetadata} from "@/lib/seo";
 
 export const metadata: Metadata = {
-    title: "Sfera Academy",
-    description: "Sfera academy app",
+    ...defaultMetadata,
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
