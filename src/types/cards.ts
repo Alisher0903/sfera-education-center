@@ -141,3 +141,9 @@ export type Course = {
 export type CourseId ={
   course :CourseId[]
 }
+export interface CoursePageProps {
+  params: {
+      id: string;
+      name: string;
+  };
+}

@@ -5,6 +5,7 @@ import colors from "@/lib/colors"
 import { Course } from '@/types/cards';
 
 const Hero = ({ course }: { course: Course }) => {
+    
     return (
         <div>
             <section className={'relative'}>

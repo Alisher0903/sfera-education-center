@@ -50,12 +50,14 @@ export default function CourseCard({
             </p>
             <Link
               href={{
-                pathname: "/course",
+                pathname: `course/${id}`,
                 query: {
                   id,
                   name: name,
                 },
               }}
+
+              // href={`course/${id}`}
               className="inline-block px-6 py-1 bg-transparent border rounded-xl"
               style={{ color: colors.white, borderColor: colors.white }}
             >

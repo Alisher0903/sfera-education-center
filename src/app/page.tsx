@@ -1,3 +1,4 @@
+
 import Hero from "@/pages/home/hero";
 import Feature from "@/pages/home/feature";
 import Team from "@/pages/home/Team";
@@ -6,6 +7,7 @@ import About from "@/pages/home/about";
 import Info from "@/pages/home/Info";
 import { bestStudents, ReadCourses, Teachers } from "@/helpers/api";
 import Courses from "@/pages/home/courses";
+// import { useRouter } from 'next/router';
 
 async function getPosts() {
     const res = await fetch(ReadCourses, {
@@ -31,6 +33,10 @@ async function getStudents() {
 
 }
 const Home = async () => {
+    // const router = useRouter();
+    // const { id } = router.query;
+    // console.log(id);
+    
     const courseData = await getPosts();
     const teacherData = await getTeachers()
     const studentsData =await getStudents()
