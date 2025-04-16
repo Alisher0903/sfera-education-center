@@ -8,24 +8,9 @@ import "swiper/css/pagination";
 
 import CourseCard from "@/components/cards/courseCard";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
+import { CoursesProps, IProps } from "@/types/cards";
 
-interface IProps {
-    about: string
-    course_duration: number
-    description: string
-    format: string
-    id: number
-    lesson_count: number
-    lesson_duration: number
-    name: string
-    photo: string
-    subtitle: string
-    teachers: any[]
-}
 
-type CoursesProps = {
-    courseData: IProps[];
-};
 
 export default function Courses({courseData}: CoursesProps) {
     return (

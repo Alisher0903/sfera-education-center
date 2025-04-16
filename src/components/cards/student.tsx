@@ -1,16 +1,16 @@
 import Image from "next/image"
 import Link from "next/link"
-import { StudentTestimonialCardProps } from "@/types/cards"
+import { BestStudent } from "@/types/cards"
 import colors from "@/lib/colors"
+import { URL } from "@/helpers/api"
 
 export default function StudentTestimonialCard({
-  name,
-  course,
-  testimonial,
-  imageSrc,
+  course_name,
+  description,
+  photo,
   readMoreUrl = "/",
   readMoreText = "Ko'proq",
-}: StudentTestimonialCardProps) {
+}: BestStudent) {
   return (
     <div
       className="rounded-2xl border-2 overflow-hidden flex flex-col md:flex-row max-w-3xl"
@@ -19,8 +19,8 @@ export default function StudentTestimonialCard({
       <div className="md:w-2/5 relative">
         <div className="aspect-square md:h-full relative">
           <Image
-            src={imageSrc}
-            alt={name}
+            src={`${URL}${photo}`}
+            alt={course_name}
             fill
             className="object-cover rounded-2xl"
             sizes="(max-width: 768px) 100vw, 384px"
@@ -31,14 +31,14 @@ export default function StudentTestimonialCard({
 
       <div className="p-6 md:w-3/5 flex flex-col justify-center">
         <h3 className="text-2xl font-bold mb-1" style={{ color:colors.green }}>
-          {name}
+          {course_name}
         </h3>
         <p className="mb-4">
-          Kurs: <span className="font-medium" style={{ color: colors.green }}>{course}</span>
+          Kurs: <span className="font-medium" style={{ color: colors.green }}>{course_name}</span>
         </p>
 
         <p className="mb-1">
-          {testimonial}
+          {description}
           {readMoreUrl && (
             <Link
               href={readMoreUrl}

@@ -1,7 +1,9 @@
+"use client"
 import Image from "next/image"
 import React from "react"
 import { cn } from "@/lib/utils"
 import colors from "@/lib/colors"
+import { URL } from "@/helpers/api"
 import { BackendCardProps } from "@/types/cards"
 
 const Avatar = React.forwardRef<
@@ -38,11 +40,11 @@ AvatarFallback.displayName = "AvatarFallback"
 
 export default function BackendCard({
   courseTitle,
-  startDate,
+  start_date,
   duration,
   price,
   instructorName,
-  instructorImage,
+  photo,
   image
 }: BackendCardProps) {
   return (
@@ -57,10 +59,10 @@ export default function BackendCard({
           </h2>
           <div className="relative w-full h-32 md:h-40">
             <Image
-              src={image}
-              alt="Backend development illustration"
+              src={`${URL}${image}`}
+              alt={courseTitle}
               fill
-              className="object-contain"
+              className="object-contain rounded-md"
             />
           </div>
         </div>
@@ -70,7 +72,7 @@ export default function BackendCard({
             <div className="flex justify-between">
               <span style={{ color: colors.grayText }}>Yangi guruh:</span>
               <span className="font-medium" style={{ color: colors.green }}>
-                {startDate}
+                {start_date}
               </span>
             </div>
 
@@ -84,20 +86,15 @@ export default function BackendCard({
             <div className="flex justify-between">
               <span style={{ color: colors.grayText }}>Narxi:</span>
               <span className="font-medium" style={{ color: colors.green }}>
-                {price}
+                {price} ming so'm
               </span>
             </div>
           </div>
 
           <div className="flex items-center gap-2 mt-4">
             <Avatar>
-              <AvatarImage src={instructorImage} alt={instructorName} />
-              <AvatarFallback>
-                {instructorName
-                  .split(" ")
-                  .map((n) => n[0])
-                  .join("")}
-              </AvatarFallback>
+              <AvatarImage src={`${URL}${photo}`} alt={instructorName} />
+              <AvatarFallback>{instructorName[0]}</AvatarFallback>
             </Avatar>
             <span className="font-medium" style={{ color: colors.black }}>
               {instructorName}

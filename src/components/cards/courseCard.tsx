@@ -2,7 +2,7 @@
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { CourseCardProps } from "@/types/cards"
+import {  IProps } from "@/types/cards"
 import colors from "@/lib/colors" 
 import { URL } from "@/helpers/api"
 export default function CourseCard({
@@ -10,10 +10,8 @@ export default function CourseCard({
   name,
   photo,
   subtitle,
-  about
-  
-,
-}: CourseCardProps) {
+  about,
+}: IProps) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (

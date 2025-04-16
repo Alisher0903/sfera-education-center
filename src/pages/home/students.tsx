@@ -8,35 +8,12 @@ import "swiper/css/pagination"
 
 import StudentTestimonialCard from "@/components/cards/student"
 import SectionTitle from "@/components/SectionTitle/SectionTitle"
+import { BestStudent } from "@/types/cards"
+type Student ={
+    studentsData:BestStudent[]
+}
 
-const students = [
-    {
-        name: "Javohir",
-        course: "Frontend Development",
-        testimonial: "Ijodkorlik va tafakkur uyg‘unlashgan, web dizayn olamiga katta ishtiyoq bilan kirib kelgan yosh iste’dod egasi. U bir necha oy davomida professional UI/UX dizayn...",
-        imageSrc: "/home/team.png"
-    },
-    {
-        name: "Javohir",
-        course: "Frontend Development",
-        testimonial: "Ijodkorlik va tafakkur uyg‘unlashgan, web dizayn olamiga katta ishtiyoq bilan kirib kelgan yosh iste’dod egasi. U bir necha oy davomida professional UI/UX dizayn...",
-        imageSrc: "/home/team.png"
-    },
-    {
-        name: "Javohir",
-        course: "Frontend Development",
-        testimonial: "Ijodkorlik va tafakkur uyg‘unlashgan, web dizayn olamiga katta ishtiyoq bilan kirib kelgan yosh iste’dod egasi. U bir necha oy davomida professional UI/UX dizayn...",
-        imageSrc: "/home/team.png"
-    },
-    {
-        name: "Javohir",
-        course: "Frontend Development",
-        testimonial: "Ijodkorlik va tafakkur uyg‘unlashgan, web dizayn olamiga katta ishtiyoq bilan kirib kelgan yosh iste’dod egasi. U bir necha oy davomida professional UI/UX dizayn...",
-        imageSrc: "/home/team.png"
-    }
-]
-
-const Students = () => {
+const Students = ({ studentsData }: Student) => {
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto py-10">
@@ -55,13 +32,13 @@ const Students = () => {
                         1280: { slidesPerView: 2 },
                     }}
                 >
-                    {students.map((student) => (
-                        <SwiperSlide key={student.name}>
+                    {studentsData.map((student: BestStudent) => (
+                        <SwiperSlide key={student.id}>
                             <StudentTestimonialCard
-                                name={student.name}
-                                course={student.course}
-                                testimonial={student.testimonial}
-                                imageSrc={student.imageSrc}
+                                full_name={student.full_name}
+                                course_name={student.course_name}
+                                description={student.description}
+                                photo={student.photo}
                             />
                         </SwiperSlide>
                     ))}

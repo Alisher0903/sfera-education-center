@@ -4,80 +4,13 @@ import { Navigation, Pagination } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
-
 import TeamMemberCard from "@/components/cards/TeamMember"
 import SectionTitle from "@/components/SectionTitle/SectionTitle"
+import {  teacher, TeamMemberCardProps } from "@/types/cards"
 
-const Teams = [
-    {
-        name: "John Doe",
-        position: "Frontend Developer",
-        imageSrc: "/home/team.png",
-        socialLinks: {
-            instagram: "https://www.instagram.com/johndoe",
-            facebook: "https://www.facebook.com/johndoe",
-            twitter: "https://twitter.com/johndoe",
-            telegram: "https://t.me/johndoe",
-        },
-    },
-    {
-        name: "Jane Doe",
-        position: "Backend Developer",
-        imageSrc: "/home/team.png",
-        socialLinks: {
-            instagram: "https://www.instagram.com/janedoe",
-            facebook: "https://www.facebook.com/janedoe",
-            twitter: "https://twitter.com/janedoe",
-            telegram: "https://t.me/janedoe",
-        },
-    },
-    {
-        name: "Alice Smith",
-        position: "UI/UX Designer",
-        imageSrc: "/home/team.png",
-        socialLinks: {
-            instagram: "https://www.instagram.com/alicesmith",
-            facebook: "https://www.facebook.com/alicesmith",
-            twitter: "https://twitter.com/alicesmith",
-            telegram: "https://t.me/alicesmith",
-        },
-    },
-    {
-        name: "Bob Johnson",
-        position: "Fullstack Developer",
-        imageSrc: "/home/team.png",
-        socialLinks: {
-            instagram: "https://www.instagram.com/bobjohnson",
-            facebook: "https://www.facebook.com/bobjohnson",
-            twitter: "https://twitter.com/bobjohnson",
-            telegram: "https://t.me/bobjohnson",
-        },
-    },
-    {
-        name: "Johnson",
-        position: "Fullstack Developer",
-        imageSrc: "/home/team.png",
-        socialLinks: {
-            instagram: "https://www.instagram.com/bobjohnson",
-            facebook: "https://www.facebook.com/bobjohnson",
-            twitter: "https://twitter.com/bobjohnson",
-            telegram: "https://t.me/bobjohnson",
-        },
-    },
-    {
-        name: "Bob",
-        position: "Fullstack Developer",
-        imageSrc: "/home/team.png",
-        socialLinks: {
-            instagram: "https://www.instagram.com/bobjohnson",
-            facebook: "https://www.facebook.com/bobjohnson",
-            twitter: "https://twitter.com/bobjohnson",
-            telegram: "https://t.me/bobjohnson",
-        },
-    }
-]
 
-const Team = () => {
+const Team = ({ teacherData }: teacher) => {
+
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto py-10">
@@ -96,13 +29,13 @@ const Team = () => {
                         1280: { slidesPerView: 4 },
                     }}
                 >
-                    {Teams.map((member) => (
-                        <SwiperSlide key={member.name}>
+                    {teacherData.map((member: TeamMemberCardProps) => (
+                        <SwiperSlide key={member.id}>
                             <TeamMemberCard
                                 name={member.name}
-                                position={member.position}
-                                imageSrc={member.imageSrc}
-                                socialLinks={member.socialLinks}
+                                level={member.level}
+                                photo={member.photo}
+                                // socialLinks={member.socialLinks}
                             />
                         </SwiperSlide>
                     ))}

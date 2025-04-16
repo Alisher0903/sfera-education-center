@@ -1,44 +1,18 @@
 import VisitsCard from "@/components/cards/VisitsCard"
 import SectionTitle from "@/components/SectionTitle/SectionTitle"
+import { Visit } from "@/helpers/api";
 
-const visit = [
-    {
-        id: 1,
-        title: 'Abduhamid Usarov',
-        date: '2025-04-01',
-        description: 'Abduhamid Usarov, 15 yillik IT sohasidagi ish faoliyati, RealSoft kompaniyasida sifat nazorat direktori bizning 2 yillik tadbirimizda ishtirok etaganlar.',
-        image: '/home/team.png',
-    },
-    {
-        id: 2,
-        title: 'Abduhamid Usarov',
-        date: '2025-04-01',
-        description: 'Abduhamid Usarov, 15 yillik IT sohasidagi ish faoliyati, RealSoft kompaniyasida sifat nazorat direktori bizning 2 yillik tadbirimizda ishtirok etaganlar.',
-        image: '/home/team.png',
-    },
-    {
-        id: 3,
-        title: 'Abduhamid Usarov',
-        date: '2025-04-01',
-        description: 'Abduhamid Usarov, 15 yillik IT sohasidagi ish faoliyati, RealSoft kompaniyasida sifat nazorat direktori bizning 2 yillik tadbirimizda ishtirok etaganlar.',
-        image: '/home/team.png',
-    },
-    {
-        id: 4,
-        title: 'Abduhamid Usarov',
-        date: '2025-04-01',
-        description: 'Abduhamid Usarov, 15 yillik IT sohasidagi ish faoliyati, RealSoft kompaniyasida sifat nazorat direktori bizning 2 yillik tadbirimizda ishtirok etaganlar.',
-        image: '/home/team.png',
-    },
-    {
-        id: 5,
-        title: 'Abduhamid Usarov',
-        date: '2025-04-01',
-        description: 'Abduhamid Usarov, 15 yillik IT sohasidagi ish faoliyati, RealSoft kompaniyasida sifat nazorat direktori bizning 2 yillik tadbirimizda ishtirok etaganlar.',
-        image: '/home/team.png',
-    },
-]
-const Visits = () => {
+async function getVisitsData() {
+    const res = await fetch(`${Visit}`, {
+        cache: 'no-store',
+    });
+
+    return res.json();
+}
+
+const Visits = async () => {
+    const VisitsData = await getVisitsData();
+    
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto py-10">
@@ -46,7 +20,7 @@ const Visits = () => {
                 <SectionTitle title="TASHRIFLAR" />
             </div>
             <div>
-            {visit.map((visit, index) => (
+            {VisitsData.map((visit:any, index:number) => (
                 <VisitsCard key={visit.id} visitData={visit} isLeft={index % 2 === 0} />
             ))}
         </div>
