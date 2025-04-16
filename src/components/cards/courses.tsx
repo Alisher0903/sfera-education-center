@@ -52,17 +52,18 @@ export default function BackendCard({
       className="rounded-lg p-6 w-full"
       style={{ backgroundColor: colors.white, border: `1px solid ${colors.green}` }}
     >
-      <div className="flex flex-col md:flex-row gap-6">
+      <div className="flex flex-col md:flex-row w-full gap-10">
         <div className="flex-1">
-          <h2 className="text-xl font-medium mb-4" style={{ color: colors.green }}>
+          <h2 className="text-xl font-medium mb-5" style={{ color: colors.green }}>
             {courseTitle}
           </h2>
-          <div className="relative w-full h-32 md:h-40">
+          <div className="relative w-full max-w-[300px] h-auto aspect-[4/3] overflow-hidden rounded-md">
             <Image
               src={`${URL}${image}`}
               alt={courseTitle}
               fill
-              className="object-contain rounded-md"
+              className="object-contain"
+              sizes="(max-width: 768px) 100vw, 300px"
             />
           </div>
         </div>

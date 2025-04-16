@@ -75,18 +75,18 @@ export interface VisitsCardProps {
 }
 
 export interface BackendCardProps {
-  courseTitle: string
-  start_date: string
-  duration: string
-  price: number
-  instructorName: string
-  instructorImage: string
-  photo: string
-  image: string
+  courseTitle: string;
+  start_date: string;
+  duration: number;
+  price: number;
+  instructorName: string;
+  instructorImage: string;
+  photo: string;
+  image: string;
 }
 
-export interface Coursepage{
-  course:BackendCardProps[]
+export interface Coursepage {
+  course: BackendCardProps[]
 }
 
 export interface BestStudent {
@@ -95,8 +95,8 @@ export interface BestStudent {
   full_name: string
   id?: number
   photo: string,
-  readMoreUrl? : string
-  readMoreText? :string,
+  readMoreUrl?: string
+  readMoreText?: string,
 }
 
 export interface IProps {
@@ -138,12 +138,18 @@ export type Course = {
   teachers?: Teacher[];
 };
 
-export type CourseId ={
-  course :CourseId[]
+export type CourseId = {
+  course: CourseId[]
 }
 export interface CoursePageProps {
   params: {
-      id: string;
-      name: string;
+    id: string;
+    name: string;
   };
+}
+
+export type photo = {
+  id: number,
+  photo: string,
+  title: string
 }

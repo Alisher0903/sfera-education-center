@@ -12,7 +12,7 @@ async function getVisitsData() {
 
 const Visits = async () => {
     const VisitsData = await getVisitsData();
-    
+    console.log(VisitsData);
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto py-10">

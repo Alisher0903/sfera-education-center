@@ -12,9 +12,6 @@ async function getNewStudents() {
 
 const Courses = async () => {
     const newStudentData = await getNewStudents();
-    console.log(newStudentData);
-
-
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto py-20">
@@ -24,7 +21,7 @@ const Courses = async () => {
                         <BackendCard
                             courseTitle={course.course.name}
                             start_date={course.start_date}
-                            duration={course.course.duration}
+                            duration={course.course.course_duration}
                             price={course.price}
                             instructorName={course.teacher.name}
                             instructorImage={course.teacher.photo}
