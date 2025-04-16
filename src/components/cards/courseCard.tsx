@@ -1,10 +1,10 @@
-"use client"
 import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import {  IProps } from "@/types/cards"
-import colors from "@/lib/colors" 
+import { IProps } from "@/types/cards"
+import colors from "@/lib/colors"
 import { URL } from "@/helpers/api"
+
 export default function CourseCard({
   id,
   name,
@@ -13,6 +13,12 @@ export default function CourseCard({
   about,
 }: IProps) {
   const [isHovered, setIsHovered] = useState(false)
+
+  const truncateText = (text: string, wordLimit: number) => {
+    const words = text.split(" ")
+    if (words.length <= wordLimit) return text
+    return words.slice(0, wordLimit).join(" ") + "..." 
+  }
 
   return (
     <div
@@ -47,9 +53,8 @@ export default function CourseCard({
                 pathname: "/course",
                 query: {
                   id,
-                  name: name, 
+                  name: name,
                 },
-               
               }}
               className="inline-block px-6 py-1 bg-transparent border rounded-xl"
               style={{ color: colors.white, borderColor: colors.white }}
@@ -57,21 +62,21 @@ export default function CourseCard({
               Batafsil
             </Link>
           </div>
-          <div className="p-6 text-center" style={{ backgroundColor: colors.green }}>
+          <div className="p-6 text-center h-40" style={{ backgroundColor: colors.green }}>
             <p className="text-base" style={{ color: colors.white }}>
-              {about}
+              {truncateText(about, 20)}
             </p>
           </div>
         </div>
       ) : (
         <div className="relative h-full flex flex-col z-10">
           <div className="flex-1"></div>
-          <div className="p-6 text-center" style={{ backgroundColor: colors.white }}>
+          <div className="p-6 text-center h-40" style={{ backgroundColor: colors.white }}>
             <p
               className="text-base font-raleway"
               style={{ color: colors.grayText }}
             >
-              {about}
+              {truncateText(about, 20)}
             </p>
           </div>
         </div>

@@ -34,9 +34,6 @@ const Home = async () => {
     const courseData = await getPosts();
     const teacherData = await getTeachers()
     const studentsData =await getStudents()
-    console.log(studentsData);
-    
-
     return (
         <>
             <Hero />
