@@ -17,5 +17,6 @@ const  Photos = async()=> {
             <PhotoSplide photosData={photosData} />
         </main>
     )
+    
 }
 export default Photos;

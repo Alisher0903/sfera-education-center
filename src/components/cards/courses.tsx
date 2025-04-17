@@ -62,7 +62,7 @@ export default function BackendCard({
               src={`${URL}${image}`}
               alt={courseTitle}
               fill
-              className="object-contain"
+              className="object-contain rounded-2xl"
               sizes="(max-width: 768px) 100vw, 300px"
             />
           </div>

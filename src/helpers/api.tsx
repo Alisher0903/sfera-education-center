@@ -1,4 +1,4 @@
- export const URL = 'http://142.93.106.195'
+export const URL = 'http://142.93.106.195'
 
 
 //Courses
@@ -18,3 +18,9 @@ export const Visit =`${URL}/api/v1/visits`
 
 //Photos
 export const Photo = `${URL}/api/v1/photos`
+
+//Achievements
+export const achievement =`${URL}/api/v1/achievements`
+
+//Registrations
+export const registration =`${URL}/api/v1/registrations`

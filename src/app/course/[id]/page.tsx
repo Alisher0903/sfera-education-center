@@ -6,24 +6,41 @@ import ForWhomSection from "@/pages/about/forWhom";
 import Register from "@/pages/about/info";
 import FAQSection from "@/pages/about/accordion";
 import Teachers from "@/pages/about/teachers";
-import { CoursePageProps } from "@/types/cards";
 
+async function getcourses() {
+    const res = await fetch(`${ReadCourses}`, {
+        cache: 'no-store',
+    });
 
-export default async function CoursePage({ params }: CoursePageProps) {
+    return res.json();
+
+} 
+
+const coursesData = await getcourses();
+console.log(coursesData);
+export default async function CoursePage({ params }: any) {
     const { id } = params;
     const res = await fetch(`${ReadCourses}/${id}`, {
         cache: 'no-store',
     });
     const courseData = await res.json();
 
+    async function getcourses() {
+        const res = await fetch(`${ReadCourses}`, {
+            cache: 'no-store',
+        });
+
+        return res.json();
+    }
     return (
+
         <div className="">
             <Hero course={courseData} />
             <CourseInfoSection course={courseData} />
             <Info />
-            {/* <Teachers course={courseData}/> */}
+            <Teachers course={courseData} />
             <FAQSection />
-            <Register />
+            <Register coursesData={coursesData}/>
             <ForWhomSection />
         </div>
     );

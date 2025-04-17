@@ -1,33 +1,20 @@
 
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
+import { URL } from "@/helpers/api";
 import colors from "@/lib/colors"
 import Image from "next/image";
 
-const achievements = [
-    {
-        id: 1,
-        title: 'Start Up Weekend',
-        description:
-            'Start Up Weekendda "SFERA ACADEMY" jamoasi azolari "Medical card" va "Rentify" start up g\'oyalari orqali ikkinchi va uchinchi o\'rinlarni qo\'lga kiritishdi!',
-        image: '/home/values.png'
-    },
-    {
-        id: 2,
-        title: 'Start Up Weekend',
-        description:
-            'Start Up Weekendda "SFERA ACADEMY" jamoasi azolari "Medical card" va "Rentify" start up g\'oyalari orqali ikkinchi va uchinchi o\'rinlarni qo\'lga kiritishdi!',
-        image: '/home/values.png'
-    },
-];
 
-export default function Values() {
+export default function Values({achievementData}:any) {
+    console.log(achievementData, "log");
+    
     return (
         <section className="w-full px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto py-20">
                 <div className="my-10">
                     <SectionTitle title="YUTUQLARIMIZ" />
                 </div>
-                {achievements.map((achievement) => (
+                {achievementData.map((achievement:any) => (
                     <div
                         key={achievement.id}
                         className=" "
@@ -48,7 +35,7 @@ export default function Values() {
                                 <div className="lg:w-1/2 mt-8 lg:mt-0">
                                     <div className="overflow-hidden ">
                                         <Image
-                                            src={achievement.image}
+                                            src={`${URL}/${achievement.image}`}
                                             alt={achievement.title}
                                             width={500}
                                             height={600}
