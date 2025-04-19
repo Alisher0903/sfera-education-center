@@ -1,9 +1,8 @@
-'use client';
-
 import { VisitsCardProps } from '@/types/cards';
 import Image from 'next/image';
 import colors from "@/lib/colors"
 import { URL } from '@/helpers/api';
+import React from "react";
 
 const VisitsCard: React.FC<VisitsCardProps> = ({ visitData, isLeft = true }) => {
   if (!visitData) return null;
