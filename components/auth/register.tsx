@@ -1,7 +1,4 @@
-"use client"
-
-import { FileText, X } from "lucide-react"
-// import { useState } from "react"
+import {FileText, X} from "lucide-react"
 import colors from "@/lib/colors"
 
 interface RegistrationModalProps {
@@ -9,24 +6,20 @@ interface RegistrationModalProps {
     onClose: () => void
 }
 
-export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
-    // const [isCountryOpen, setIsCountryOpen] = useState(false)
-    // const [isCourseOpen, setIsCourseOpen] = useState(false)
-
+export function RegistrationModal({isOpen, onClose}: RegistrationModalProps) {
     if (!isOpen) return null
-
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
             <div
                 className="rounded-2xl p-8 w-full max-w-xl relative"
-                style={{ backgroundColor: colors.green, color: colors.white }}
+                style={{backgroundColor: colors.green, color: colors.white}}
             >
                 <button onClick={onClose} className="absolute top-4 right-4">
-                    <X className="h-6 w-6" style={{ color: colors.white }} />
+                    <X className="h-6 w-6" style={{color: colors.white}}/>
                 </button>
 
                 <div className="flex items-center gap-3 mb-8">
-                    <FileText className="h-6 w-6" style={{ color: colors.white }} />
+                    <FileText className="h-6 w-6" style={{color: colors.white}}/>
                     <h2 className="text-2xl font-medium">Ro&apos;yxatdan o&apos;tish</h2>
                 </div>
 
@@ -82,11 +75,11 @@ export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
                     </div>
                     <button
                         className="w-full border-2  px-3 py-3 rounded-lg focus:outline-none"
-                        style={{ borderColor: colors.white }}
+                        style={{borderColor: colors.white}}
                     >
                         Yuborish
                     </button>
-                   
+
 
                 </form>
             </div>

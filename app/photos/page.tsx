@@ -1,5 +1,5 @@
 import { Photo } from "@/helpers/api";
-import PhotoSplide from "@/pages/photo/photo";
+import PhotoSplide from "@/pages-comp/photo/photo";
 
 
 async function getPhotos() {

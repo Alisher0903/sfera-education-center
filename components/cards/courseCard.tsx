@@ -45,7 +45,7 @@ export default function CourseCard({id, name, photo, subtitle, about}: IProps) {
                         {subtitle}
                     </p>
                     <Link
-                        href={{pathname: `course/${id}`, query: {id, name}}}
+                        href={{pathname: `courses/${id}`}}
                         aria-label={`Learn more about ${name} course`}
                         className={cn(
                             "inline-block px-4 py-1 sm:px-6 sm:py-2 bg-transparent border rounded-xl hover:bg-green-600 hover:border-green-600 transition-all duration-200 transform group-hover:scale-110",

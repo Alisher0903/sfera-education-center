@@ -1,5 +1,5 @@
 import { achievement } from "@/helpers/api";
-import Values from "@/pages/values/values"
+import Values from "@/pages-comp/values/values"
 
 
 async function getAchievement() {

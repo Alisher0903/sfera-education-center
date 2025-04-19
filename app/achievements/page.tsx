@@ -1,6 +1,6 @@
-import Hero from "@/pages/achievements/hero"
-import Info from "@/pages/achievements/info"
-import OurMotto from "@/pages/achievements/ourMotto"
+import Hero from "@/pages-comp/achievements/hero"
+import Info from "@/pages-comp/achievements/info"
+import OurMotto from "@/pages-comp/achievements/ourMotto"
 
 const Achievements =()=>{
     return(
