@@ -43,7 +43,7 @@ const Header: React.FC = () => {
     return (
         <header
             className={
-                `fixed transition-all duration-300 z-50
+                `sticky transition-all duration-300 z-50
                 ${isScrolled
                     ? 'bg-gradient-to-t from-white to-green-50 lg:bg-white/80 lg:backdrop-blur-md shadow-sm top-0 lg:top-2 lg:rounded-2xl lg:right-2 lg:left-2 lg:px-3 lg:w-[99%] lg:mx-auto'
                     : 'w-full bg-gradient-to-t from-white to-green-50 top-0 left-0'

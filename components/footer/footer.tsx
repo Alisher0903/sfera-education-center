@@ -7,7 +7,7 @@ import SocialIconLink from "../SocialIconLink/SocialIconLink"
 import { FaInstagram, FaFacebook, FaTwitter, FaTelegram } from 'react-icons/fa'
 import colors from "@/lib/colors"
 import { useState } from "react"
-import { RegistrationModal } from "@/auth/register"
+import { RegistrationModal } from "@/components/auth/register"
 
 
 const iconMap = {

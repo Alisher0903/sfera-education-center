@@ -8,13 +8,7 @@ import {bestStudents, ReadCourses, Teachers} from "@/helpers/api";
 import Courses from "@/pages/home/courses";
 import type {Metadata} from "next";
 import {defaultMetadata} from "@/lib/seo";
-
-async function getAllData(url: string) {
-    const res = await fetch(url, {
-        cache: 'no-store',
-    });
-    return res.json();
-}
+import {getAllData} from "@/helpers/request";
 
 export const metadata: Metadata = {
     ...defaultMetadata,
@@ -25,7 +19,6 @@ const Home = async () => {
     const courseData = await getAllData(ReadCourses);
     const teacherData = await getAllData(Teachers);
     const studentsData = await getAllData(bestStudents);
-
     return (
         <>
             <Hero/>
