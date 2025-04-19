@@ -1,18 +1,18 @@
 import Image from "next/image"
-import SocialIconLink from "@/components/SocialIconLink/SocialIconLink"
+// import SocialIconLink from "@/components/SocialIconLink/SocialIconLink"
 import { TeamMemberCardProps } from "@/types/cards"
-import { FaInstagram, FaFacebook, FaTwitter, FaTelegram } from 'react-icons/fa'
+// import { FaInstagram, FaFacebook, FaTwitter, FaTelegram } from 'react-icons/fa'
 import colors from "@/lib/colors"
 import { URL } from "@/helpers/api"
 
 
-const iconMap = {
-  instagram: FaInstagram,
-  facebook: FaFacebook,
-  twitter: FaTwitter,
-  telegram: FaTelegram,
-}
-export default function TeamMemberCard({ name, level, photo, socialLinks }: TeamMemberCardProps) {
+// const iconMap = {
+//   instagram: FaInstagram,
+//   facebook: FaFacebook,
+//   twitter: FaTwitter,
+//   telegram: FaTelegram,
+// }
+export default function TeamMemberCard({ name, level, photo }: TeamMemberCardProps) {
   return (
     <div className="rounded-2xl overflow-hidden max-w-sm w-full" style={{color:colors.white, border: `2px solid ${colors.green}`}}>
       <div className="aspect-square relative">
