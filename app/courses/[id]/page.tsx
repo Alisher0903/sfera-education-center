@@ -1,37 +1,37 @@
 import Info from "@/pages-comp/courses/info";
 import ForWhomSection from "@/pages-comp/about/forWhom";
 import FAQSection from "@/pages-comp/about/accordion";
-import {getAllData} from "@/helpers/request";
-import {ReadCourses} from "@/helpers/api";
-import Hero from "@/pages-comp/about/hero";
-import CourseInfoSection from "@/pages-comp/about/CourseInfo";
-import Register from "@/pages-comp/about/info";
-import Teacher from "@/pages-comp/about/teachers";
-import {Course} from "@/types/cards";
+// import {getAllData} from "@/helpers/request";
+// import {ReadCourses} from "@/helpers/api";
+// import Hero from "@/pages-comp/about/hero";
+// import CourseInfoSection from "@/pages-comp/about/CourseInfo";
+// import Register from "@/pages-comp/about/info";
+// import Teacher from "@/pages-comp/about/teachers";
+// import {Course} from "@/types/cards";
 
-type Props = {
-    params: { id: string }
-}
+// type Props = {
+//     params: { id: string }
+// }
 
-export async function generateStaticParams() {
-    const courses: Course[] = await getAllData(ReadCourses);
-    return courses.map((course) => ({
-        id: course.id?.toString(),
-    }));
-}
+// export async function generateStaticParams() {
+//     const courses: Course[] = await getAllData(ReadCourses);
+//     return courses.map((course) => ({
+//         id: course.id?.toString(),
+//     }));
+// }
 
-const CourseDetails = async ({params}: Props) => {
-    const courseDataList: Course[] = await getAllData(ReadCourses);
-    const courseData: Course = await getAllData(`${ReadCourses}/${params.id}`);
+const CourseDetails = () => {
+    // const courseDataList: Course[] = await getAllData(ReadCourses);
+    // const courseData: Course = await getAllData(`${ReadCourses}/${params.id}`);
 
     return (
         <div>
-            <Hero course={courseData}/>
-            <CourseInfoSection course={courseData}/>
+            {/*<Hero course={courseData}/>*/}
+            {/*<CourseInfoSection course={courseData}/>*/}
             <Info/>
-            <Teacher course={courseData}/>
+            {/*<Teacher course={courseData}/>*/}
             <FAQSection/>
-            <Register coursesData={courseDataList}/>
+            {/*<Register coursesData={courseDataList}/>*/}
             <ForWhomSection/>
         </div>
     );
