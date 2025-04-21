@@ -10,9 +10,8 @@ import Teacher from "@/pages-comp/about/teachers";
 import {Course} from "@/types/cards";
 
 export default async function CoursePage({params}: { params: { id: string } }) {
-    const {id} = params;
     const courseDataList: Course[] = await getAllData(ReadCourses);
-    const courseData: Course = await getAllData(`${ReadCourses}/${id}`);
+    const courseData: Course = await getAllData(`${ReadCourses}/${params.id}`);
 
     return (
         <div>
