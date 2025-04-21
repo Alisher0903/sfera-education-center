@@ -7,14 +7,12 @@ import Hero from "@/pages-comp/about/hero";
 import CourseInfoSection from "@/pages-comp/about/CourseInfo";
 import Register from "@/pages-comp/about/info";
 import Teacher from "@/pages-comp/about/teachers";
+import {Course} from "@/types/cards";
 
-interface Props {
-    params: { id: string };
-}
-
-export default async function CoursePage({params}: Props) {
+export default async function CoursePage({params}: { params: { id: string } }) {
     const {id} = params;
-    const courseData = await getAllData(`${ReadCourses}/${id}`);
+    const courseDataList: Course[] = await getAllData(ReadCourses);
+    const courseData: Course = await getAllData(`${ReadCourses}/${id}`);
 
     return (
         <div>
@@ -23,7 +21,7 @@ export default async function CoursePage({params}: Props) {
             <Info/>
             <Teacher course={courseData}/>
             <FAQSection/>
-            <Register coursesData={courseData}/>
+            <Register coursesData={courseDataList}/>
             <ForWhomSection/>
         </div>
     );

@@ -1,25 +1,25 @@
 export const URL = 'http://142.93.106.195:9191'
 
 //Courses
-export const ReadCourses = `${URL}/api/v1/courses`
+export const ReadCourses: string = `${URL}/api/v1/courses`
 
 //Teachers
-export const Teachers =`${URL}/api/v1/teachers` 
+export const Teachers: string = `${URL}/api/v1/teachers`
 
 //Best Students
-export const bestStudents =`${URL}/api/v1/students`
+export const bestStudents: string = `${URL}/api/v1/students`
 
 //New courses 
-export const NewCourses =`${URL}/api/v1/new-courses`
+export const NewCourses: string = `${URL}/api/v1/new-courses`
 
 //visits
-export const Visit =`${URL}/api/v1/visits`
+export const Visit: string = `${URL}/api/v1/visits`
 
 //Photos
-export const Photo = `${URL}/api/v1/photos`
+export const Photo: string = `${URL}/api/v1/photos`
 
 //Achievements
-export const achievement =`${URL}/api/v1/achievements`
+export const achievement: string = `${URL}/api/v1/achievements`
 
 //Registrations
-export const registration =`${URL}/api/v1/registrations`
+export const registration: string = `${URL}/api/v1/registrations`
