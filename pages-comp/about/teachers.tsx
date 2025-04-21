@@ -23,8 +23,8 @@ export default function Teacher({ course }: { course: any }) {
 
       ScrollTrigger.create({
         trigger: titleRef.current,
-        start: "top 90%",
-        end: "top 20%",
+        start: "top 100%",
+        end: "top 0%",
         toggleActions: "play none none reverse",
         onEnter: () => {
           gsap.to(titleRef.current, {
