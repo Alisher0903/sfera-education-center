@@ -9,8 +9,8 @@ import Register from "@/pages-comp/about/info";
 import Teacher from "@/pages-comp/about/teachers";
 import {Course} from "@/types/cards";
 
-interface PageProps {
-    params: { id: string };
+type Props = {
+    params: { id: string }
 }
 
 export async function generateStaticParams() {
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
     }));
 }
 
-const CourseDetails = async ({params}: PageProps) => {
+const CourseDetails = async ({params}: Props) => {
     const courseDataList: Course[] = await getAllData(ReadCourses);
     const courseData: Course = await getAllData(`${ReadCourses}/${params.id}`);
 
