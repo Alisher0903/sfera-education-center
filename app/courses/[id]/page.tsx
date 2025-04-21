@@ -29,8 +29,9 @@ const CourseDetails = async ({params}: Props) => {
             <Hero course={courseData}/>
             <CourseInfoSection course={courseData}/>
             <Info/>
-            <Teacher course={courseData}/>
+            
             <FAQSection/>
+            <Teacher course={courseData}/>
             <Register coursesData={courseDataList}/>
             <ForWhomSection/>
         </div>
