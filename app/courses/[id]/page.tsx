@@ -13,6 +13,13 @@ interface PageProps {
     params: { id: string };
 }
 
+export async function generateStaticParams() {
+    const courses: Course[] = await getAllData(ReadCourses);
+    return courses.map((course) => ({
+        id: course.id?.toString(),
+    }));
+}
+
 const CourseDetails = async ({params}: PageProps) => {
     const courseDataList: Course[] = await getAllData(ReadCourses);
     const courseData: Course = await getAllData(`${ReadCourses}/${params.id}`);
