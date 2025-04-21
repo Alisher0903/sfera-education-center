@@ -36,8 +36,8 @@ const VisitsCard: React.FC<VisitsCardProps> = ({
 
         ScrollTrigger.create({
           trigger: element,
-          start: "top 90%",
-          end: "top 20%",
+          start: "top 100%",
+          end: "top 0%",
           toggleActions: "play none none reverse",
           onEnter: () => {
             gsap.to(element, {
@@ -83,45 +83,44 @@ const VisitsCard: React.FC<VisitsCardProps> = ({
 
   return (
     <div
-      className="p-5 rounded-2xl"
+      className="p-5 rounded-2xl  overflow-hidden"
       style={{ border: `2px solid ${colors.green}` }}
       ref={cardRef}
     >
       <div
-        className={`grid grid-cols-1 lg:grid-cols-2 gap-4 ${
-          isLeft ? "lg:grid-flow-row" : "lg:grid-flow-row-dense"
+        className={`grid grid-cols-1 justify-between md:grid-cols-2 h-full ${
+          isLeft ? "md:grid-flow-row" : "md:grid-flow-row-dense"
         }`}
       >
-        <div className={isLeft ? "" : "lg:order-2"}>
-          <div className="relative ">
+        <div className={isLeft ? "" : "md:order-2"}>
+          <div className="relative min-w-80 min-h-80  max-w-[100%]  overflow-hidden rounded-2xl">
             <Image
               src={`${URL}${visitData.photo}`}
               alt={visitData.full_name}
-              width={1000}
-              height={1000}
-              className="object-cover rounded-2xl"
-              // ref={imageRef}
+              fill
+              className="object-cover"
+              ref={imageRef}
             />
           </div>
         </div>
-        <div className={isLeft ? "" : "lg:order-1"}>
-          <div className="flex flex-col justify-center items-center w-full h-full p-4">
+        <div className={isLeft ? "" : "md:order-1"}>
+          <div className="flex flex-col justify-center items-center w-full h-full px-10">
             <h3
-              className="mb-5 text-3xl"
+              className="mb-2 text-xl text-center"
               style={{ color: colors.green }}
               ref={nameRef}
             >
               {visitData.full_name}
             </h3>
             <h3
-              className="mb-5 text-xl font-medium tracking-wide"
+              className="mb-2 text-sm text-center font-medium tracking-wide"
               style={{ color: colors.grayText }}
               ref={dateRef}
             >
               {visitData.date}
             </h3>
             <p
-              className="text-base font-medium md:leading-relaxed text-body-color text-center"
+              className="text-sm md:leading-relaxed text-body-color text-center"
               ref={descriptionRef}
             >
               {visitData.description}
@@ -134,3 +133,53 @@ const VisitsCard: React.FC<VisitsCardProps> = ({
 };
 
 export default VisitsCard;
+
+{
+  /* <div
+      className="p-5 rounded-2xl  overflow-hidden"
+      style={{ border: `2px solid ${colors.green}` }}
+      ref={cardRef}
+    >
+      <div
+        className={`grid grid-cols-1 md:grid-cols-2 gap-4 h-full ${
+          isLeft ? "md:grid-flow-row" : "md:grid-flow-row-dense"
+        }`}
+      >
+        <div className={isLeft ? "" : "md:order-2"}>
+          <div className="relative w-full h-full  overflow-hidden rounded-2xl">
+            <Image
+              src={`${URL}${visitData.photo}`}
+              alt={visitData.full_name}
+              fill
+              className="object-cover rounded-2xl"
+              ref={imageRef}
+            />
+          </div>
+        </div>
+        <div className={isLeft ? "" : "md:order-1"}>
+          <div className="flex flex-col justify-center items-center w-full h-full p-20">
+            <h3
+              className="mb-2 text-xl text-center"
+              style={{ color: colors.green }}
+              ref={nameRef}
+            >
+              {visitData.full_name}
+            </h3>
+            <h3
+              className="mb-2 text-sm text-center font-medium tracking-wide"
+              style={{ color: colors.grayText }}
+              ref={dateRef}
+            >
+              {visitData.date}
+            </h3>
+            <p
+              className="text-sm md:leading-relaxed text-body-color text-center"
+              ref={descriptionRef}
+            >
+              {visitData.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div> */
+}

@@ -1,43 +1,138 @@
-import Image from 'next/image'
+"use client";
+
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import HoveredButton from "@/components/buttons/hovered-button";
 import { cn } from "@/lib/utils";
-import colors from "@/lib/colors"
-import { Course } from '@/types/cards';
+import { color } from "@/lib/colors";
+import { Course } from "@/types/cards";
 
-const Hero = ({ course }: { course: Course }) => {
-    
-    return (
-        <div>
-            <section className={'relative'}>
-                <Image
-                    src="/home/hero-gif.gif"
-                    alt="Gif"
-                    className={'w-full h-[100vh] object-cover'}
-                    width={400}
-                    height={300}
-                    unoptimized
-                />
-                <div className={'absolute top-1/2 -translate-y-1/2 flex w-full'}>
-                    <div className={'mx-auto space-x-4 text-center'}>
-                        <h1 className={cn("uppercase  text-6xl font-bold tracking-wide mb-5")} style={{ color: colors.white }}>{course.name}</h1>
-                        <p className={cn("uppercase text-2xl font-semibold mb-5")} style={{ color: colors.white }}>{course.subtitle}</p>
-                        <HoveredButton
-                            className={'py-4   hover:border-white hover:bg-transparent'}
-                            name={'BEPUL BIRINCHI DARS'}
-                            style={{ backgroundColor: colors.green, color: colors.white, borderColor: colors.green }}
+gsap.registerPlugin(ScrollTrigger);
 
-                        />
-                        <HoveredButton
-                            className={'py-4 bg-slate-950 text-white border-white hover:bg-white hover:text-black'}
-                            name={'BIZ BILAN BOG\'LANISH'}
-                            style={{}}
-                        />
-                    </div>
-                </div>
-            </section>
+const Hero: React.FC<{ course: Course }> = ({ course }) => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const buttonContainerRef = useRef<HTMLDivElement>(null);
 
+  useGSAP(
+    () => {
+      const elements = [
+        titleRef.current,
+        subtitleRef.current,
+        buttonContainerRef.current,
+      ].filter(Boolean) as HTMLElement[];
+
+      elements.forEach((element, index) => {
+        gsap.set(element, { opacity: 0, y: 50 });
+        ScrollTrigger.create({
+          trigger: element,
+          start: "top 90%",
+          end: "top 20%",
+          toggleActions: "play none none reverse",
+          onEnter: () => {
+            gsap.to(element, {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power3.out",
+              delay: index * 0.3,
+            });
+          },
+          onLeave: () => {
+            gsap.to(element, {
+              opacity: 0,
+              y: -50,
+              duration: 0.7,
+              ease: "power2.in",
+            });
+          },
+          onEnterBack: () => {
+            gsap.to(element, {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power3.out",
+              delay: index * 0.3,
+            });
+          },
+          onLeaveBack: () => {
+            gsap.to(element, {
+              opacity: 0,
+              y: 50,
+              duration: 0.7,
+              ease: "power2.in",
+            });
+          },
+        });
+      });
+    },
+    { scope: sectionRef }
+  );
+
+  return (
+    <section className="relative" ref={sectionRef}>
+      <Image
+        src="/home/hero-gif.gif"
+        alt="Gif"
+        className="w-full h-[100vh] object-cover"
+        width={400}
+        height={300}
+        unoptimized
+      />
+      <div
+        className="absolute top-1/2 -translate-y-1/2 flex w-full px-4"
+        ref={contentRef}
+      >
+        <div className="mx-auto text-center max-w-6xl">
+          <h1
+            className={cn(
+              "uppercase text-4xl sm:text-5xl md:text-6xl font-bold tracking-wide mb-4 md:mb-5",
+              color("text").white
+            )}
+            ref={titleRef}
+          >
+            {course.name}
+          </h1>
+          <p
+            className={cn(
+              "uppercase text-lg sm:text-xl md:text-2xl font-semibold mb-4 md:mb-5",
+              color("text").white
+            )}
+            ref={subtitleRef}
+          >
+            {course.subtitle}
+          </p>
+          <div
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center"
+            ref={buttonContainerRef}
+          >
+            <div className="inline-block w-full sm:w-auto">
+              <HoveredButton
+                className={cn(
+                  "py-3 sm lubricating:py-4 w-full sm:w-auto px-6 hover:border-white hover:bg-transparent text-sm sm:text-base",
+                  color("bg").green,
+                  color("text").white,
+                  color("border").green
+                )}
+                name="BEPUL BIRINCHI DARS"
+              />
+            </div>
+            <div className="inline-block w-full sm:w-auto">
+              <HoveredButton
+                className="py-3 sm:py-4 w-full sm:w-auto px-6 bg-slate-950 text-white border-white hover:bg-white hover:text-black text-sm sm:text-base"
+                name="BIZ BILAN BOG'LANISH"
+              />
+            </div>
+          </div>
         </div>
-    );
+      </div>
+    </section>
+  );
 };
 
 export default Hero;

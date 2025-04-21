@@ -4,39 +4,20 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import InfoCard from "@/components/cards/infoCard";
+import BackendCard from "@/components/cards/courses";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
+
+import type { Metadata } from "next";
+import { defaultMetadata } from "@/lib/seo";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const infoCards = [
-  {
-    image: "/home/info.png",
-    title: "O‘qituvchilarimiz katta tajribaga ega",
-    description:
-      "Bizning o‘quv markazimizda o‘z yo‘nalishlari bo‘yicha 1 yildan 3 yilgacha bo‘lgan tajribaga ega o‘qituvchilar ta'lim beradi.",
-  },
-  {
-    image: "/home/info1.png",
-    title: "Muloqot",
-    description:
-      "Darslar davomida fikr almashish uchun 15 daqiqalik tanaffus qilishingiz mumkin. Bu bolalarga muloqotini va fikrlashishini o‘stirishga yordam beradi.",
-  },
-  {
-    image: "/home/info2.png",
-    title: "Biz sizga ish topishga yordam beramiz",
-    description:
-      "Markazimizda zamonaviy sohalarda bo‘sh ish o‘rinlarini topishga yordam beruvchi bo‘limi mavjud.",
-  },
-  {
-    image: "/home/info3.png",
-    title: "Sertifikatga ega bo‘lishingiz mumkin!",
-    description:
-      "Kursni muvaffaqiyatli tamomlagan o‘quvchilar “Sfera Academiyasi” ning diplom va sertifikatiga ega bo‘ladi.",
-  },
-];
+export const metadata: Metadata = {
+  ...defaultMetadata,
+  title: "Sfera Academy | Kurslar",
+};
 
-const Info: React.FC = () => {
+const Courses = ({ Courses }: any) => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
 
@@ -48,8 +29,8 @@ const Info: React.FC = () => {
 
       ScrollTrigger.create({
         trigger: titleRef.current,
-        start: "top 90%",
-        end: "top 20%",
+        start: "top 100%",
+        end: "top 0%",
         toggleActions: "play none none reverse",
         onEnter: () => {
           gsap.to(titleRef.current, {
@@ -85,7 +66,7 @@ const Info: React.FC = () => {
         },
       });
 
-      const cards = gsap.utils.toArray<HTMLElement>(".info-card-item");
+      const cards = gsap.utils.toArray<HTMLElement>(".course-card-item");
 
       cards.forEach((card, index) => {
         gsap.set(card, { opacity: 0, y: 60, scale: 0.95 });
@@ -141,18 +122,22 @@ const Info: React.FC = () => {
 
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto py-10">
+      <div className="max-w-7xl mx-auto py-20">
         <div className="py-10" ref={titleRef}>
-          <SectionTitle title="AFZALLIKLARIMZ" />
+          <SectionTitle title="KURSLARIMIZ" />
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
-          {infoCards.map((card, index) => (
-            <div className="info-card-item" key={index}>
-              <InfoCard
-                image={card.image}
-                title={card.title}
-                description={card.description}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {Courses.map((course: any) => (
+            <div className="course-card-item" key={course.id}>
+              <BackendCard
+                courseTitle={course.course.name}
+                start_date={course.start_date}
+                duration={course.course.course_duration}
+                price={course.price}
+                instructorName={course.teacher.name}
+                instructorImage={course.teacher.photo}
+                photo={course.teacher.photo}
+                image={course.course.photo}
               />
             </div>
           ))}
@@ -162,4 +147,4 @@ const Info: React.FC = () => {
   );
 };
 
-export default Info;
+export default Courses;

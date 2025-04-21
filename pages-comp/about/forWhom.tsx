@@ -1,21 +1,126 @@
 "use client";
 
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 import Image from "next/image";
-import colors from "@/lib/colors"; // ranglar faylini import qilamiz
+import colors from "@/lib/colors";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ForWhomSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!titleRef.current) return;
+
+    gsap.set(titleRef.current, { opacity: 0, y: -50 });
+
+    ScrollTrigger.create({
+      trigger: titleRef.current,
+      start: "top 90%",
+      end: "top 20%",
+      toggleActions: "play none none reverse",
+      onEnter: () => {
+        gsap.to(titleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+        });
+      },
+      onLeave: () => {
+        gsap.to(titleRef.current, {
+          opacity: 0,
+          y: -50,
+          duration: 0.7,
+          ease: "power2.in",
+        });
+      },
+      onEnterBack: () => {
+        gsap.to(titleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+        });
+      },
+      onLeaveBack: () => {
+        gsap.to(titleRef.current, {
+          opacity: 0,
+          y: 50,
+          duration: 0.7,
+          ease: "power2.in",
+        });
+      },
+    });
+
+    const items = gsap.utils.toArray<HTMLElement>(".for-whom-item");
+
+    items.forEach((item, index) => {
+      const elements = item.querySelectorAll("img, h3, p") as NodeListOf<HTMLElement>;
+
+      elements.forEach((element, i) => {
+        gsap.set(element, { opacity: 0, y: 50 });
+
+        ScrollTrigger.create({
+          trigger: element,
+          start: "top 90%",
+          end: "top 20%",
+          toggleActions: "play none none reverse",
+          onEnter: () => {
+            gsap.to(element, {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power3.out",
+              delay: (index * 0.5) + (i * 0.2),
+            });
+          },
+          onLeave: () => {
+            gsap.to(element, {
+              opacity: 0,
+              y: -50,
+              duration: 0.7,
+              ease: "power2.in",
+            });
+          },
+          onEnterBack: () => {
+            gsap.to(element, {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power3.out",
+              delay: (index * 0.5) + (i * 0.2),
+            });
+          },
+          onLeaveBack: () => {
+            gsap.to(element, {
+              opacity: 0,
+              y: 50,
+              duration: 0.7,
+              ease: "power2.in",
+            });
+          },
+        });
+      });
+    });
+  }, { scope: sectionRef });
+
   return (
-    <section className="w-full">
-      <div className="my-10">
-        <SectionTitle title="KURSLARIMIZ KIMLARGA TOG'RI KELADI" />
+    <section className="w-full" ref={sectionRef}>
+      <div className="my-10" ref={titleRef}>
+        <SectionTitle title="KURSLARIMIZ KIMLARGA TOG'RI KELADI"  />
       </div>
       <div style={{ backgroundColor: colors.green, color: colors.white }}>
         <div className="container mx-auto py-8 px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Yangi boshlovchilar uchun */}
             <div
-              className="flex p-6 md:border-r flex-col gap-5"
+              className="for-whom-item flex p-6 md:border-r flex-col gap-5"
               style={{ borderColor: colors.white }}
             >
               <div>
@@ -32,7 +137,7 @@ const ForWhomSection = () => {
                 </div>
               </div>
               <div>
-                <p style={{ color: colors.white  }}>
+                <p style={{ color: colors.white }}>
                   Dasturlashda boshlang‘ich tushunchaga ega bo‘lganlar bu kurs
                   orqali o‘z bilimlarini mustahkamlab, yangi texnologiyalar bilan
                   ishlashni chuqurroq o‘rganishlari mumkin.
@@ -41,7 +146,7 @@ const ForWhomSection = () => {
             </div>
 
             {/* Boshlang‘ich bilimga ega bo‘lganlar uchun */}
-            <div className="p-6 flex flex-col gap-5">
+            <div className="for-whom-item p-6 flex flex-col gap-5">
               <div>
                 <div className="flex gap-10 items-center">
                   <Image
