@@ -9,7 +9,11 @@ import Register from "@/pages-comp/about/info";
 import Teacher from "@/pages-comp/about/teachers";
 import {Course} from "@/types/cards";
 
-export default async function CoursePage({params}: { params: { id: string } }) {
+interface PageProps {
+    params: { id: string };
+}
+
+const CourseDetails = async ({params}: PageProps) => {
     const courseDataList: Course[] = await getAllData(ReadCourses);
     const courseData: Course = await getAllData(`${ReadCourses}/${params.id}`);
 
@@ -25,3 +29,5 @@ export default async function CoursePage({params}: { params: { id: string } }) {
         </div>
     );
 }
+
+export default CourseDetails;
