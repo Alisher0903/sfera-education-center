@@ -1,26 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IProps } from "@/types/cards";
-import { color } from "@/lib/colors";
-import { URL } from "@/helpers/api";
-import { cn, sliceText } from "@/lib/utils";
+import {IProps} from "@/types/cards";
+import {color} from "@/lib/colors";
+import {URL} from "@/helpers/api";
+import {cn, sliceText} from "@/lib/utils";
 
-export default function CourseCard({
-                                       id,
-                                       name,
-                                       photo = "",
-                                       subtitle = "",
-                                       about = "",
-                                   }: IProps) {
-    // Prop validatsiyasi
-    if (!id || !name) {
-        console.warn("CourseCard: id va name props majburiy!");
-        return null;
-    }
-
-    // Debug uchun
-    console.log({ id, name, href: `/courses/${id}` });
-
+export default function CourseCard(
+    {
+        id,
+        name,
+        photo = "",
+        subtitle = "",
+        about = "",
+    }: IProps) {
     return (
         <div
             className={cn(
@@ -65,7 +57,7 @@ export default function CourseCard({
                         href={`/courses/${id}`}
                         aria-label={`Learn more about ${name} course`}
                         className={cn(
-                            "inline-block px-4 py-1 sm:px-6 sm:py-2 bg-transparent border rounded-xl hover:border-green-600 transition-all duration-200 transform group-hover:scale-110 z-30 pointer-events-auto",
+                            "inline-block px-4 py-1 sm:px-6 sm:py-2 bg-transparent border rounded-xl transition-all duration-200 transform group-hover:scale-110 z-30 pointer-events-auto",
                             color("text").white,
                             color("border").white
                         )}
@@ -87,7 +79,7 @@ export default function CourseCard({
 
             {/* Default Bottom Description */}
             <div className="relative h-full flex flex-col z-10">
-                <div className="flex-1" />
+                <div className="flex-1"/>
                 <div
                     className={cn(
                         "p-4 sm:p-6 text-center min-h-[8rem] sm:min-h-[10rem] rounded-b-lg group-hover:opacity-0 transition-opacity duration-300 ease-in-out",

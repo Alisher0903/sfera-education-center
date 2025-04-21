@@ -1,172 +1,172 @@
 "use client";
 
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import React, {useRef} from "react";
+import {useGSAP} from "@gsap/react";
+import {gsap} from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Navigation, Pagination} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import CourseCard from "@/components/cards/courseCard";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
-import { CoursesProps, IProps } from "@/types/cards";
+import {CoursesProps, IProps} from "@/types/cards";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Courses: React.FC<CoursesProps> = ({ courseData }) => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const titleRef = useRef<HTMLDivElement>(null);
-  const swiperRef = useRef<HTMLDivElement>(null);
+const Courses: React.FC<CoursesProps> = ({courseData}) => {
+    const sectionRef = useRef<HTMLElement>(null);
+    const titleRef = useRef<HTMLDivElement>(null);
+    const swiperRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(
-    () => {
-      gsap.set(titleRef.current, { opacity: 0, y: -50 });
+    useGSAP(
+        () => {
+            gsap.set(titleRef.current, {opacity: 0, y: -50});
 
-      ScrollTrigger.create({
-        trigger: titleRef.current,
-        start: "top 90%",
-        end: "top 20%",
-        toggleActions: "play none none reverse",
-        onEnter: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeave: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: -50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: 50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-      });
-
-      const cards = gsap.utils.toArray<HTMLElement>(".course-card");
-
-      cards.forEach((card, index) => {
-        gsap.set(card, { opacity: 0, y: 60, scale: 0.95 });
-
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top 90%",
-          end: "top 20%",
-          toggleActions: "play none none reverse",
-          onEnter: () => {
-            gsap.to(card, {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.25,
+            ScrollTrigger.create({
+                trigger: titleRef.current,
+                start: "top 90%",
+                end: "top 20%",
+                toggleActions: "play none none reverse",
+                onEnter: () => {
+                    gsap.to(titleRef.current, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        ease: "power3.out",
+                    });
+                },
+                onLeave: () => {
+                    gsap.to(titleRef.current, {
+                        opacity: 0,
+                        y: -50,
+                        duration: 0.7,
+                        ease: "power2.in",
+                    });
+                },
+                onEnterBack: () => {
+                    gsap.to(titleRef.current, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        ease: "power3.out",
+                    });
+                },
+                onLeaveBack: () => {
+                    gsap.to(titleRef.current, {
+                        opacity: 0,
+                        y: 50,
+                        duration: 0.7,
+                        ease: "power2.in",
+                    });
+                },
             });
-          },
-          onLeave: () => {
-            gsap.to(card, {
-              opacity: 0,
-              y: -50,
-              scale: 0.95,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
-          onEnterBack: () => {
-            gsap.to(card, {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.25,
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(card, {
-              opacity: 0,
-              y: 60,
-              scale: 0.95,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
-        });
-      });
-    },
-    { scope: sectionRef }
-  );
 
-  return (
-    <section className="w-full px-4 sm:px-6 lg:px-8" ref={sectionRef}>
-      <div className="max-w-7xl mx-auto py-10">
-        <div className="mb-10" ref={titleRef}>
-          <SectionTitle title="KURSLARIMIZ" />
-        </div>
+            const cards = gsap.utils.toArray<HTMLElement>(".course-card");
 
-        <div ref={swiperRef}>
-          <Swiper
-            className="relative"
-            modules={[Navigation, Pagination]}
-            spaceBetween={20}
-            navigation
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-              1280: { slidesPerView: 4 },
-            }}
-          >
-            {courseData.map((course: IProps) => (
-              <SwiperSlide key={course.id}>
-                <div className="course-card">
-                  <CourseCard {...course} />
+            cards.forEach((card, index) => {
+                gsap.set(card, {opacity: 0, y: 60, scale: 0.95});
+
+                ScrollTrigger.create({
+                    trigger: card,
+                    start: "top 90%",
+                    end: "top 20%",
+                    toggleActions: "play none none reverse",
+                    onEnter: () => {
+                        gsap.to(card, {
+                            opacity: 1,
+                            y: 0,
+                            scale: 1,
+                            duration: 1,
+                            ease: "power3.out",
+                            delay: index * 0.25,
+                        });
+                    },
+                    onLeave: () => {
+                        gsap.to(card, {
+                            opacity: 0,
+                            y: -50,
+                            scale: 0.95,
+                            duration: 0.7,
+                            ease: "power2.in",
+                        });
+                    },
+                    onEnterBack: () => {
+                        gsap.to(card, {
+                            opacity: 1,
+                            y: 0,
+                            scale: 1,
+                            duration: 1,
+                            ease: "power3.out",
+                            delay: index * 0.25,
+                        });
+                    },
+                    onLeaveBack: () => {
+                        gsap.to(card, {
+                            opacity: 0,
+                            y: 60,
+                            scale: 0.95,
+                            duration: 0.7,
+                            ease: "power2.in",
+                        });
+                    },
+                });
+            });
+        },
+        {scope: sectionRef}
+    );
+
+    return (
+        <section className="w-full px-4 sm:px-6 lg:px-8" ref={sectionRef}>
+            <div className="max-w-7xl mx-auto py-10">
+                <div className="mb-10" ref={titleRef}>
+                    <SectionTitle title="KURSLARIMIZ"/>
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
 
-        <style jsx global>{`
-          .swiper-button-next,
-          .swiper-button-prev {
-            color: white;
-            background-color: #1ca855;
-            padding: 10px;
-            border-radius: 9999px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 40px;
-            height: 40px;
-          }
+                <div ref={swiperRef}>
+                    <Swiper
+                        className="relative"
+                        modules={[Navigation, Pagination]}
+                        spaceBetween={20}
+                        navigation
+                        breakpoints={{
+                            640: {slidesPerView: 2},
+                            768: {slidesPerView: 2},
+                            1024: {slidesPerView: 3},
+                            1280: {slidesPerView: 4},
+                        }}
+                    >
+                        {courseData.map((course: IProps) => (
+                            <SwiperSlide key={course.id}>
+                                <div className="course-card">
+                                    <CourseCard {...course} />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
 
-          .swiper-button-next::after,
-          .swiper-button-prev::after {
-            font-size: 16px;
-          }
-        `}</style>
-      </div>
-    </section>
-  );
+                <style jsx global>{`
+                    .swiper-button-next,
+                    .swiper-button-prev {
+                        color: white;
+                        background-color: #1ca855;
+                        padding: 10px;
+                        border-radius: 9999px;
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                        width: 40px;
+                        height: 40px;
+                    }
+
+                    .swiper-button-next::after,
+                    .swiper-button-prev::after {
+                        font-size: 16px;
+                    }
+                `}</style>
+            </div>
+        </section>
+    );
 };
 
 export default Courses;
