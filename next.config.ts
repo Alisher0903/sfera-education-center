@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     images: {
         domains: ['142.93.106.195'],
     },
-    pageExtensions: ['page.tsx', 'page.ts'],
+    staticPageGenerationTimeout: 120,
 };
 
 export default nextConfig;

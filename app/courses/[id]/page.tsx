@@ -8,33 +8,30 @@ import CourseInfoSection from "@/pages-comp/about/CourseInfo";
 import Register from "@/pages-comp/about/info";
 import Teacher from "@/pages-comp/about/teachers";
 import {Course} from "@/types/cards";
+import {cache} from "react";
 
-type Props = {
-    params: { id: string }
-}
+const getCourse = cache(async (id: string): Promise<Course> => {
+    return await getAllData<Course>(`${ReadCourses}/${id}`);
+});
 
-export async function generateStaticParams() {
-    const courses: Course[] = await getAllData(ReadCourses);
-    return courses.map((course) => ({
-        id: course.id?.toString(),
-    }));
-}
+export default async function Page(props: {
+    params: Promise<{ id: string }>;
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+    const {id} = await props.params;
 
-const CourseDetails = async ({params}: Props) => {
-    const courseDataList: Course[] = await getAllData(ReadCourses);
-    const courseData: Course = await getAllData(`${ReadCourses}/${params.id}`);
+    const course = await getCourse(id);
+    const allCourses = await getAllData<Course[]>(ReadCourses);
 
     return (
         <div>
-            <Hero course={courseData}/>
-            <CourseInfoSection course={courseData}/>
+            <Hero course={course}/>
+            <CourseInfoSection course={course}/>
             <Info/>
-            <Teacher course={courseData}/>
+            <Teacher course={course}/>
             <FAQSection/>
-            <Register coursesData={courseDataList}/>
+            <Register coursesData={allCourses}/>
             <ForWhomSection/>
         </div>
     );
 }
-
-export default CourseDetails;
