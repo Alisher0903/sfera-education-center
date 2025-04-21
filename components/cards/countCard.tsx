@@ -10,7 +10,7 @@ interface CountCardProps {
 
 export function CountCard({ img, title, value, suffix = "" }: CountCardProps) {
     return (
-        <div className="flex flex-col items-center text-center p-6 rounded-lg gap-10" style={{ backgroundColor: colors.white }}>
+        <div className="flex flex-col items-center   text-center p-6  gap-10" style={{ backgroundColor: colors.white }}>
             <Image
                 src={img}
                 alt={`${title} icon`}
@@ -25,6 +25,7 @@ export function CountCard({ img, title, value, suffix = "" }: CountCardProps) {
                     <span className="text-4xl font-bold" style={{ color: colors.green }}>{suffix}</span>
                 </div>
             </div>
+            
         </div>
     )
 }

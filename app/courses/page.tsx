@@ -31,6 +31,19 @@ const Courses = async () => {
                             image={course.course.photo}
                         />
                     ))}
+                    {newStudentData.map((course: any) => (
+                        <BackendCard
+                            key={course.id}
+                            courseTitle={course.course.name}
+                            start_date={course.start_date}
+                            duration={course.course.course_duration}
+                            price={course.price}
+                            instructorName={course.teacher.name}
+                            instructorImage={course.teacher.photo}
+                            photo={course.teacher.photo}
+                            image={course.course.photo}
+                        />
+                    ))}
                 </div>
             </div>
         </section>
@@ -38,3 +51,5 @@ const Courses = async () => {
 };
 
 export default Courses;
+
+

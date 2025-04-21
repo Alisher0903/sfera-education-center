@@ -1,61 +1,224 @@
+"use client"; // Next.js'da klientsiy komponent uchun
+
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CountCard } from "@/components/cards/countCard";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
-import colors from "@/lib/colors";
 
-const About = () => {
-    return (
-        <section className="w-full px-4 sm:px-6 lg:px-8">
-            <div className="pt-20">
-                <div className="mb-10">
-                    <SectionTitle title="BIZ HAQIMIZDA" />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2">
-                    <div
-                        className="m-5 border-b md:border-b-0 md:border-r"
-                        style={{ borderColor: colors.green }}
-                    >
-                        <CountCard
-                            img="/home/count.png"
-                            title="Bitirgan o'quvchilar"
-                            value={200}
-                            suffix="+"
-                        />
-                    </div>
-                    <div
-                        className="m-5 border-b md:border-b-0"
-                        style={{ borderColor: colors.green }}
-                    >
-                        <CountCard
-                            img="/home/courses2.png"
-                            title="Loyihalar"
-                            value={20}
-                            suffix="+"
-                        />
-                    </div>
-                    <div
-                        className="m-5 md:border-r"
-                        style={{ borderColor: colors.green }}
-                    >
-                        <CountCard
-                            img="/home/courses1.png"
-                            title="Ish olib borilmoqda"
-                            value={3}
-                            suffix=" YIL"
-                        />
-                    </div>
-                    <div className="m-5" style={{ borderColor: colors.green }}>
-                        <CountCard
-                            img="/home/courses.png"
-                            title="Jamoamiz a'zolari"
-                            value={20}
-                            suffix="+"
-                        />
-                    </div>
-                </div>
+gsap.registerPlugin(ScrollTrigger);
 
+const About: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      gsap.set(titleRef.current, { opacity: 0, y: -50 });
+
+      ScrollTrigger.create({
+        trigger: titleRef.current,
+        start: "top 90%",
+        end: "top 20%",
+        toggleActions: "play none none reverse",
+        onEnter: () => {
+          gsap.to(titleRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+          });
+        },
+        onLeave: () => {
+          gsap.to(titleRef.current, {
+            opacity: 0,
+            y: -50,
+            duration: 0.7,
+            ease: "power2.in",
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(titleRef.current, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+          });
+        },
+        onLeaveBack: () => {
+          gsap.to(titleRef.current, {
+            opacity: 0,
+            y: 50,
+            duration: 0.7,
+            ease: "power2.in",
+          });
+        },
+      });
+
+      const cards = gsap.utils.toArray<HTMLElement>(".count-card");
+      const borders = gsap.utils.toArray<HTMLElement>(".border-anim");
+
+      cards.forEach((card, index) => {
+        gsap.set(card, { opacity: 0, y: 60, scale: 0.95 });
+        if (borders[index]) {
+          gsap.set(borders[index], { scaleX: 0, scaleY: 0 });
+        }
+
+        ScrollTrigger.create({
+          trigger: card,
+          start: "top 100%",
+          end: "top 10%",
+          toggleActions: "play none none reverse",
+          onEnter: () => {
+            gsap.to(card, {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 1,
+              ease: "power3.out",
+              delay: index * 0.25,
+              onComplete: () => {
+                const border = borders[index];
+                if (border) {
+                  gsap.to(border, {
+                    scaleX: 1,
+                    scaleY: 1,
+                    duration: 0.5,
+                    ease: "power2.out",
+                  });
+                }
+              },
+            });
+          },
+          onLeave: () => {
+            gsap.to(card, {
+              opacity: 0,
+              y: -50,
+              scale: 0.95,
+              duration: 0.7,
+              ease: "power2.in",
+            });
+            const border = borders[index];
+            if (border) {
+              gsap.to(border, {
+                scaleX: 0,
+                scaleY: 0,
+                duration: 0.5,
+                ease: "power2.in",
+              });
+            }
+          },
+          onEnterBack: () => {
+            gsap.to(card, {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              duration: 1,
+              ease: "power3.out",
+              delay: index * 0.25,
+              onComplete: () => {
+                const border = borders[index];
+                if (border) {
+                  gsap.to(border, {
+                    scaleX: 1,
+                    scaleY: 1,
+                    duration: 0.5,
+                    ease: "power2.out",
+                  });
+                }
+              },
+            });
+          },
+          onLeaveBack: () => {
+            gsap.to(card, {
+              opacity: 0,
+              y: 60,
+              scale: 0.95,
+              duration: 0.7,
+              ease: "power2.in",
+            });
+            const border = borders[index];
+            if (border) {
+              gsap.to(border, {
+                scaleX: 0,
+                scaleY: 0,
+                duration: 0.5,
+                ease: "power2.in",
+              });
+            }
+          },
+        });
+      });
+    },
+    { scope: sectionRef }
+  );
+
+  return (
+    <section className="w-full px-4 sm:px-6 lg:px-8">
+      <div className="pt-20">
+        <div className="mb-10" ref={titleRef}>
+          <SectionTitle title="BIZ HAQIMIZDA" />
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2" ref={sectionRef}>
+          <div className="xl:rounded-b-[80px] rounded-b-[60px] overflow-hidden relative">
+            <div className="lg:border-b-1 lg:border-r-1 border-b-none border-r-none border-r-[#1CA855] border-b-slate-300 border-anim">
+              <div className="count-card">
+                <CountCard
+                  img="/home/count.png"
+                  title="Bitirgan o'quvchilar"
+                  value={200}
+                  suffix="+"
+                />
+              </div>
             </div>
-        </section>
-    );
+          </div>
+          <div>
+            <div className="xl:rounded-b-[80px] rounded-b-[60px] overflow-hidden relative">
+              <div className="lg:border-l-1 lg:border-b-1 border-b-none border-r-none border-l-[#1CA855] border-b-slate-300 border-anim">
+                <div className="count-card">
+                  <CountCard
+                    img="/home/courses2.png"
+                    title="Loyihalar"
+                    value={20}
+                    suffix="+"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="xl:rounded-t-[80px] rounded-t-[60px] overflow-hidden relative">
+              <div className="lg:border-t-1 lg:border-r-1 border-r-none border-t-none border-r-[#1CA855] border-t-slate-300 border-anim">
+                <div className="count-card">
+                  <CountCard
+                    img="/home/courses1.png"
+                    title="Ish olib borilmoqda"
+                    value={3}
+                    suffix=" YIL"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="xl:rounded-t-[80px] rounded-t-[60px] overflow-hidden relative">
+              <div className="lg:border-t-1 lg:border-l-1 border-l-none border-t-none border-l-[#1CA855] border-t-slate-300 border-anim">
+                <div className="count-card">
+                  <CountCard
+                    img="/home/courses.png"
+                    title="Jamoamiz a'zolari"
+                    value={20}
+                    suffix="+"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default About;

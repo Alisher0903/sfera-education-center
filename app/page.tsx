@@ -25,7 +25,7 @@ const Home = async () => {
             <Courses courseData={courseData}/>
             <Feature/>
             <Team teacherData={teacherData}/>
-            <Students studentsData={studentsData}/>
+            <Students studentsData={[...studentsData, ...studentsData, ...studentsData]}/>
             <About/>
             <Info/>
         </>
