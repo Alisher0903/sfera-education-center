@@ -1,22 +1,11 @@
-import { Photo } from "@/helpers/api";
+import {Photo} from "@/helpers/api";
 import PhotoSplide from "@/pages-comp/photo/photo";
+import {getAllData} from "@/helpers/request";
 
+const Photos = async () => {
+    const photosData = await getAllData(Photo);
 
-async function getPhotos() {
-    const res = await fetch(`${Photo}`, {
-        cache: 'no-store',
-    });
+    return <PhotoSplide photosData={photosData}/>
 
-    return res.json();
-}
-
-const  Photos = async()=> {
-    const photosData = await getPhotos();
-    return (
-        <main>
-            <PhotoSplide photosData={photosData} />
-        </main>
-    )
-    
 }
 export default Photos;

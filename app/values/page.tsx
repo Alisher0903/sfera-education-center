@@ -1,23 +1,11 @@
-import { achievement } from "@/helpers/api";
+import {achievement} from "@/helpers/api";
 import Values from "@/pages-comp/values/values"
+import {getAllData} from "@/helpers/request";
 
+const Visits = async () => {
+    const achievementData = await getAllData(achievement);
 
-async function getAchievement() {
-    const res = await fetch(`${achievement}`, {
-        cache: 'no-store',
-    });
-
-    return res.json();
-}
-
-const Visits = async()=>{
-    const achievementData = await getAchievement();
-    
-    return(
-        <div>
-           <Values achievementData={achievementData}/>
-        </div>
-    )
+    return <Values achievementData={achievementData}/>
 }
 
 export default Visits

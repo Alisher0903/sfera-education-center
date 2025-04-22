@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Hero from "@/pages-comp/achievements/hero"
 import Info from "@/pages-comp/achievements/info"
 import OurMotto from "@/pages-comp/achievements/ourMotto"

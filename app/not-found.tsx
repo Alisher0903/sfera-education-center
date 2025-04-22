@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Image from "next/image";
 import React from "react";
 import GridShape from "@/components/other/grid-shape";
