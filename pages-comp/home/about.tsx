@@ -1,4 +1,4 @@
-"use client"; // Next.js'da klientsiy komponent uchun
+"use client";
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
@@ -15,143 +15,61 @@ const About: React.FC = () => {
 
   useGSAP(
     () => {
-      gsap.set(titleRef.current, { opacity: 0, y: -50 });
-
-      ScrollTrigger.create({
-        trigger: titleRef.current,
-        start: "top 90%",
-        end: "top 20%",
-        toggleActions: "play none none reverse",
-        onEnter: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeave: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: -50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: 50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-      });
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: -50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 100%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
 
       const cards = gsap.utils.toArray<HTMLElement>(".count-card");
       const borders = gsap.utils.toArray<HTMLElement>(".border-anim");
 
       cards.forEach((card, index) => {
-        gsap.set(card, { opacity: 0, y: 60, scale: 0.95 });
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 60, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            ease: "power3.out",
+            delay: index * 0.25,
+            scrollTrigger: {
+              trigger: card,
+              start: "top 100%",
+              toggleActions: "play none none none",
+            },
+            onComplete: () => {
+              const border = borders[index];
+              if (border) {
+                gsap.to(border, {
+                  scaleX: 1,
+                  scaleY: 1,
+                  duration: 0.5,
+                  ease: "power2.out",
+                });
+              }
+            },
+          }
+        );
+
         if (borders[index]) {
           gsap.set(borders[index], { scaleX: 0, scaleY: 0 });
         }
-
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top 100%",
-          end: "top 10%",
-          toggleActions: "play none none reverse",
-          onEnter: () => {
-            gsap.to(card, {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.25,
-              onComplete: () => {
-                const border = borders[index];
-                if (border) {
-                  gsap.to(border, {
-                    scaleX: 1,
-                    scaleY: 1,
-                    duration: 0.5,
-                    ease: "power2.out",
-                  });
-                }
-              },
-            });
-          },
-          onLeave: () => {
-            gsap.to(card, {
-              opacity: 0,
-              y: -50,
-              scale: 0.95,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-            const border = borders[index];
-            if (border) {
-              gsap.to(border, {
-                scaleX: 0,
-                scaleY: 0,
-                duration: 0.5,
-                ease: "power2.in",
-              });
-            }
-          },
-          onEnterBack: () => {
-            gsap.to(card, {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.25,
-              onComplete: () => {
-                const border = borders[index];
-                if (border) {
-                  gsap.to(border, {
-                    scaleX: 1,
-                    scaleY: 1,
-                    duration: 0.5,
-                    ease: "power2.out",
-                  });
-                }
-              },
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(card, {
-              opacity: 0,
-              y: 60,
-              scale: 0.95,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-            const border = borders[index];
-            if (border) {
-              gsap.to(border, {
-                scaleX: 0,
-                scaleY: 0,
-                duration: 0.5,
-                ease: "power2.in",
-              });
-            }
-          },
-        });
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [] }
   );
 
   return (

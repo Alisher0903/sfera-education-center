@@ -12,58 +12,37 @@ gsap.registerPlugin(ScrollTrigger);
 export default function CourseInfoSection({ course }: { course: Course }) {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const items = gsap.utils.toArray<HTMLElement>(".course-info-item");
+  useGSAP(
+    () => {
+      const items = gsap.utils.toArray<HTMLElement>(".course-info-item");
 
-    items.forEach((item, index) => {
-      const elements = item.querySelectorAll("h3, p") as NodeListOf<HTMLElement>;
+      items.forEach((item, index) => {
+        const elements = item.querySelectorAll(
+          "h3, p"
+        ) as NodeListOf<HTMLElement>;
 
-      elements.forEach((element, i) => {
-        gsap.set(element, { opacity: 0, y: 50 });
-
-        ScrollTrigger.create({
-          trigger: element,
-          start: "top 90%",
-          end: "top 20%",
-          toggleActions: "play none none reverse",
-          onEnter: () => {
-            gsap.to(element, {
+        elements.forEach((element, i) => {
+          gsap.fromTo(
+            element,
+            { opacity: 0, y: 50 },
+            {
               opacity: 1,
               y: 0,
               duration: 1,
               ease: "power3.out",
-              delay: (index * 0.3) + (i * 0.2),
-            });
-          },
-          onLeave: () => {
-            gsap.to(element, {
-              opacity: 0,
-              y: -50,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
-          onEnterBack: () => {
-            gsap.to(element, {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-              delay: (index * 0.3) + (i * 0.2),
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(element, {
-              opacity: 0,
-              y: 50,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
+              delay: index * 0.3 + i * 0.2,
+              scrollTrigger: {
+                trigger: element,
+                start: "top 90%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
         });
       });
-    });
-  }, { scope: sectionRef });
+    },
+    { scope: sectionRef, dependencies: [] }
+  );
 
   return (
     <div
@@ -82,7 +61,7 @@ export default function CourseInfoSection({ course }: { course: Course }) {
           </div>
 
           <div className="course-info-item px-4 py-2">
-            <h3 className="text-sm font-medium">Ta&apos;lim formati:</h3>
+            <h3 className="text-sm font-medium">Ta‘lim formati:</h3>
             <p className="text-2xl font-bold">{course.format}</p>
           </div>
 

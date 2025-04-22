@@ -26,46 +26,21 @@ const Students: React.FC<Student> = ({ studentsData }) => {
 
   useGSAP(
     () => {
-      gsap.set(titleRef.current, { opacity: 0, y: -50 });
-
-      ScrollTrigger.create({
-        trigger: titleRef.current,
-        start: "top 90%",
-        end: "top 20%",
-        toggleActions: "play none none reverse",
-        onEnter: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeave: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: -50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: 50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-      });
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: -50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
 
       const cards = gsap.utils.toArray<HTMLElement>(".student-card");
       const nextButton = document.querySelector(
@@ -76,96 +51,41 @@ const Students: React.FC<Student> = ({ studentsData }) => {
       ) as HTMLElement;
       const navButtons = [nextButton, prevButton].filter(Boolean);
 
-      cards.forEach((card, index) => {
-        gsap.set(card, { opacity: 0, y: 60, scale: 0.95 });
-
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top 90%",
-          end: "top 20%",
-          toggleActions: "play none none reverse",
-          onEnter: () => {
-            gsap.to(card, {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.25,
-              onComplete: () => {
-                navButtons.forEach((button) => {
-                  gsap.to(button, {
-                    opacity: 1,
-                    scale: 1,
-                    duration: 0.5,
-                    ease: "power2.out",
-                  });
-                });
-              },
-            });
-          },
-          onLeave: () => {
-            gsap.to(card, {
-              opacity: 0,
-              y: -50,
-              scale: 0.95,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-            navButtons.forEach((button) => {
-              gsap.to(button, {
-                opacity: 0,
-                scale: 0.8,
-                duration: 0.5,
-                ease: "power2.in",
-              });
-            });
-          },
-          onEnterBack: () => {
-            gsap.to(card, {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.25,
-              onComplete: () => {
-                navButtons.forEach((button) => {
-                  gsap.to(button, {
-                    opacity: 1,
-                    scale: 1,
-                    duration: 0.5,
-                    ease: "power2.out",
-                  });
-                });
-              },
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(card, {
-              opacity: 0,
-              y: 60,
-              scale: 0.95,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-            navButtons.forEach((button) => {
-              gsap.to(button, {
-                opacity: 0,
-                scale: 0.8,
-                duration: 0.5,
-                ease: "power2.in",
-              });
-            });
-          },
-        });
-      });
-
       navButtons.forEach((button) => {
         gsap.set(button, { opacity: 0, scale: 0.8 });
       });
+
+      cards.forEach((card, index) => {
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 60, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            ease: "power3.out",
+            delay: index * 0.25,
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+            onComplete: () => {
+              navButtons.forEach((button) => {
+                gsap.to(button, {
+                  opacity: 1,
+                  scale: 1,
+                  duration: 0.5,
+                  ease: "power2.out",
+                });
+              });
+            },
+          }
+        );
+      });
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [] }
   );
 
   return (

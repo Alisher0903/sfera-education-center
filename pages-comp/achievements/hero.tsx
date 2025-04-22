@@ -26,51 +26,25 @@ export default function Hero() {
       ].filter(Boolean) as HTMLElement[];
 
       elements.forEach((element, index) => {
-        gsap.set(element, { opacity: 0, y: 50 });
-
-        ScrollTrigger.create({
-          trigger: element,
-          start: "top 90%",
-          end: "top 20%",
-          toggleActions: "play none none reverse",
-          onEnter: () => {
-            gsap.to(element, {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.3,
-            });
-          },
-          onLeave: () => {
-            gsap.to(element, {
-              opacity: 0,
-              y: -50,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
-          onEnterBack: () => {
-            gsap.to(element, {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.3,
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(element, {
-              opacity: 0,
-              y: 50,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
-        });
+        gsap.fromTo(
+          element,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            delay: index * 0.3,
+            scrollTrigger: {
+              trigger: element,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [] }
   );
 
   return (
@@ -97,9 +71,8 @@ export default function Hero() {
               style={{ color: colors.grayText }}
               ref={descriptionRef}
             >
-              SFERA AKADEMIYASI HAR BIR O&apos;QUVCHINING SALOHIYATINI OCHISH,
-              ZAMONAVIY BILIM VA KO&apos;NIKMALAR BILAN QUROLLANTIRSHGA
-              INTILADI.
+              SFERA AKADEMIYASI HAR BIR O‘QUVCHINING SALOHIYATINI OCHISH,
+              ZAMONAVIY BILIM VA KO‘NIKMALAR BILAN QUROLLANTIRSHGA INTILADI.
             </p>
           </div>
 

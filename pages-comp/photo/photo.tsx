@@ -10,8 +10,6 @@ import colors from "@/lib/colors";
 import { URL } from "@/helpers/api";
 import { photo } from "@/types/cards";
 
-
-
 gsap.registerPlugin(ScrollTrigger);
 
 interface PhotoSplideProps {
@@ -97,46 +95,21 @@ export default function PhotoSplide({ photosData }: PhotoSplideProps) {
     () => {
       if (!titleRef.current) return;
 
-      gsap.set(titleRef.current, { opacity: 0, y: -50 });
-
-      ScrollTrigger.create({
-        trigger: titleRef.current,
-        start: "top 90%",
-        end: "top 20%",
-        toggleActions: "play none none reverse",
-        onEnter: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeave: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: -50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: 50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-      });
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: -50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
 
       const slides = gsap.utils.toArray<HTMLElement>(".photo-slide");
 
@@ -147,52 +120,26 @@ export default function PhotoSplide({ photosData }: PhotoSplideProps) {
         const elements = [image, title].filter(Boolean) as HTMLElement[];
 
         elements.forEach((element, i) => {
-          gsap.set(element, { opacity: 0, y: 50 });
-
-          ScrollTrigger.create({
-            trigger: element,
-            start: "top 90%",
-            end: "top 20%",
-            toggleActions: "play none none reverse",
-            onEnter: () => {
-              gsap.to(element, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-                delay: (index % itemsToShow) * 0.3 + i * 0.3,
-              });
-            },
-            onLeave: () => {
-              gsap.to(element, {
-                opacity: 0,
-                y: -50,
-                duration: 0.7,
-                ease: "power2.in",
-              });
-            },
-            onEnterBack: () => {
-              gsap.to(element, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-                delay: (index % itemsToShow) * 0.3 + i * 0.3,
-              });
-            },
-            onLeaveBack: () => {
-              gsap.to(element, {
-                opacity: 0,
-                y: 50,
-                duration: 0.7,
-                ease: "power2.in",
-              });
-            },
-          });
+          gsap.fromTo(
+            element,
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power3.out",
+              delay: (index % itemsToShow) * 0.3 + i * 0.3,
+              scrollTrigger: {
+                trigger: element,
+                start: "top 90%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
         });
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [] }
   );
 
   const slideWidthPercentage = 100 / itemsToShow;
@@ -207,7 +154,7 @@ export default function PhotoSplide({ photosData }: PhotoSplideProps) {
 
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8" ref={sectionRef}>
-      <div className="mt-10 " ref={titleRef}>
+      <div className="mt-10" ref={titleRef}>
         <SectionTitle title="FOTOSURATLAR" />
       </div>
       <div className="max-w-7xl mx-auto pb-10">

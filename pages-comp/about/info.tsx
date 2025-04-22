@@ -79,100 +79,48 @@ const Register = ({ coursesData }: RegisterProps) => {
     () => {
       if (!titleRef.current) return;
 
-      gsap.set(titleRef.current, { opacity: 0, y: -50 });
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: -50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
 
-      ScrollTrigger.create({
-        trigger: titleRef.current,
-        start: "top 90%",
-        end: "top 20%",
-        toggleActions: "play none none reverse",
-        onEnter: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeave: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: -50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: 50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-      });
-
-      // "Ta’lim haqida" bo’limi animatsiyasi
       if (educationInfoRef.current) {
         const educationElements = educationInfoRef.current.querySelectorAll(
           "h2, ul"
         ) as NodeListOf<HTMLElement>;
 
         educationElements.forEach((element, index) => {
-          gsap.set(element, { opacity: 0, y: 50 });
-
-          ScrollTrigger.create({
-            trigger: element,
-            start: "top 90%",
-            end: "top 20%",
-            toggleActions: "play none none reverse",
-            onEnter: () => {
-              gsap.to(element, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-                delay: index * 0.3,
-              });
-            },
-            onLeave: () => {
-              gsap.to(element, {
-                opacity: 0,
-                y: -50,
-                duration: 0.7,
-                ease: "power2.in",
-              });
-            },
-            onEnterBack: () => {
-              gsap.to(element, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-                delay: index * 0.3,
-              });
-            },
-            onLeaveBack: () => {
-              gsap.to(element, {
-                opacity: 0,
-                y: 50,
-                duration: 0.7,
-                ease: "power2.in",
-              });
-            },
-          });
+          gsap.fromTo(
+            element,
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power3.out",
+              delay: index * 0.3,
+              scrollTrigger: {
+                trigger: element,
+                start: "top 90%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
         });
       }
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [] }
   );
 
   return (
@@ -185,7 +133,6 @@ const Register = ({ coursesData }: RegisterProps) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {/* Ta’lim haqida */}
         <div
           className="bg-gray-100 rounded-2xl p-8 w-full mx-auto"
           ref={educationInfoRef}
@@ -211,7 +158,6 @@ const Register = ({ coursesData }: RegisterProps) => {
           </ul>
         </div>
 
-        {/* Form */}
         <div
           className="rounded-2xl p-8 w-full mx-auto"
           style={{ backgroundColor: colors.green, color: colors.white }}

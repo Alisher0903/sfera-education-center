@@ -32,58 +32,32 @@ const VisitsCard: React.FC<VisitsCardProps> = ({
       ].filter(Boolean) as HTMLElement[];
 
       elements.forEach((element, index) => {
-        gsap.set(element, { opacity: 0, y: 50 });
-
-        ScrollTrigger.create({
-          trigger: element,
-          start: "top 100%",
-          end: "top 0%",
-          toggleActions: "play none none reverse",
-          onEnter: () => {
-            gsap.to(element, {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.3,
-            });
-          },
-          onLeave: () => {
-            gsap.to(element, {
-              opacity: 0,
-              y: -50,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
-          onEnterBack: () => {
-            gsap.to(element, {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.3,
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(element, {
-              opacity: 0,
-              y: 50,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
-        });
+        gsap.fromTo(
+          element,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            delay: index * 0.3,
+            scrollTrigger: {
+              trigger: element,
+              start: "top 100%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
       });
     },
-    { scope: cardRef }
+    { scope: cardRef, dependencies: [] }
   );
 
   if (!visitData) return null;
 
   return (
     <div
-      className="p-5 rounded-2xl  overflow-hidden"
+      className="p-5 rounded-2xl overflow-hidden"
       style={{ border: `2px solid ${colors.green}` }}
       ref={cardRef}
     >
@@ -93,7 +67,7 @@ const VisitsCard: React.FC<VisitsCardProps> = ({
         }`}
       >
         <div className={isLeft ? "" : "md:order-2"}>
-          <div className="relative min-w-80 min-h-80  max-w-[100%]  overflow-hidden rounded-2xl">
+          <div className="relative min-w-80 min-h-80 max-w-[100%] overflow-hidden rounded-2xl">
             <Image
               src={`${URL}${visitData.photo}`}
               alt={visitData.full_name}
@@ -133,53 +107,3 @@ const VisitsCard: React.FC<VisitsCardProps> = ({
 };
 
 export default VisitsCard;
-
-{
-  /* <div
-      className="p-5 rounded-2xl  overflow-hidden"
-      style={{ border: `2px solid ${colors.green}` }}
-      ref={cardRef}
-    >
-      <div
-        className={`grid grid-cols-1 md:grid-cols-2 gap-4 h-full ${
-          isLeft ? "md:grid-flow-row" : "md:grid-flow-row-dense"
-        }`}
-      >
-        <div className={isLeft ? "" : "md:order-2"}>
-          <div className="relative w-full h-full  overflow-hidden rounded-2xl">
-            <Image
-              src={`${URL}${visitData.photo}`}
-              alt={visitData.full_name}
-              fill
-              className="object-cover rounded-2xl"
-              ref={imageRef}
-            />
-          </div>
-        </div>
-        <div className={isLeft ? "" : "md:order-1"}>
-          <div className="flex flex-col justify-center items-center w-full h-full p-20">
-            <h3
-              className="mb-2 text-xl text-center"
-              style={{ color: colors.green }}
-              ref={nameRef}
-            >
-              {visitData.full_name}
-            </h3>
-            <h3
-              className="mb-2 text-sm text-center font-medium tracking-wide"
-              style={{ color: colors.grayText }}
-              ref={dateRef}
-            >
-              {visitData.date}
-            </h3>
-            <p
-              className="text-sm md:leading-relaxed text-body-color text-center"
-              ref={descriptionRef}
-            >
-              {visitData.description}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div> */
-}

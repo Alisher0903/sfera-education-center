@@ -14,111 +14,64 @@ const ForWhomSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    if (!titleRef.current) return;
+  useGSAP(
+    () => {
+      if (!titleRef.current) return;
 
-    gsap.set(titleRef.current, { opacity: 0, y: -50 });
-
-    ScrollTrigger.create({
-      trigger: titleRef.current,
-      start: "top 90%",
-      end: "top 20%",
-      toggleActions: "play none none reverse",
-      onEnter: () => {
-        gsap.to(titleRef.current, {
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: -50 },
+        {
           opacity: 1,
           y: 0,
           duration: 1,
           ease: "power3.out",
-        });
-      },
-      onLeave: () => {
-        gsap.to(titleRef.current, {
-          opacity: 0,
-          y: -50,
-          duration: 0.7,
-          ease: "power2.in",
-        });
-      },
-      onEnterBack: () => {
-        gsap.to(titleRef.current, {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-        });
-      },
-      onLeaveBack: () => {
-        gsap.to(titleRef.current, {
-          opacity: 0,
-          y: 50,
-          duration: 0.7,
-          ease: "power2.in",
-        });
-      },
-    });
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
 
-    const items = gsap.utils.toArray<HTMLElement>(".for-whom-item");
+      const items = gsap.utils.toArray<HTMLElement>(".for-whom-item");
 
-    items.forEach((item, index) => {
-      const elements = item.querySelectorAll("img, h3, p") as NodeListOf<HTMLElement>;
+      items.forEach((item, index) => {
+        const elements = item.querySelectorAll(
+          "img, h3, p"
+        ) as NodeListOf<HTMLElement>;
 
-      elements.forEach((element, i) => {
-        gsap.set(element, { opacity: 0, y: 50 });
-
-        ScrollTrigger.create({
-          trigger: element,
-          start: "top 90%",
-          end: "top 20%",
-          toggleActions: "play none none reverse",
-          onEnter: () => {
-            gsap.to(element, {
+        elements.forEach((element, i) => {
+          gsap.fromTo(
+            element,
+            { opacity: 0, y: 50 },
+            {
               opacity: 1,
               y: 0,
               duration: 1,
               ease: "power3.out",
-              delay: (index * 0.5) + (i * 0.2),
-            });
-          },
-          onLeave: () => {
-            gsap.to(element, {
-              opacity: 0,
-              y: -50,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
-          onEnterBack: () => {
-            gsap.to(element, {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-              delay: (index * 0.5) + (i * 0.2),
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(element, {
-              opacity: 0,
-              y: 50,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
+              delay: index * 0.5 + i * 0.2,
+              scrollTrigger: {
+                trigger: element,
+                start: "top 90%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
         });
       });
-    });
-  }, { scope: sectionRef });
+    },
+    { scope: sectionRef, dependencies: [] }
+  );
 
   return (
     <section className="w-full" ref={sectionRef}>
       <div className="my-10" ref={titleRef}>
-        <SectionTitle title="KURSLARIMIZ KIMLARGA TOG'RI KELADI"  />
+        <SectionTitle title="KURSLARIMIZ KIMLARGA TOG'RI KELADI" />
       </div>
       <div style={{ backgroundColor: colors.green, color: colors.white }}>
         <div className="container mx-auto py-8 px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Yangi boshlovchilar uchun */}
             <div
               className="for-whom-item flex p-6 md:border-r flex-col gap-5"
               style={{ borderColor: colors.white }}
@@ -139,13 +92,12 @@ const ForWhomSection = () => {
               <div>
                 <p style={{ color: colors.white }}>
                   Dasturlashda boshlang‘ich tushunchaga ega bo‘lganlar bu kurs
-                  orqali o‘z bilimlarini mustahkamlab, yangi texnologiyalar bilan
-                  ishlashni chuqurroq o‘rganishlari mumkin.
+                  orqali o‘z bilimlarini mustahkamlab, yangi texnologiyalar
+                  bilan ishlashni chuqurroq o‘rganishlari mumkin.
                 </p>
               </div>
             </div>
 
-            {/* Boshlang‘ich bilimga ega bo‘lganlar uchun */}
             <div className="for-whom-item p-6 flex flex-col gap-5">
               <div>
                 <div className="flex gap-10 items-center">
@@ -163,8 +115,8 @@ const ForWhomSection = () => {
               <div>
                 <p style={{ color: colors.white }}>
                   Dasturlashda boshlang‘ich tushunchaga ega bo‘lganlar bu kurs
-                  orqali o‘z bilimlarini mustahkamlab, yangi texnologiyalar bilan
-                  ishlashni chuqurroq o‘rganishlari mumkin.
+                  orqali o‘z bilimlarini mustahkamlab, yangi texnologiyalar
+                  bilan ishlashni chuqurroq o‘rganishlari mumkin.
                 </p>
               </div>
             </div>

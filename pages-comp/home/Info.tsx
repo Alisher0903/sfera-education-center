@@ -1,4 +1,4 @@
-"use client"; // Next.js'da klientsiy komponent uchun
+"use client";
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
@@ -7,10 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import InfoCard from "@/components/cards/infoCard";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
 
-// GSAP plaginini ro'yxatdan o'tkazish
 gsap.registerPlugin(ScrollTrigger);
 
-// InfoCard ma'lumotlari
 export const infoCards = [
   {
     image: "/home/info.png",
@@ -38,110 +36,52 @@ export const infoCards = [
   },
 ];
 
-// InfoCard komponenti uchun props interfeysi
-
 const Info: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
 
-  // GSAP animatsiyasini sozlash
-  useGSAP(() => {
-    // SectionTitle animatsiyasi
-    gsap.set(titleRef.current, { opacity: 0, y: -50 });
-
-    ScrollTrigger.create({
-      trigger: titleRef.current,
-      start: "top 90%",
-      end: "top 20%",
-      toggleActions: "play none none reverse",
-      onEnter: () => {
-        gsap.to(titleRef.current, {
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: -50 },
+        {
           opacity: 1,
           y: 0,
           duration: 1,
           ease: "power3.out",
-        });
-      },
-      onLeave: () => {
-        gsap.to(titleRef.current, {
-          opacity: 0,
-          y: -50,
-          duration: 0.7,
-          ease: "power2.in",
-        });
-      },
-      onEnterBack: () => {
-        gsap.to(titleRef.current, {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-        });
-      },
-      onLeaveBack: () => {
-        gsap.to(titleRef.current, {
-          opacity: 0,
-          y: 50,
-          duration: 0.7,
-          ease: "power2.in",
-        });
-      },
-    });
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
 
-    // InfoCard animatsiyasi
-    const cards = gsap.utils.toArray<HTMLElement>(".info-card");
+      const cards = gsap.utils.toArray<HTMLElement>(".info-card");
 
-    cards.forEach((card, index) => {
-      // InfoCard dastlabki holati
-      gsap.set(card, { opacity: 0, y: 60, scale: 0.95 });
-
-      // InfoCard animatsiyasi
-      ScrollTrigger.create({
-        trigger: card,
-        start: "top 90%",
-        end: "top 20%",
-        toggleActions: "play none none reverse",
-        onEnter: () => {
-          gsap.to(card, {
+      cards.forEach((card, index) => {
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 60, scale: 0.95 },
+          {
             opacity: 1,
             y: 0,
             scale: 1,
             duration: 1,
             ease: "power3.out",
             delay: index * 0.25,
-          });
-        },
-        onLeave: () => {
-          gsap.to(card, {
-            opacity: 0,
-            y: -50,
-            scale: 0.95,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(card, {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1,
-            ease: "power3.out",
-            delay: index * 0.25,
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(card, {
-            opacity: 0,
-            y: 60,
-            scale: 0.95,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
       });
-    });
-  }, { scope: sectionRef });
+    },
+    { scope: sectionRef, dependencies: [] }
+  );
 
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8">

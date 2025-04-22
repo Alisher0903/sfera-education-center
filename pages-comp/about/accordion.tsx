@@ -15,105 +15,30 @@ const FAQSection = () => {
 
   useGSAP(
     () => {
+      const elements = [titleRef.current, sectionRef.current].filter(
+        Boolean
+      ) as HTMLElement[];
 
-      if (!titleRef.current) return;
-
-      gsap.set(titleRef.current, { opacity: 0, y: -50 });
-
-      ScrollTrigger.create({
-        trigger: titleRef.current,
-        start: "top 90%",
-        end: "top 20%",
-        toggleActions: "play none none reverse",
-        onEnter: () => {
-          gsap.to(titleRef.current, {
+      elements.forEach((element, index) => {
+        gsap.fromTo(
+          element,
+          { opacity: 0, y: 50 },
+          {
             opacity: 1,
             y: 0,
             duration: 1,
             ease: "power3.out",
-          });
-        },
-        onLeave: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: -50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: 50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-      });
-
-
-      const items = gsap.utils.toArray<HTMLElement>(".faq-item");
-
-      items.forEach((item, index) => {
-        const elements = item.querySelectorAll(
-          ".accordion-title, .accordion-content"
-        ) as NodeListOf<HTMLElement>;
-
-        elements.forEach((element, i) => {
-          gsap.set(element, { opacity: 0, y: 50 });
-
-          ScrollTrigger.create({
-            trigger: element,
-            start: "top 90%",
-            end: "top 20%",
-            toggleActions: "play none none reverse",
-            onEnter: () => {
-              gsap.to(element, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-                delay: index * 0.5 + i * 0.2,
-              });
+            delay: index * 0.3,
+            scrollTrigger: {
+              trigger: element,
+              start: "top 90%",
+              toggleActions: "play none none none",
             },
-            onLeave: () => {
-              gsap.to(element, {
-                opacity: 0,
-                y: -50,
-                duration: 0.7,
-                ease: "power2.in",
-              });
-            },
-            onEnterBack: () => {
-              gsap.to(element, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-                delay: index * 0.5 + i * 0.2,
-              });
-            },
-            onLeaveBack: () => {
-              gsap.to(element, {
-                opacity: 0,
-                y: 50,
-                duration: 0.7,
-                ease: "power2.in",
-              });
-            },
-          });
-        });
+          }
+        );
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [] }
   );
 
   return (

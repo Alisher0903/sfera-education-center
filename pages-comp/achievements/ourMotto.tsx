@@ -50,101 +50,44 @@ export default function OurMotto() {
         const title = slide.querySelector("h2") as HTMLElement;
         const content = slide.querySelector("p") as HTMLElement;
 
-        gsap.set([title, content], { opacity: 0, y: 50 });
+        gsap.fromTo(
+          [title, content],
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            stagger: 0.3,
+            scrollTrigger: {
+              trigger: slide,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
 
-        ScrollTrigger.create({
-          trigger: slide,
-          start: "top 90%",
-          end: "top 20%",
-          toggleActions: "play none none reverse",
-          onEnter: () => {
-            gsap.to(title, {
+        if (pagination) {
+          gsap.fromTo(
+            pagination,
+            { opacity: 0, y: 20 },
+            {
               opacity: 1,
               y: 0,
-              duration: 1,
-              ease: "power3.out",
-            });
-            gsap.to(content, {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-              delay: 0.3,
-            });
-            if (pagination) {
-              gsap.to(pagination, {
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                ease: "power2.out",
-                delay: 0.6,
-              });
+              duration: 0.5,
+              ease: "power2.out",
+              delay: 0.6,
+              scrollTrigger: {
+                trigger: slide,
+                start: "top 90%",
+                toggleActions: "play none none none",
+              },
             }
-          },
-          onLeave: () => {
-            gsap.to([title, content], {
-              opacity: 0,
-              y: -50,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-            if (pagination) {
-              gsap.to(pagination, {
-                opacity: 0,
-                y: 20,
-                duration: 0.5,
-                ease: "power2.in",
-              });
-            }
-          },
-          onEnterBack: () => {
-            gsap.to(title, {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-            });
-            gsap.to(content, {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-              delay: 0.3,
-            });
-            if (pagination) {
-              gsap.to(pagination, {
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                ease: "power2.out",
-                delay: 0.6,
-              });
-            }
-          },
-          onLeaveBack: () => {
-            gsap.to([title, content], {
-              opacity: 0,
-              y: 50,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-            if (pagination) {
-              gsap.to(pagination, {
-                opacity: 0,
-                y: 20,
-                duration: 0.5,
-                ease: "power2.in",
-              });
-            }
-          },
-        });
+          );
+        }
       });
-
-      if (pagination) {
-        gsap.set(pagination, { opacity: 0, y: 20 });
-      }
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [] }
   );
 
   if (!mounted) return null;

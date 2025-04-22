@@ -52,99 +52,45 @@ const Feature: React.FC = () => {
 
   useGSAP(
     () => {
-      gsap.set(titleRef.current, { opacity: 0, y: -50 });
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: -50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
 
-      ScrollTrigger.create({
-        trigger: titleRef.current,
-        start: "top 90%",
-        end: "top 20%",
-        toggleActions: "play none none reverse",
-        onEnter: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeave: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: -50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: 50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-      });
-
+      // Animate the cards
       const cards = gsap.utils.toArray<HTMLElement>(".feature-card");
-
       cards.forEach((card, index) => {
-        gsap.set(card, { opacity: 0, y: 60, scale: 0.95 });
-
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top 90%",
-          end: "top 20%",
-          toggleActions: "play none none reverse",
-          onEnter: () => {
-            gsap.to(card, {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.25,
-            });
-          },
-          onLeave: () => {
-            gsap.to(card, {
-              opacity: 0,
-              y: -50,
-              scale: 0.95,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
-          onEnterBack: () => {
-            gsap.to(card, {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.25,
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(card, {
-              opacity: 0,
-              y: 60,
-              scale: 0.95,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
-        });
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 60, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1,
+            ease: "power3.out",
+            delay: index * 0.25,
+            scrollTrigger: {
+              trigger: card,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [] }
   );
 
   return (

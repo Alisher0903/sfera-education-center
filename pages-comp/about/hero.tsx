@@ -28,50 +28,25 @@ const Hero: React.FC<{ course: Course }> = ({ course }) => {
       ].filter(Boolean) as HTMLElement[];
 
       elements.forEach((element, index) => {
-        gsap.set(element, { opacity: 0, y: 50 });
-        ScrollTrigger.create({
-          trigger: element,
-          start: "top 90%",
-          end: "top 20%",
-          toggleActions: "play none none reverse",
-          onEnter: () => {
-            gsap.to(element, {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.3,
-            });
-          },
-          onLeave: () => {
-            gsap.to(element, {
-              opacity: 0,
-              y: -50,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
-          onEnterBack: () => {
-            gsap.to(element, {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power3.out",
-              delay: index * 0.3,
-            });
-          },
-          onLeaveBack: () => {
-            gsap.to(element, {
-              opacity: 0,
-              y: 50,
-              duration: 0.7,
-              ease: "power2.in",
-            });
-          },
-        });
+        gsap.fromTo(
+          element,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out",
+            delay: index * 0.3,
+            scrollTrigger: {
+              trigger: element,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          }
+        );
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [] }
   );
 
   return (
@@ -114,7 +89,7 @@ const Hero: React.FC<{ course: Course }> = ({ course }) => {
             <div className="inline-block w-full sm:w-auto">
               <HoveredButton
                 className={cn(
-                  "py-3 sm lubricating:py-4 w-full sm:w-auto px-6 hover:border-white hover:bg-transparent text-sm sm:text-base",
+                  "py-3 sm:py-4 w-full sm:w-auto px-6 hover:border-white hover:bg-transparent text-sm sm:text-base",
                   color("bg").green,
                   color("text").white,
                   color("border").green

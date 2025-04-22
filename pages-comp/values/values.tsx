@@ -19,103 +19,54 @@ export default function Values({ achievementData }: any) {
     () => {
       if (!titleRef.current) return;
 
-      gsap.set(titleRef.current, { opacity: 0, y: -50 });
-
-      ScrollTrigger.create({
-        trigger: titleRef.current,
-        start: "top 90%",
-        end: "top 20%",
-        toggleActions: "play none none reverse",
-        onEnter: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeave: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: -50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: 50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-      });
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: -50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
 
       const achievements = gsap.utils.toArray<HTMLElement>(".achievement-item");
 
-      achievements.forEach((achievement) => {
+      achievements.forEach((achievement, achievementIndex) => {
         const title = achievement.querySelector("h2") as HTMLElement;
         const description = achievement.querySelector("p") as HTMLElement;
-        // const image = achievement.querySelector("img") as HTMLElement;
+        const image = achievement.querySelector("img") as HTMLElement;
 
-        const elements = [title, description].filter(Boolean) as HTMLElement[];
+        const elements = [title, description, image].filter(
+          Boolean
+        ) as HTMLElement[];
 
         elements.forEach((element, index) => {
-          gsap.set(element, { opacity: 0, y: 50 });
-
-          ScrollTrigger.create({
-            trigger: element,
-            start: "top 90%",
-            end: "top 20%",
-            toggleActions: "play none none reverse",
-            onEnter: () => {
-              gsap.to(element, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-                delay: index * 0.3,
-              });
-            },
-            onLeave: () => {
-              gsap.to(element, {
-                opacity: 0,
-                y: -50,
-                duration: 0.7,
-                ease: "power2.in",
-              });
-            },
-            onEnterBack: () => {
-              gsap.to(element, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-                delay: index * 0.3,
-              });
-            },
-            onLeaveBack: () => {
-              gsap.to(element, {
-                opacity: 0,
-                y: 50,
-                duration: 0.7,
-                ease: "power2.in",
-              });
-            },
-          });
+          gsap.fromTo(
+            element,
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power3.out",
+              delay: achievementIndex * 0.5 + index * 0.3,
+              scrollTrigger: {
+                trigger: element,
+                start: "top 90%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
         });
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [] }
   );
 
   return (
@@ -125,7 +76,7 @@ export default function Values({ achievementData }: any) {
           <SectionTitle title="YUTUQLARIMIZ" />
         </div>
         {achievementData.map((achievement: any, index: number) => (
-          <div key={achievement.id} className="achievement-item ">
+          <div key={achievement.id} className="achievement-item">
             <div>
               <div
                 className={`flex flex-col lg:flex-row justify-center items-center ${

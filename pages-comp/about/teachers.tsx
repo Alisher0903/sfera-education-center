@@ -19,46 +19,21 @@ export default function Teacher({ course }: { course: any }) {
     () => {
       if (!titleRef.current) return;
 
-      gsap.set(titleRef.current, { opacity: 0, y: -50 });
-
-      ScrollTrigger.create({
-        trigger: titleRef.current,
-        start: "top 100%",
-        end: "top 0%",
-        toggleActions: "play none none reverse",
-        onEnter: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeave: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: -50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            ease: "power3.out",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(titleRef.current, {
-            opacity: 0,
-            y: 50,
-            duration: 0.7,
-            ease: "power2.in",
-          });
-        },
-      });
+      gsap.fromTo(
+        titleRef.current,
+        { opacity: 0, y: -50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 100%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
 
       const items = gsap.utils.toArray<HTMLElement>(".teacher-card-item");
 
@@ -68,52 +43,26 @@ export default function Teacher({ course }: { course: any }) {
         ) as NodeListOf<HTMLElement>;
 
         elements.forEach((element, i) => {
-          gsap.set(element, { opacity: 0, y: 50 });
-
-          ScrollTrigger.create({
-            trigger: element,
-            start: "top 90%",
-            end: "top 20%",
-            toggleActions: "play none none reverse",
-            onEnter: () => {
-              gsap.to(element, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-                delay: index * 0.5 + i * 0.2,
-              });
-            },
-            onLeave: () => {
-              gsap.to(element, {
-                opacity: 0,
-                y: -50,
-                duration: 0.7,
-                ease: "power2.in",
-              });
-            },
-            onEnterBack: () => {
-              gsap.to(element, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: "power3.out",
-                delay: index * 0.5 + i * 0.2,
-              });
-            },
-            onLeaveBack: () => {
-              gsap.to(element, {
-                opacity: 0,
-                y: 50,
-                duration: 0.7,
-                ease: "power2.in",
-              });
-            },
-          });
+          gsap.fromTo(
+            element,
+            { opacity: 0, y: 50 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power3.out",
+              delay: index * 0.5 + i * 0.2,
+              scrollTrigger: {
+                trigger: element,
+                start: "top 90%",
+                toggleActions: "play none none none",
+              },
+            }
+          );
         });
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [] }
   );
 
   return (
