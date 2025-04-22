@@ -45,7 +45,7 @@ export default function PhotoSplide({ photosData }: PhotoSplideProps) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const totalSlides = photosData.length - itemsToShow + 1;
+  const totalSlides = photosData?.length - itemsToShow + 1;
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalSlides);
