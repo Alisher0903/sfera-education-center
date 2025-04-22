@@ -1,5 +1,3 @@
-
-
 "use client";
 import Image from "next/image";
 import React from "react";
@@ -73,12 +71,12 @@ export default function BackendCard({
 
   return (
     <div
-      className="w-full rounded-lg border px-4 py-3"
+      className="w-full rounded-lg border px-4 pb-3"
       style={{ backgroundColor: colors.white, borderColor: colors.green }}
     >
       <div>
         <h2
-          className="text-1xl font-medium mb-2 break-words md:text-3xl"
+          className="text-1xl font-medium mb-4 break-words md:text-3xl"
           style={{ color: colors.green }}
         >
           {courseTitle}
@@ -94,37 +92,37 @@ export default function BackendCard({
             <div className="">
               <div className="flex text-lg justify-between border-b  border-slate-200 ">
                 <div>
-                  <p style={{ color: colors.grayText }}>Yangi guruh:</p>
+                  <p className="pb-1" style={{ color: colors.grayText }}>Yangi guruh:</p>
                   <p
-                    className=" font-medium break-words"
+                    className=" font-medium break-words pb-1"
                     style={{ color: colors.green }}
                   >
                     {start_date}
                   </p>
-                  <p className="" style={{ color: colors.grayText }}>
+                  <p className="pb-1" style={{ color: colors.grayText }}>
                     Narxi:
                   </p>
                   <p
-                    className=" font-medium break-words"
+                    className=" font-medium pb-2 break-words"
                     style={{ color: colors.green }}
                   >
                     {price}
                   </p>
                 </div>
                 <div>
-                  <p className="" style={{ color: colors.grayText }}>
+                  <p className="pb-1" style={{ color: colors.grayText }}>
                     Davomiyligi:
                   </p>
-                  <p className=" font-medium" style={{ color: colors.green }}>
+                  <p className=" font-medium " style={{ color: colors.green }}>
                     {duration} oy
                   </p>
                 </div>
               </div>
             </div>
             <div className="mt-4">
-              <Avatar>
-                <AvatarImage src={`${URL}${photo}`} alt={instructorName} />
-                <AvatarFallback>{instructorName[0]}</AvatarFallback>
+              <div className="flex gap-3 items-center">
+              <Avatar className="h-10 w-10">
+                <AvatarImage  src={`${URL}${photo}`} alt={instructorName} />
               </Avatar>
               <span
                 className="text-sm font-medium break-words"
@@ -132,6 +130,7 @@ export default function BackendCard({
               >
                 {instructorName}
               </span>
+              </div>
             </div>
           </div>
         </div>

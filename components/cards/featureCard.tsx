@@ -1,15 +1,15 @@
-import Image from "next/image"
-import { FeatureCardProps } from "@/types/cards"
-import colors from "@/lib/colors"
+import Image from "next/image";
+import { FeatureCardProps } from "@/types/cards";
+import colors from "@/lib/colors";
 
 export default function FeatureCard({
   title,
   description,
   highlight,
   iconSrc,
-  variant = "green"
+  variant = "green",
 }: FeatureCardProps) {
-  const isGreen = variant === "green"
+  const isGreen = variant === "green";
 
   return (
     <div
@@ -28,11 +28,16 @@ export default function FeatureCard({
         >
           {title}
         </h3>
-        <p className="mb-8 text-sm" style={{color: isGreen ? colors.white : colors.black}}>{description}</p>
+        <p
+          className="mb-8 text-md font-extralight"
+          style={{ color: isGreen ? colors.white : colors.black }}
+        >
+          {description}
+        </p>
       </div>
       <div className="flex justify-between items-center">
         <p
-          className={`text-sm font-medium`}
+          className={`text-md font-semibold`}
           style={{ color: isGreen ? colors.white : colors.green }}
         >
           {highlight}
@@ -48,5 +53,5 @@ export default function FeatureCard({
         </div>
       </div>
     </div>
-  )
+  );
 }

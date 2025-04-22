@@ -74,13 +74,13 @@ const Hero: React.FC = () => {
           </h1>
           <p
             className={cn(
-              "uppercase text-lg sm:text-xl md:text-2xl font-semibold mb-4 md:mb-5",
+              "uppercase text-lg sm:text-xl md:text-2xl font-normal mb-4 md:mb-5",
               color("text").white
             )}
             ref={subtitleRef}
           >
             sfera academy bilan{" "}
-            <span className={cn(color("text").green)}>osonroq</span> organing
+            <span className={cn(color("text").green) + " " + "font-bold" }>osonroq</span> organing
           </p>
           <div
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center"
@@ -89,7 +89,7 @@ const Hero: React.FC = () => {
             <div className="inline-block w-full sm:w-auto">
               <HoveredButton
                 className={cn(
-                  "py-3 sm:py-4 w-full sm:w-auto px-6 hover:border-white hover:bg-transparent text-sm sm:text-base",
+                  "py-3 sm:py-4 w-full sm:w-auto px-6  hover:border-white hover:bg-transparent text-sm sm:text-base",
                   color("bg").green,
                   color("text").white,
                   color("border").green

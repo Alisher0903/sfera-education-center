@@ -80,7 +80,7 @@ const VisitsCard: React.FC<VisitsCardProps> = ({
         <div className={isLeft ? "" : "md:order-1"}>
           <div className="flex flex-col justify-center items-center w-full h-full px-10">
             <h3
-              className="mb-2 text-xl text-center"
+              className="mb-2 text-2xl font-bold text-center"
               style={{ color: colors.green }}
               ref={nameRef}
             >

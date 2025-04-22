@@ -33,8 +33,8 @@ export default function StudentTestimonialCard({
         <h3 className="text-2xl font-bold mb-1" style={{ color:colors.green }}>
           {course_name}
         </h3>
-        <p className="mb-4">
-          Kurs: <span className="font-medium" style={{ color: colors.green }}>{course_name}</span>
+        <p className="mb-4" style={{ color: colors.grayText }}>
+          Kurs: <span className="font-medium text-lg" style={{ color: colors.green }}>{course_name}</span>
         </p>
 
         <p className="mb-1">

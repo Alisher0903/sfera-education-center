@@ -61,9 +61,9 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex justify-center sm:justify-start">
-            <iframe
-              className="w-full h-48"
+          <div className="flex justify-center sm:justify-start ">
+            <iframe style={{ borderColor: colors.green}}
+              className="w-full border-1  h-48"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3107.360900826398!2d65.79398997580802!3d38.847095071734884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f4ea7c4fd4eba1f%3A0xf1596ab7a01647b6!2sSfera%20Academy!5e0!3m2!1sen!2s!4v1731762979860!5m2!1sen!2s"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
