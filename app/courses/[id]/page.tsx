@@ -8,11 +8,11 @@ import CourseInfoSection from "@/pages-comp/about/CourseInfo";
 import Register from "@/pages-comp/about/info";
 import Teacher from "@/pages-comp/about/teachers";
 import {Course} from "@/types/cards";
-import {cache} from "react";
+// import {cache} from "react";
 
-const getCourse = cache(async (id: string): Promise<Course> => {
-    return await getAllData<Course>(`${ReadCourses}/${id}`);
-});
+// const getCourse = cache(async (id: string): Promise<Course> => {
+//     return await getAllData<Course>(`${ReadCourses}/${id}`);
+// });
 
 export default async function Page(props: {
     params: Promise<{ id: string }>;
@@ -20,17 +20,17 @@ export default async function Page(props: {
 }) {
     const {id} = await props.params;
 
-    const course = await getCourse(id);
+    const course = await getAllData<Course>(`${ReadCourses}/${id}`);
     const allCourses = await getAllData<Course[]>(ReadCourses);
 
     return (
         <div>
-            <Hero course={course}/>
-            <CourseInfoSection course={course}/>
+            {course && <Hero course={course}/>}
+            {course && <CourseInfoSection course={course}/>}
             <Info/>
             <Teacher course={course}/>
             <FAQSection/>
-            <Register coursesData={allCourses}/>
+            {allCourses && <Register coursesData={allCourses}/>}
             <ForWhomSection/>
         </div>
     );
