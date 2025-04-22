@@ -44,10 +44,10 @@ const About: React.FC = () => {
             scale: 1,
             duration: 1,
             ease: "power3.out",
-            delay: index * 0.25,
+            delay: index * 0.15,
             scrollTrigger: {
               trigger: card,
-              start: "top 100%",
+              start: "top 140%",
               toggleActions: "play none none none",
             },
             onComplete: () => {
