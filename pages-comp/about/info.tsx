@@ -173,9 +173,8 @@ const Register = ({ coursesData }: RegisterProps) => {
               <input
                 type="text"
                 placeholder="Ismingizni kiriting..."
-                className="w-full px-4 py-4 rounded-lg focus:outline-none"
+                className="w-full px-4 py-4 bg-gray-100 rounded-lg  focus:outline-none"
                 style={{
-                  backgroundColor: colors.white,
                   color: colors.grayText,
                 }}
                 value={formData.full_name}
@@ -189,9 +188,9 @@ const Register = ({ coursesData }: RegisterProps) => {
                 <input
                   type="tel"
                   placeholder="+998 00 000 00 00"
-                  className="w-full px-4 py-4 rounded-lg focus:outline-none"
+                  className="w-full px-4 py-4 bg-gray-100 rounded-lg focus:outline-none"
                   style={{
-                    backgroundColor: colors.white,
+                    
                     color: colors.grayText,
                   }}
                   value={formData.phone_number}
@@ -218,9 +217,8 @@ const Register = ({ coursesData }: RegisterProps) => {
               <div className="relative">
                 <button
                   type="button"
-                  className="w-full px-4 py-4 rounded-lg flex justify-between items-center focus:outline-none text-left cursor-pointer"
+                  className="w-full px-4 bg-gray-100 py-4 rounded-lg flex justify-between items-center focus:outline-none text-left cursor-pointer"
                   style={{
-                    backgroundColor: colors.white,
                     color: colors.grayText,
                   }}
                   onClick={() => setIsCourseOpen(!isCourseOpen)}
@@ -239,7 +237,7 @@ const Register = ({ coursesData }: RegisterProps) => {
                 </button>
 
                 {isCourseOpen && (
-                  <div className="absolute top-full left-0 right-0 mt-1 rounded-md shadow-lg z-10 bg-white">
+                  <div className="absolute top-full left-0 right-0 mt-1 rounded-md shadow-lg z-10 bg-gray-100">
                     <div className="py-1">
                       {coursesData?.map((course) => (
                         <button

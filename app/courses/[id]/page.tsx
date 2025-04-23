@@ -28,8 +28,8 @@ export default async function Page(props: {
             {course && <Hero course={course}/>}
             {course && <CourseInfoSection course={course}/>}
             <Info/>
-            <Teacher course={course}/>
             <FAQSection/>
+            <Teacher course={course}/>
             {allCourses && <Register coursesData={allCourses}/>}
             <ForWhomSection/>
         </div>

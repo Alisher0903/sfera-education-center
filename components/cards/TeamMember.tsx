@@ -36,7 +36,7 @@ export default function TeamMemberCard({
         <h3 className="text-xl font-bold  mb-1" style={{ color: colors.green }}>
           {name}
         </h3>
-        <p className=" mb-5" style={{ color: colors.grayText }}>
+        <p className=" mb-5 " style={{ color: colors.grayText2 }} >
           {level}
         </p>
 

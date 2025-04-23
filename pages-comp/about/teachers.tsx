@@ -98,7 +98,7 @@ export default function Teacher({ course }: { course: any }) {
                     {member.name}
                   </h3>
                   <p
-                    className="text-sm mt-1"
+                    className="text-sm "
                     style={{ color: colors.grayText }}
                   >
                     {member.level}

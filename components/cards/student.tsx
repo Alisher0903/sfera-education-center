@@ -13,7 +13,7 @@ export default function StudentTestimonialCard({
 }: BestStudent) {
   return (
     <div
-      className="rounded-2xl border-2 overflow-hidden flex flex-col md:flex-row max-w-3xl"
+      className="rounded-2xl border-1 overflow-hidden flex flex-col md:flex-row max-w-3xl"
       style={{ borderColor: colors.green, backgroundColor: colors.white }}
     >
       <div className="md:w-2/5 relative">

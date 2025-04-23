@@ -75,7 +75,7 @@ const Hero: React.FC<{ course: Course }> = ({ course }) => {
           </h1>
           <p
             className={cn(
-              "uppercase text-lg sm:text-xl md:text-2xl font-semibold mb-4 md:mb-5",
+              "uppercase text-lg sm:text-xl md:text-2xl font-normal mb-4 md:mb-5",
               color("text").white
             )}
             ref={subtitleRef}

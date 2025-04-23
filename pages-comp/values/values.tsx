@@ -85,7 +85,7 @@ export default function Values({ achievementData }: any) {
               >
                 <div className="lg:w-1/2 py-10 order-1 lg:order-none">
                   <h2
-                    className="text-3xl font-bold mb-4 text-center"
+                    className="text-3xl font-medium mb-4 text-center"
                     style={{ color: colors.green }}
                   >
                     {achievement.title}

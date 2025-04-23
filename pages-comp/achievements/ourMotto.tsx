@@ -97,9 +97,9 @@ export default function OurMotto() {
       className="w-full flex flex-col items-center justify-center"
       ref={sectionRef}
     >
-      <div className="container flex flex-col items-center" ref={containerRef}>
+      <div className="container flex flex-col items-center px-4 sm:px-6 lg:px-8 " ref={containerRef}>
         <div
-          className="rounded-lg md:p-12 text-center w-full"
+          className="rounded-lg md:p-12 text-center w-full "
           style={{ backgroundColor: colors.green, color: colors.white }}
         >
           <Swiper
@@ -115,11 +115,11 @@ export default function OurMotto() {
               disableOnInteraction: false,
             }}
             loop={true}
-            className="mySwiper"
+            className="mySwiper "
           >
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
-                <div className="py-4">
+                <div className="py-4 ">
                   <h2 className="text-3xl md:text-3xl font-semibold mb-6">
                     {slide.title}
                   </h2>

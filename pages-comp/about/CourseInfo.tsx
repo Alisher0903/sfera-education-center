@@ -56,22 +56,22 @@ export default function CourseInfoSection({ course }: { course: Course }) {
           style={{ borderColor: colors.green }}
         >
           <div className="course-info-item px-4 py-2">
-            <h3 className="text-sm font-medium">Barcha darslar miqdori:</h3>
+            <h3 className="text-lg font-medium">Barcha darslar miqdori:</h3>
             <p className="text-2xl font-bold">{course.lesson_count} dars</p>
           </div>
 
           <div className="course-info-item px-4 py-2">
-            <h3 className="text-sm font-medium">Ta‘lim formati:</h3>
+            <h3 className="text-lg font-medium">Ta‘lim formati:</h3>
             <p className="text-2xl font-bold">{course.format}</p>
           </div>
 
           <div className="course-info-item px-4 py-2">
-            <h3 className="text-sm font-medium">Kurs davomiyligi:</h3>
+            <h3 className="text-lg font-medium">Kurs davomiyligi:</h3>
             <p className="text-2xl font-bold">{course.course_duration}</p>
           </div>
 
           <div className="course-info-item px-4 py-2">
-            <h3 className="text-sm font-medium">Dars davomiyligi:</h3>
+            <h3 className="text-lg font-medium">Dars davomiyligi:</h3>
             <p className="text-2xl font-bold">{course.lesson_duration}</p>
           </div>
         </div>

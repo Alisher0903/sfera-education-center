@@ -45,6 +45,7 @@ export type teacher = {
 export interface InfoCardProps {
   image: string;
   title: string;
+  color?: string
   description?: string;
   imageAlt?: string;
 }

@@ -12,27 +12,27 @@ gsap.registerPlugin(ScrollTrigger);
 export const infoCards = [
   {
     image: "/home/info.png",
-    title: "O‘qituvchilarimiz katta tajribaga ega",
+    title: "",
     description:
-      "Bizning o‘quv markazimizda o‘z yo‘nalishlari bo‘yicha 1 yildan 3 yilgacha bo‘lgan tajribaga ega o‘qituvchilar ta'lim beradi.",
-  },
-  {
-    image: "/home/info1.png",
-    title: "Muloqot",
-    description:
-      "Darslar davomida fikr almashish uchun 15 daqiqalik tanaffus qilishingiz mumkin. Bu bolalarga muloqotini va fikrlashishini o‘stirishga yordam beradi.",
+      "Frontend dasturchining asosiy vazifasi — foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. Bu esa nafaqat texnik ",
   },
   {
     image: "/home/info2.png",
-    title: "Biz sizga ish topishga yordam beramiz",
+    title: "",
     description:
-      "Markazimizda zamonaviy sohalarda bo‘sh ish o‘rinlarini topishga yordam beruvchi bo‘limi mavjud.",
+      "Frontend dasturchining asosiy vazifasi — foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. ",
   },
   {
     image: "/home/info3.png",
-    title: "Sertifikatga ega bo‘lishingiz mumkin!",
+    title: "",
     description:
-      "Kursni muvaffaqiyatli tamomlagan o‘quvchilar “Sfera Academiyasi” ning diplom va sertifikatiga ega bo‘ladi.",
+      "Frontend dasturchilar foydalanuvchi interfeysini ishlab chiqadilar va dizaynni interaktiv elementlarga aylantiradilar. Ular ",
+  },
+  {
+    image: "/home/info1.png",
+    title: "",
+    description:
+      "Frontend dasturchining asosiy vazifasi — foydalanuvchi uchun qulay, tezkor va jozibali interfeys yaratishdir. ",
   },
 ];
 
@@ -89,12 +89,12 @@ const Info: React.FC = () => {
     <section className="w-full px-4 sm:px-6 lg:px-8" ref={sectionRef}>
       <div className="max-w-7xl mx-auto py-10">
         <div className="py-10" ref={titleRef}>
-          <SectionTitle title="AFZALLIKLARIMZ" />
+          <SectionTitle title="KURS HAQIDA BATAFSIL" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
           {infoCards.map((card, index) => (
-            <div className="info-card-item" key={index}>
+            <div className="info-card-item " key={index}>
               <InfoCard
                 image={card.image}
                 title={card.title}

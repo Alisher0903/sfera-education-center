@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { IProps } from "@/types/cards";
-import { color } from "@/lib/colors";
+import colors, { color } from "@/lib/colors";
 import { URL } from "@/helpers/api";
 import { cn, sliceText } from "@/lib/utils";
 
@@ -15,24 +15,24 @@ export default function CourseCard({
   return (
     <div
       className={cn(
-        "group relative w-full max-w-[384px] aspect-[3/4] rounded-lg overflow-hidden border border-green-500 transition-transform duration-300 ease-in-out hover:shadow-xl hover:scale-105 bg-white"
+        "group relative w-full max-w-[384px] aspect-[3/4] overflow-hidden  rounded-b-sm transition-transform duration-300 ease-in-out hover:shadow-xl hover:scale-105 bg-white"
       )}
     >
       {/* Image Layer */}
-      <div className="absolute inset-0 rounded-lg ">
+      <div className="absolute inset-0  ">
         <Image
           src={photo ? `${URL}${photo}` : "/home/1.png"}
           alt={`Course: ${name}`}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 384px"
-          className="object-cover rounded-lg transition-transform duration-500 ease-out group-hover:scale-110 group-hover:brightness-50"
+          className="object-cover  transition-transform duration-500 ease-out group-hover:scale-110 group-hover:brightness-50"
         />
       </div>
 
       {/* Hover Overlay */}
       <div
         className={cn(
-          "absolute inset-0 flex flex-col rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out bg-black/20 pointer-events-none"
+          "absolute inset-0 flex flex-col  opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out bg-black/20 pointer-events-none"
         )}
       >
         <div className="p-4 sm:p-6 flex-1 flex flex-col items-center justify-center text-center">
@@ -66,7 +66,7 @@ export default function CourseCard({
         </div>
         <div
           className={cn(
-            "p-4 sm:p-6 text-center min-h-[8rem] sm:min-h-[10rem] rounded-b-lg",
+            "p-4 sm:p-6  text-center min-h-[8rem] sm:min-h-[10rem] rounded-b-sm",
             color("bg").green
           )}
         >
@@ -77,11 +77,12 @@ export default function CourseCard({
       </div>
 
       {/* Default Bottom Description */}
-      <div className="relative h-full flex flex-col z-10">
-        <div className="flex-1" />
+      <div className="relative h-full  flex flex-col z-10">
+        <div className="flex-1 " />
         <div
+          style={{ borderColor: colors.green }}
           className={cn(
-            "p-4 sm:p-6 text-center min-h-[8rem] sm:min-h-[10rem] rounded-b-lg group-hover:opacity-0 transition-opacity duration-300 ease-in-out",
+            "p-4 sm:p-6 text-center min-h-[8rem] sm:min-h-[10rem] border-l border-r border-b rounded-b-sm overflow-hidden group-hover:opacity-0 transition-opacity duration-300 ease-in-out",
             color("bg").white
           )}
         >

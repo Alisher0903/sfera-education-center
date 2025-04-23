@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import InfoCard from "@/components/cards/infoCard";
 import SectionTitle from "@/components/SectionTitle/SectionTitle";
+import colors from "@/lib/colors";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -121,6 +122,7 @@ const Info = () => {
               <InfoCard
                 image={card.image}
                 title={card.title}
+                color={colors.grayText2}
                 description={card.description}
               />
             </div>

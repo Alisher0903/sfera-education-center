@@ -84,7 +84,7 @@ const ForWhomSection = () => {
                     width={100}
                     height={100}
                   />
-                  <h3 className="text-xl font-semibold mb-4">
+                  <h3 className="text-2xl font-medium mb-4">
                     Yangi boshlayotganlar uchun
                   </h3>
                 </div>
@@ -107,7 +107,7 @@ const ForWhomSection = () => {
                     width={100}
                     height={100}
                   />
-                  <h3 className="text-xl font-semibold mb-4">
+                  <h3 className="text-2xl font-medium mb-4">
                     Boshlang‘ich bilimga ega bo‘lganlar uchun
                   </h3>
                 </div>
