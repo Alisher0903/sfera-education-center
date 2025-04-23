@@ -13,7 +13,7 @@ import { RegistrationModal } from "@/components/auth/register";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Hero: React.FC<{ course: Course, CoursesData?: any }> = ({ course }) => {
+const Hero: React.FC<{ course: Course; CoursesData?: any }> = ({ course }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -90,8 +90,9 @@ const Hero: React.FC<{ course: Course, CoursesData?: any }> = ({ course }) => {
           >
             <div className="inline-block w-full sm:w-auto">
               <HoveredButton
+                style={{ border: "none" }}
                 className={cn(
-                  "py-3 sm:py-4 w-full sm:w-auto px-6 hover:border-white hover:bg-transparent text-sm sm:text-base",
+                  "py-3 sm:py-4 w-full sm:w-auto  px-6 hover:border-white  text-sm sm:text-base",
                   color("bg").green,
                   color("text").white,
                   color("border").green
