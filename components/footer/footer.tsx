@@ -69,7 +69,7 @@ export default function Footer() {
                 <Link key={index} href={link.href}>
                   <p
                     style={{
-                      color: colors.grayText2,
+                      color: colors.grayText,
                     }}
                     className={`text-base hover:text-[${colors.green}]`}
                   >
@@ -87,7 +87,7 @@ export default function Footer() {
                 <Link key={index} href={link.href}>
                   <p
                     style={{
-                      color: colors.grayText2,
+                      color: colors.grayText,
                     }}
                     className={`text-base hover:text-[${colors.green}]`}
                   >
@@ -103,7 +103,7 @@ export default function Footer() {
             <div className="flex flex-col gap-2">
               <p
                 style={{
-                  color: colors.grayText2,
+                  color: colors.grayText,
                 }}
                 className={`text-base hover:text-[${colors.green}] cursor-pointer`}
                 onClick={() => setModalOpen(true)}
@@ -112,7 +112,7 @@ export default function Footer() {
               </p>
               <p
                 style={{
-                  color: colors.grayText2,
+                  color: colors.grayText,
                 }}
                 className={`text-base hover:text-[${colors.green}]`}
               >
@@ -144,7 +144,7 @@ export default function Footer() {
 
           <p
             style={{
-              color: colors.grayText2,
+              color: colors.grayText,
             }}
             className="text-base"
           >
