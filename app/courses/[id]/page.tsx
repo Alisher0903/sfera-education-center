@@ -27,7 +27,7 @@ export default async function Page(props: {
     <div>
       {course && <Hero course={course} />}
       {course && <CourseInfoSection course={course} />}
-      <Info />
+      <Info courseData={course} />
       <FAQSection />
       <Teacher course={course} />
       {allCourses && <Register coursesData={allCourses} />}

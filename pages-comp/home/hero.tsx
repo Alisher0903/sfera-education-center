@@ -7,7 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import HoveredButton from "@/components/buttons/hovered-button";
 import { cn } from "@/lib/utils";
-import { color } from "@/lib/colors";
+import  { color } from "@/lib/colors";
 import { RegistrationModal } from "@/components/auth/register";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -18,10 +18,12 @@ const Hero: React.FC = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonContainerRef = useRef<HTMLDivElement>(null);
+  const wordRef = useRef<HTMLSpanElement>(null); // Reference for the animated word
   const [isOpen, setIsOpen] = useState(false);
 
   useGSAP(
     () => {
+     
       const elements = [
         titleRef.current,
         subtitleRef.current,
@@ -45,6 +47,35 @@ const Hero: React.FC = () => {
             },
           }
         );
+      });
+
+      
+      const words = ["osonroq", "tezroq"];
+      const tl = gsap.timeline({ repeat: -1 });
+
+      words.forEach((word) => {
+        tl.to(wordRef.current, {
+          duration: 0.5,
+          y: 20, 
+          ease: "power2.out",
+        })
+          .to(wordRef.current, {
+            duration: 0.5,
+            opacity: 0,
+            ease: "power2.out",
+            onComplete: () => {
+              if (wordRef.current) {
+                wordRef.current.textContent = word; 
+                gsap.set(wordRef.current, { y: 0 }); 
+              }
+            },
+          })
+          .to(wordRef.current, {
+            duration: 0.5,
+            opacity: 1,
+            ease: "power2.in",
+          })
+          .to({}, { duration: 5 }); // Wait 5 seconds before next word
       });
     },
     { scope: sectionRef, dependencies: [] }
@@ -82,7 +113,10 @@ const Hero: React.FC = () => {
             ref={subtitleRef}
           >
             sfera academy bilan{" "}
-            <span className={cn(color("text").green) + " " + "font-bold"}>
+            <span
+              ref={wordRef}
+              className={cn(color("text").green, "font-bold uppercase")}
+            >
               osonroq
             </span>{" "}
             organing
@@ -92,12 +126,12 @@ const Hero: React.FC = () => {
             ref={buttonContainerRef}
           >
             <div className="inline-block w-full sm:w-auto">
-              <HoveredButton
+              <HoveredButton style={{ border: "none"}}
                 className={cn(
-                  "py-3 sm:py-4 w-full sm:w-auto px-6  hover:border-white hover:bg-transparent text-sm sm:text-base",
+                  "py-3 sm:py-4 w-full sm:w-auto  px-6 hover:border-white  text-sm sm:text-base",
                   color("bg").green,
                   color("text").white,
-                  color("border").green
+                  color("border").green,
                 )}
                 name="BEPUL BIRINCHI DARS"
               />

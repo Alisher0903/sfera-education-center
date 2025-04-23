@@ -9,6 +9,16 @@ import SectionTitle from "@/components/SectionTitle/SectionTitle";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Matnni nuqta orqali ajratib, paragraphlar arrayini qaytaruvchi funksiya
+function formatTextToParagraphArray(text: string) {
+  return text
+    .split(".")
+    .map((sentence) => sentence.trim())
+    .filter(Boolean)
+    .map((sentence) => `${sentence}.`);
+}
+
+// Demo uchun karta ma'lumotlari
 export const infoCards = [
   {
     image: "/home/info.png",
@@ -36,9 +46,10 @@ export const infoCards = [
   },
 ];
 
-const Info: React.FC = () => {
+const Info: React.FC<{ courseData?: any }> = ({ courseData }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
+  console.log(courseData.description);
 
   useGSAP(
     () => {
@@ -94,11 +105,13 @@ const Info: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10">
           {infoCards.map((card, index) => (
-            <div className="info-card-item " key={index}>
+            <div className="info-card-item" key={index}>
               <InfoCard
                 image={card.image}
                 title={card.title}
-                description={card.description}
+                description={
+                  formatTextToParagraphArray(courseData.description)[index]
+                }
               />
             </div>
           ))}
