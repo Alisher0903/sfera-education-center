@@ -1,7 +1,9 @@
 export const dynamic = 'force-dynamic'
 
-const Portfolio = () => {
-    return <div>portfolio</div>
+import Portfolio from "@/pages-comp/portfolio/portfolio";
+
+const PortfolioPage = () => {
+    return <Portfolio/>
 };
 
-export default Portfolio;
+export default PortfolioPage;

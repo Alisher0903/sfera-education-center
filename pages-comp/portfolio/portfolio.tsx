@@ -1,9 +1,5 @@
 const Portfolio = () => {
-    return (
-        <div>
-
-        </div>
-    );
+    return <div className={"min-h-screen"}>portfolio</div>
 };
 
 export default Portfolio;
