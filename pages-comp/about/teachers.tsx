@@ -72,7 +72,7 @@ export default function Teacher({ course }: { course: any }) {
       </div>
 
       <div className="relative">
-        <div className="absolute inset-0 h-[250px] bg-green-500 -z-10" />
+        <div style={{ backgroundColor: colors.green }} className="absolute inset-0 h-[250px]  -z-10" />
 
         <div className="overflow-x-auto scrollbar-none">
           <div className="flex w-max gap-20 px-10">
