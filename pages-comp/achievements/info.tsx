@@ -79,7 +79,7 @@ const Info = () => {
           ease: "power3.out",
           scrollTrigger: {
             trigger: titleRef.current,
-            start: "top 90%",
+            start: "top 100%",
             toggleActions: "play none none none",
           },
         }

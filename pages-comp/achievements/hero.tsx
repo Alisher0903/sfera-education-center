@@ -53,7 +53,7 @@ export default function Hero() {
         <div className="flex flex-col md:flex-row py-20 justify-between items-center">
           <div className="md:w-1/3 flex flex-col justify-center md:text-left mb-10 md:mb-0">
             <h2
-              className="text-4xl font-bold uppercase mb-2"
+              className="text-4xl text-center font-bold uppercase mb-2"
               style={{ color: colors.green }}
               ref={titleRef}
             >

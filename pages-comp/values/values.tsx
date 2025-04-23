@@ -90,11 +90,11 @@ export default function Values({ achievementData }: any) {
                   >
                     {achievement.title}
                   </h2>
-                  <p className="text-lg leading-relaxed mb-8 text-center px-4 sm:px-20">
+                  <p className="text-lg leading-relaxed text-center px-4 sm:px-20">
                     {achievement.description}
                   </p>
                 </div>
-                <div className="lg:w-1/2 mt-8 lg:mt-0 order-2">
+                <div className="lg:w-1/2 mt-5 lg:mt-0 order-2">
                   <div className="overflow-hidden">
                     <Image
                       src={`${URL}/static/medias/a9e45423-7385-4495-878b-3c989d8cfe96.png`}

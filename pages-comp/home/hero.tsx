@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -8,6 +8,7 @@ import Image from "next/image";
 import HoveredButton from "@/components/buttons/hovered-button";
 import { cn } from "@/lib/utils";
 import { color } from "@/lib/colors";
+import { RegistrationModal } from "@/components/auth/register";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +18,7 @@ const Hero: React.FC = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const buttonContainerRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useGSAP(
     () => {
@@ -39,13 +41,13 @@ const Hero: React.FC = () => {
             scrollTrigger: {
               trigger: element,
               start: "top 100%",
-              toggleActions: "play none none none", 
+              toggleActions: "play none none none",
             },
           }
         );
       });
     },
-    { scope: sectionRef, dependencies: [] } 
+    { scope: sectionRef, dependencies: [] }
   );
 
   return (
@@ -80,7 +82,10 @@ const Hero: React.FC = () => {
             ref={subtitleRef}
           >
             sfera academy bilan{" "}
-            <span className={cn(color("text").green) + " " + "font-bold" }>osonroq</span> organing
+            <span className={cn(color("text").green) + " " + "font-bold"}>
+              osonroq
+            </span>{" "}
+            organing
           </p>
           <div
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center"
@@ -99,6 +104,7 @@ const Hero: React.FC = () => {
             </div>
             <div className="inline-block w-full sm:w-auto">
               <HoveredButton
+                onClick={() => setIsOpen(true)}
                 className="py-3 sm:py-4 w-full sm:w-auto px-6 bg-slate-950 text-white border-white hover:bg-white hover:text-black text-sm sm:text-base"
                 name="BIZ BILAN BOG'LANISH"
               />
@@ -106,6 +112,7 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
+      <RegistrationModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </section>
   );
 };

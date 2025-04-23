@@ -10,6 +10,8 @@ import type {Metadata} from "next";
 import {defaultMetadata} from "@/lib/seo";
 import {getAllData} from "@/helpers/request";
 
+
+
 export const metadata: Metadata = {
     ...defaultMetadata,
     title: "Sfera Academy | Zamonaviy kasblar akademiyasi",
@@ -28,6 +30,8 @@ const Home = async () => {
             <Students studentsData={studentsData}/>
             <About/>
             <Info/>
+            
+            
         </>
     );
 };
