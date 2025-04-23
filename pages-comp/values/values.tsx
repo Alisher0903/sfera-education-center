@@ -83,9 +83,9 @@ export default function Values({ achievementData }: any) {
                   index % 2 === 0 ? "" : "lg:flex-row-reverse"
                 }`}
               >
-                <div className="lg:w-1/2 py-10 order-1 lg:order-none">
+                <div className="lg:w-1/2 py-4 order-1 lg:order-2 ">
                   <h2
-                    className="text-3xl font-medium mb-4 text-center"
+                    className="text-3xl font-medium  text-center"
                     style={{ color: colors.green }}
                   >
                     {achievement.title}
@@ -94,7 +94,7 @@ export default function Values({ achievementData }: any) {
                     {achievement.description}
                   </p>
                 </div>
-                <div className="lg:w-1/2 mt-5 lg:mt-0 order-2">
+                <div className="lg:w-1/2 mt-5 lg:mt-0">
                   <div className="overflow-hidden">
                     <Image
                       src={`${URL}/static/medias/a9e45423-7385-4495-878b-3c989d8cfe96.png`}

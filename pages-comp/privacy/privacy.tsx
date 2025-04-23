@@ -8,12 +8,12 @@ const Privacy = () => {
     <section className="w-full px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto py-30">
         <div>
-          <ScrollAnimation direction="bottom">
+          <ScrollAnimation>
             <SectionTitle title="MAXFIYLIK SIYOSATI" />
           </ScrollAnimation>
         </div>
         <div className="flex flex-col gap-5 py-10">
-          <ScrollAnimation direction="bottom">
+          <ScrollAnimation>
             <div className="privacy-item">
               <h3 className="text-2xl">
                 Bu Maxfiylik Siyosati, sizning veb-saytimizni ziyorat qilish va
@@ -25,7 +25,7 @@ const Privacy = () => {
               </h3>
             </div>
           </ScrollAnimation>
-          <ScrollAnimation direction="bottom">
+          <ScrollAnimation>
             <div className="privacy-item">
               <h2 className="text-[#1CA855] text-2xl">
                 1. Ma‘lumotlarimizni qanday to‘playmiz
@@ -54,7 +54,7 @@ const Privacy = () => {
               </p>
             </div>
           </ScrollAnimation>
-          <ScrollAnimation direction="bottom">
+          <ScrollAnimation>
             <div className="privacy-item">
               <h2 className="text-[#1CA855] text-2xl">
                 2. Ma‘lumotingizni qanday ishlatamiz
@@ -70,7 +70,7 @@ const Privacy = () => {
               </p>
             </div>
           </ScrollAnimation>
-          <ScrollAnimation direction="bottom">
+          <ScrollAnimation>
             {" "}
             <div className="privacy-item">
               <h2 className="text-[#1CA855] text-2xl">
@@ -86,7 +86,7 @@ const Privacy = () => {
               </p>
             </div>
           </ScrollAnimation>
-          <ScrollAnimation direction="bottom">
+          <ScrollAnimation>
             {" "}
             <div className="privacy-item">
               <h2 className="text-[#1CA855] text-2xl">
@@ -100,7 +100,7 @@ const Privacy = () => {
               </p>
             </div>
           </ScrollAnimation>
-          <ScrollAnimation direction="bottom">
+          <ScrollAnimation>
             <div className="privacy-item">
               <h2 className="text-[#1CA855] text-2xl">
                 5. Ma‘lumotlarni Saqlash
@@ -114,7 +114,7 @@ const Privacy = () => {
               </p>
             </div>
           </ScrollAnimation>
-          <ScrollAnimation direction="bottom">
+          <ScrollAnimation>
             {" "}
             <div className="privacy-item">
               <h2 className="text-[#1CA855] text-2xl">
@@ -129,7 +129,7 @@ const Privacy = () => {
               </p>
             </div>
           </ScrollAnimation>
-          <ScrollAnimation direction="bottom">
+          <ScrollAnimation>
             <div className="privacy-item">
               <h2 className="text-[#1CA855] text-2xl">7. Xavfsizlik</h2>
               <p className="text-lg">
@@ -140,7 +140,7 @@ const Privacy = () => {
               </p>
             </div>
           </ScrollAnimation>
-          <ScrollAnimation direction="bottom">
+          <ScrollAnimation>
             {" "}
             <div className="privacy-item">
               <h2 className="text-[#1CA855] text-2xl">
@@ -154,7 +154,7 @@ const Privacy = () => {
               </p>
             </div>
           </ScrollAnimation>
-          <ScrollAnimation direction="bottom">
+          <ScrollAnimation>
             <div className="privacy-item">
               <h2 className="text-[#1CA855] text-2xl">
                 9. Ushbu Maxfiylik Siyosati Tuzilishi
@@ -166,7 +166,7 @@ const Privacy = () => {
               </p>
             </div>
           </ScrollAnimation>
-          <ScrollAnimation direction="bottom">
+          <ScrollAnimation>
             <div className="privacy-item">
               <p className="text-lg text-[#1CA855]">
                 Kuchga kirgan sanasi: Ushbu Maxfiylik Siyosati 2024 yil 20

@@ -13,7 +13,7 @@ import { RegistrationModal } from "@/components/auth/register";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Hero: React.FC<{ course: Course }> = ({ course }) => {
+const Hero: React.FC<{ course: Course, CoursesData?: any }> = ({ course }) => {
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
