@@ -66,7 +66,7 @@ export default function Teacher({ course }: { course: any }) {
   );
 
   return (
-    <section className="py-10 h-[390px]" style={{ color: colors.green }} ref={sectionRef}>
+    <section className="py-10 h-[420px]" style={{ color: colors.green }} ref={sectionRef}>
       <div className="mb-10" ref={titleRef}>
         <SectionTitle title="FRONTEND O'QITUVCHILARI" />
       </div>

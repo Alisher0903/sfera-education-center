@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-
 import { ChevronDown, FileText, X } from "lucide-react";
 import colors from "@/lib/colors";
 import { registration } from "@/helpers/api";
@@ -19,12 +18,14 @@ export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
   const [isCourseOpen, setIsCourseOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [courses, setData] = useState<any>([]);
-
   const [formData, setFormData] = useState({
     full_name: "",
     phone_number: "",
     course_id: null as number | null,
   });
+
+  const modalRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {
     const a = CoursesData();
@@ -33,13 +34,74 @@ export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
     });
   }, []);
 
-  const modalRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isOpen) {
+        onClose();
+      }
+      if (event.key === "Enter" && isOpen && !isSubmitting) {
+        event.preventDefault();
+        if (formRef.current) {
+          formRef.current.dispatchEvent(
+            new Event("submit", { cancelable: true, bubbles: true })
+          );
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, isSubmitting, onClose]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isOpen &&
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen, onClose]);
+
+  const formatPhoneNumber = (value: string) => {
+    const cleaned = value.replace(/\D/g, "");
+    let formatted = "+998";
+
+    if (cleaned.length > 3) {
+      formatted += " " + cleaned.slice(3, 5);
+    }
+    if (cleaned.length > 5) {
+      formatted += " " + cleaned.slice(5, 8);
+    }
+    if (cleaned.length > 8) {
+      formatted += " " + cleaned.slice(8, 10);
+    }
+    if (cleaned.length > 10) {
+      formatted += " " + cleaned.slice(10, 12);
+    }
+
+    return formatted.trim();
+  };
 
   const handleInputChange = (
     field: keyof typeof formData,
     value: string | number | null
   ) => {
-    setFormData({ ...formData, [field]: value });
+    if (field === "phone_number" && typeof value === "string") {
+      const formattedValue = formatPhoneNumber(value);
+      setFormData({ ...formData, [field]: formattedValue });
+    } else {
+      setFormData({ ...formData, [field]: value });
+    }
   };
 
   const handleCourseSelect = (courseId: number | any) => {
@@ -63,7 +125,10 @@ export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          phone_number: formData.phone_number.replace(/\s/g, ""),
+        }),
       });
 
       if (response.ok) {
@@ -73,7 +138,7 @@ export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
           phone_number: "",
           course_id: null,
         });
-        onClose(); 
+        onClose();
       } else {
         alert("Xatolik yuz berdi. Iltimos, qaytadan urinib ko’ring.");
       }
@@ -105,10 +170,10 @@ export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
 
         <div className="flex items-center gap-3 mb-8">
           <FileText className="h-6 w-6" style={{ color: colors.white }} />
-          <h2 className="text-2xl font-medium">Ro&apos;yxatdan o&apos;tish</h2>
+          <h2 className="text-2xl font-medium">Ro‘yxatdan o‘tish</h2>
         </div>
 
-        <form className="space-y-6" onSubmit={handleSubmit}>
+        <form ref={formRef} className="space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-2">
             <label htmlFor="full_name" className="block text-lg">
               Ism, Familiya:
@@ -133,7 +198,7 @@ export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
               <input
                 id="phone_number"
                 type="tel"
-                placeholder="+998 00 000 00 00"
+                placeholder="+998 XX XXX XX XX"
                 className="w-full px-4 py-4 bg-gray-100 rounded-lg focus:outline-none"
                 style={{ color: colors.grayText }}
                 value={formData.phone_number}
@@ -141,6 +206,7 @@ export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
                   handleInputChange("phone_number", e.target.value)
                 }
                 disabled={isSubmitting}
+                maxLength={17} // Limit to +998 XX XXX XX XX length
               />
               <div className="absolute inset-y-0 right-0 flex items-center pr-4">
                 <button
@@ -154,21 +220,6 @@ export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
                   <ChevronDown className="h-5 w-5" />
                 </button>
               </div>
-              {isCountryOpen && (
-                <div className="absolute top-full left-0 right-0 mt-1 rounded-md shadow-lg z-10 bg-gray-100">
-                  <div className="py-1">
-                    <button
-                      type="button"
-                      className="w-full px-4 py-2 text-left hover:opacity-80 cursor-pointer"
-                      style={{ color: colors.grayText }}
-                      onClick={() => setIsCountryOpen(false)}
-                    >
-                      UZ
-                    </button>
-                    {/* Add more country options here if needed */}
-                  </div>
-                </div>
-              )}
             </div>
           </div>
 
@@ -180,7 +231,7 @@ export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
               <button
                 id="course_id"
                 type="button"
-                className="w-full px-4 bg-gray-100  py-4 rounded-lg flex justify-between items-center focus:outline-none text-left cursor-pointer"
+                className="w-full px-4 bg-gray-100 py-4 rounded-lg flex justify-between items-center focus:outline-none text-left cursor-pointer"
                 style={{ color: colors.grayText }}
                 onClick={() => setIsCourseOpen(!isCourseOpen)}
                 disabled={isSubmitting}
@@ -204,7 +255,6 @@ export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
                           type="button"
                           style={{ color: colors.grayText }}
                           className="w-full px-4 py-2 text-left hover:opacity-80 cursor-pointer"
-                          // style={{ color: colors.grayText }}
                           onClick={() => handleCourseSelect(i.id)}
                         >
                           {i.name}
