@@ -6,6 +6,8 @@ import colors from "@/lib/colors";
 import { registration } from "@/helpers/api";
 import { Course } from "@/types/cards";
 import CoursesData from "./curs";
+import {cn} from "@/lib/utils";
+import {raleway} from "@/app/fonts/fonts";
 
 interface RegistrationModalProps {
   isOpen: boolean;
@@ -154,7 +156,10 @@ export function RegistrationModal({ isOpen, onClose }: RegistrationModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
+    <div className={cn(
+        "fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm",
+        raleway.className
+    )}>
       <div
         ref={modalRef}
         className="rounded-2xl p-8 w-full max-w-xl relative"

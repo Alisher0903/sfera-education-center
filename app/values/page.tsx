@@ -8,4 +8,4 @@ const Visits = async () => {
     return <Values achievementData={achievementData}/>
 }
 
-export default Visits
+export default Visits;

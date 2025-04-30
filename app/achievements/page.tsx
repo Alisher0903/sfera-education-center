@@ -1,3 +1,5 @@
+import {raleway} from "@/app/fonts/fonts";
+
 export const dynamic = 'force-dynamic'
 
 import Hero from "@/pages-comp/achievements/hero"
@@ -6,7 +8,7 @@ import OurMotto from "@/pages-comp/achievements/ourMotto"
 
 const Achievements = () => {
     return (
-        <div>
+        <div className={raleway.className}>
             <Hero/>
             <OurMotto/>
             <Info/>
