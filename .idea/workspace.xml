@@ -4,40 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bd3c52-235a-4074-98d7-a75412b0fd24" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/fonts/LTWaveUI.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/fonts/fonts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/achievements/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/achievements/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/courses/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/courses/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/not-found.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/values/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/values/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/SectionTitle/SectionTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/SectionTitle/SectionTitle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/buttons/hovered-button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/buttons/hovered-button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cards/TeamMember.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cards/TeamMember.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cards/VisitsCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cards/VisitsCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cards/countCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cards/countCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cards/courseCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cards/courseCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cards/featureCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cards/featureCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cards/infoCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cards/infoCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/cards/student.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/cards/student.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/footer/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/footer/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages-comp/about/hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages-comp/about/hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages-comp/courses/Courses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages-comp/courses/Courses.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages-comp/home/Info.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages-comp/home/Info.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages-comp/home/Team.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages-comp/home/Team.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages-comp/home/about.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages-comp/home/about.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages-comp/home/courses.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages-comp/home/courses.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages-comp/home/feature.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages-comp/home/feature.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages-comp/home/hero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages-comp/home/hero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages-comp/home/students.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages-comp/home/students.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages-comp/photo/photo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages-comp/photo/photo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages-comp/portfolio/portfolio.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages-comp/portfolio/portfolio.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages-comp/privacy/privacy.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages-comp/privacy/privacy.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages-comp/values/values.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages-comp/values/values.tsx" afterDir="false" />
+    <list default="true" id="d4bd3c52-235a-4074-98d7-a75412b0fd24" name="Changes" comment="font family add">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/deploy.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,24 +33,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "js.debugger.nextJs.config.created.client": "true",
-    "js.debugger.nextJs.config.created.server": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.Next.js: server-side.executor": "Run",
-    "ts.external.directory.path": "D:\\FRONT END\\NEXT\\sfera-academy\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.Next.js: server-side.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\FRONT END\\NEXT\\sfera-academy\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\FRONT END\NEXT\sfera-academy\app\fonts" />
@@ -118,11 +87,25 @@
       <option name="presentableId" value="Default" />
       <updated>1745583780336</updated>
       <workItem from="1745583781711" duration="2890000" />
-      <workItem from="1745986827674" duration="10625000" />
+      <workItem from="1745986827674" duration="11030000" />
+      <workItem from="1746074913818" duration="1375000" />
     </task>
+    <task id="LOCAL-00001" summary="font family add">
+      <option name="closed" value="true" />
+      <created>1746000291819</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746000291819</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="font family add" />
+    <option name="LAST_COMMIT_MESSAGE" value="font family add" />
   </component>
 </project>
