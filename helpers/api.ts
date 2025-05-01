@@ -1,4 +1,4 @@
-export const URL = 'http://142.93.106.195:9191'
+export const URL = 'https://back.sferaacademy.uz'
 
 //Courses
 export const ReadCourses: string = `${URL}/api/v1/courses`
