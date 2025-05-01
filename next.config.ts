@@ -3,9 +3,8 @@ import type {NextConfig} from "next";
 const nextConfig: NextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['142.93.106.195'],
+        domains: ['back.sferaacademy.uz'],
     },
-    // staticPageGenerationTimeout: 360,
 };
 
 export default nextConfig;

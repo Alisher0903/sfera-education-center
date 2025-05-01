@@ -28,7 +28,7 @@ export default function TeamMemberCard(
                     src={`${URL}${photo}`}
                     alt={name}
                     fill
-                    className="object-cover rounded-2xl"
+                    className="object-cover rounded-xl"
                     sizes="(max-width: 768px) 100vw, 384px"
                     priority
                 />

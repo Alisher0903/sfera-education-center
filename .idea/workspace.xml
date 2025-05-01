@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4bd3c52-235a-4074-98d7-a75412b0fd24" name="Changes" comment="CI/CD added">
+    <list default="true" id="d4bd3c52-235a-4074-98d7-a75412b0fd24" name="Changes" comment="urm edit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +91,7 @@
       <workItem from="1745986827674" duration="11030000" />
       <workItem from="1746074913818" duration="1679000" />
       <workItem from="1746078247961" duration="194000" />
-      <workItem from="1746078454849" duration="1831000" />
+      <workItem from="1746078454849" duration="2848000" />
     </task>
     <task id="LOCAL-00001" summary="font family add">
       <option name="closed" value="true" />
@@ -107,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746077599260</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="urm edit">
+      <option name="closed" value="true" />
+      <created>1746090920334</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746090920334</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +126,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="font family add" />
     <MESSAGE value="CI/CD added" />
-    <option name="LAST_COMMIT_MESSAGE" value="CI/CD added" />
+    <MESSAGE value="urm edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="urm edit" />
   </component>
 </project>
